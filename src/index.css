@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Manrope', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #12231e;
+  background-color: #f4f5ef;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f5ef;
+    color: #12231e;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a,
+  button,
+  input,
+  select,
+  textarea {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid rgb(20 133 102 / 0.35);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .font-heading {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.012em;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 80;
+    border-radius: 9999px;
+    background: #0f322b;
+    color: #f0fdf4;
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    transition: top 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  .grain-layer {
+    opacity: 0.18;
+    background-image:
+      radial-gradient(circle at 18% 14%, rgb(255 255 255 / 0.35), transparent 34%),
+      radial-gradient(circle at 78% 24%, rgb(16 98 73 / 0.08), transparent 38%),
+      radial-gradient(circle at 72% 80%, rgb(16 98 73 / 0.06), transparent 32%),
+      radial-gradient(rgb(15 64 49 / 0.06) 0.65px, transparent 0.65px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 4px 4px;
+  }
+
+  .rise-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: rise-in 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+@keyframes rise-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
