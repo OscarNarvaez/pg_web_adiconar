@@ -1,4 +1,4 @@
-const CentroSolucionesPage = () => (
+const CentroSolucionesPage = ({ onNavigate }) => (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-16">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <h1 className="font-heading text-4xl text-emerald-950 mb-6 border-b border-emerald-900/10 pb-4">
@@ -34,16 +34,33 @@ const CentroSolucionesPage = () => (
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
-                { title: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado' },
-                { title: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros' },
-                { title: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización' },
-                { title: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas' },
-                { title: 'Aliados corporativos', desc: 'Red de partners estratégicos' }
+                { title: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
+                { title: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page', disabled: true },
+                { title: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page', disabled: true },
+                { title: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#centro-soluciones-page', disabled: true },
+                { title: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page', disabled: true }
             ].map((item, idx) => (
-                <div key={idx} className="rounded-2xl border border-emerald-900/15 bg-white p-6 shadow-sm">
-                    <h3 className="font-heading text-xl text-emerald-950 mb-2">{item.title}</h3>
-                    <p className="text-emerald-900/70">{item.desc}</p>
-                </div>
+                <a
+                  key={idx}
+                  href={item.href}
+                  onClick={(event) => {
+                    if (!item.disabled && onNavigate) {
+                      onNavigate(event, item.href);
+                    } else if (item.disabled) {
+                      event.preventDefault();
+                    }
+                  }}
+                  className={`group rounded-2xl border border-emerald-900/15 p-6 shadow-sm transition duration-300 ${
+                    item.disabled
+                      ? 'cursor-not-allowed bg-slate-100/50 opacity-70'
+                      : 'bg-white hover:border-emerald-500 hover:shadow-lg hover:-translate-y-1 cursor-pointer'
+                  }`}
+                >
+                    <h3 className="font-heading text-xl text-emerald-950 mb-2 group-hover:text-emerald-600 transition">{item.title}</h3>
+                    <p className={`transition ${item.disabled ? 'text-slate-500' : 'text-emerald-900/70 group-hover:text-emerald-900'}`}>{item.desc}</p>
+                    {!item.disabled && <p className="mt-4 text-sm font-semibold text-emerald-600 group-hover:translate-x-1 transition">Ir a {item.title} →</p>}
+                    {item.disabled && <p className="mt-4 text-xs font-semibold text-slate-500">Proximamente</p>}
+                </a>
             ))}
         </div>
       </div>

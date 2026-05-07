@@ -6,6 +6,7 @@ import { categories } from './data/categories'
 import CategoryPage from './components/CategoryPage'
 import CentroSolucionesPage from './components/CentroSolucionesPage'
 import AlmacenPage from './components/AlmacenPage'
+import TecnicalServicesPage from './components/TecnicalServicesPage'
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -18,7 +19,7 @@ const navItems = [
 
 const centroSolucionesItems = [
   { label: 'Almacén', desc: 'Control de inventario y suministros', href: '#almacen-page' },
-  { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#centro-soluciones-page' },
+  { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
   { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page' },
   { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page' },
   { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#centro-soluciones-page' },
@@ -163,6 +164,14 @@ function App() {
 
     if (href === '#almacen-page') {
       setCurrentView('almacen')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#servicios-tecnicos-page') {
+      setCurrentView('servicios-tecnicos')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -629,18 +638,18 @@ function App() {
 
                 <aside className="rise-in self-end rounded-[1.8rem] border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md shadow-[0_24px_44px_-28px_rgba(0,0,0,0.9)]" style={{ animationDelay: '140ms' }}>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-50/90">
-                    Prioridades 2026
+                    Prioridades
                   </p>
                   <div className="mt-4 space-y-3">
                     <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                      <p className="mt-1 text-sm text-emerald-50/85">Respaldo técnico especializado para EDS</p>
+                      <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Soluciones integrales para fortalecer sus operaciónes.</p>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Cumplimiento normativo y acompañamiento gremial</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Cumplimiento normativo y acompañamiento gremial.</p>
                       </div>
                       <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Soluciones integrales para fortalecer su operación</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Respaldo técnico especializado para EDS.</p>
                       </div>
                     </div>
                   </div>
@@ -1022,8 +1031,10 @@ function App() {
           <CategoryPage category={currentCategory} />
         ) : currentView === 'almacen' ? (
           <AlmacenPage onNavigate={navegarASeccion} />
+        ) : currentView === 'servicios-tecnicos' ? (
+          <TecnicalServicesPage />
         ) : currentView === 'centro-soluciones' ? (
-          <CentroSolucionesPage />
+          <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : null}
       </main>
 

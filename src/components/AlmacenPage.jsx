@@ -63,7 +63,7 @@ function AlmacenPage({ onNavigate }) {
 
             <div className="flex flex-col gap-6 bg-[#f7f8f4] p-6 md:p-8 lg:p-10">
               <div className="rounded-[1.8rem] border border-emerald-900/10 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.12)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Cómo está organizado</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">¿Cómo estamos organizados?</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-700 md:text-base">
                   El almacén está estructurado en líneas especializadas para facilitar la consulta, priorizar necesidades críticas y llevar al usuario directamente al tipo de producto que necesita.
                 </p>

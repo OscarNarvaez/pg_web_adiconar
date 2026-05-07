@@ -62,7 +62,7 @@ export const catalogo = [
   {
     "name": "SPILL DE 5 GALONES DOBLE CONTENCIÓN (EMCO)",
     "desc": "Sistema diseñado para capturar derrames durante procesos de descarga, evitando contaminación ambiental y cumpliendo normativa.",
-    "image": "https://nomenclator.org/img/envase.1200/abiraterona-normon-500-mg-comprimidos.jpg"
+    "image": "https://egaval.co/wp-content/uploads/2023/10/GASSFT1PT-300x300.jpg"
   },
   {
     "name": "TAPÓN / VÁLVULA DE PURGA PARA SPILL (EMCO)",
