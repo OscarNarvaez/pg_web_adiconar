@@ -5,6 +5,7 @@ import pagosIcon from './logos/pagos.png'
 import { categories } from './data/categories'
 import CategoryPage from './components/CategoryPage'
 import CentroSolucionesPage from './components/CentroSolucionesPage'
+import AlmacenPage from './components/AlmacenPage'
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -16,7 +17,7 @@ const navItems = [
 ]
 
 const centroSolucionesItems = [
-  { label: 'Almacén', desc: 'Control de inventario y suministros', href: '#almacen' },
+  { label: 'Almacén', desc: 'Control de inventario y suministros', href: '#almacen-page' },
   { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#centro-soluciones-page' },
   { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page' },
   { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page' },
@@ -40,7 +41,7 @@ const accesos = [
   },
   {
     title: 'Almacen Especializado',
-    href: '#almacen',
+    href: '#almacen-page',
     copy: 'Catalogo completo de repuestos, equipos y consumibles con disponibilidad 24/7.',
     icon: almacenIcon,
     size: 'small',
@@ -58,55 +59,70 @@ const objetivosCarousel = [
   {
     id: '001',
     texto:
-      'Contribuir de manera efectiva al cumplimiento de los Objetivos de Desarrollo Sostenible y la Agenda 2030.',
+      'Fortalecer la representación y defensa gremial de las EDS.',
   },
   {
     id: '002',
     texto:
-      'Fortalecer capacidades locales para la gestion comunitaria con enfoque de derechos y participacion ciudadana.',
+      'Brindar soluciones técnicas y operativas especializadas.',
   },
   {
     id: '003',
     texto:
-      'Impulsar procesos de formacion para lideres sociales, mujeres y jovenes en territorios priorizados.',
+      'Promover el cumplimiento normativo y la seguridad operativa.',
   },
   {
     id: '004',
     texto:
-      'Promover redes de colaboracion institucional para ampliar el impacto social de los programas de ADICONAR.',
+      'Generar alianzas estratégicas que aporten valor al sector.',
   },
   {
     id: '005',
     texto:
-      'Acompanhar iniciativas sostenibles que mejoren la calidad de vida y el desarrollo integral de las comunidades.',
+      'Impulsar el crecimiento sostenible y competitivo de las estaciones de servicio.',
   },
 ]
 
 const lineasServicio = [
   {
     code: 'S01',
-    title: 'Soporte y Mantenimiento Tecnico',
-    copy: 'Atencion especializada para garantizar el correcto funcionamiento de equipos, infraestructura y tecnologia de su estacion.',
+    title: 'Servicios técnicos para EDS',
+    copy: 'Atención especializada para garantizar el correcto funcionamiento de equipos, infraestructura y tecnología de su estación.',
   },
   {
     code: 'S02',
-    title: 'Gestion de Polizas y Aseguramiento',
-    copy: 'Proteccion integral y acompanamiento experto para cubrir todos los frentes de riesgo de su operacion.',
+    title: 'Accesorios y suministros especializados',
+    copy: 'Catálogo completo de repuestos, consumibles y componentes para sostener la operación diaria de su estación.',
   },
   {
     code: 'S03',
-    title: 'Asesoria Juridica Especializada',
-    copy: 'Respaldo legal estrategico, enfocado exclusivamente en la regulacion y desafios del sector de combustibles.',
+    title: 'Gestión de pólizas y aseguramiento',
+    copy: 'Protección integral con acompañamiento experto para cubrir los frentes de riesgo de su operación.',
   },
   {
     code: 'S04',
-    title: 'Tramites y Cumplimiento Normativo',
-    copy: 'Gestion eficiente ante entidades gubernamentales para asegurar el cumplimiento operativo sin trabas burocraticas.',
+    title: 'Asesoría jurídica, HSE y ambiental',
+    copy: 'Respaldo legal, técnico y ambiental enfocado en cumplimiento, seguridad y gestión responsable.',
   },
   {
     code: 'S05',
-    title: 'Red de Aliados Corporativos',
-    copy: 'Conexion con partners estrategicos que suman valor, eficiencia y oportunidades comerciales a su estacion.',
+    title: 'Trámites ante entidades gubernamentales',
+    copy: 'Gestión eficiente ante autoridades y organismos para asegurar procesos sin trabas y con soporte continuo.',
+  },
+  {
+    code: 'S06',
+    title: 'Aforo y pruebas técnicas',
+    copy: 'Verificación, medición y pruebas especializadas para validar la operación y el estado de sus sistemas.',
+  },
+  {
+    code: 'S07',
+    title: 'Construcción y remodelación para EDS',
+    copy: 'Diseño, adecuación y modernización de espacios e infraestructura para mejorar la funcionalidad de su estación.',
+  },
+  {
+    code: 'S08',
+    title: 'Aliados corporativos y convenios estratégicos',
+    copy: 'Conexión con partners estratégicos para sumar valor, eficiencia y oportunidades comerciales a su estación.',
   },
 ]
 
@@ -118,6 +134,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(null)
   const [objetivoActivo, setObjetivoActivo] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [showAllServiceLines, setShowAllServiceLines] = useState(false)
 
   const [activeSection, setActiveSection] = useState('#inicio')
   const [formData, setFormData] = useState({
@@ -131,6 +148,7 @@ function App() {
 
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
+  const visibleLineasServicio = showAllServiceLines ? lineasServicio : lineasServicio.slice(0, 4)
 
   const irObjetivoAnterior = () => {
     setObjetivoActivo((prev) => (prev - 1 + totalObjetivos) % totalObjetivos)
@@ -142,6 +160,14 @@ function App() {
 
   const navegarASeccion = (event, href, closeMobileMenu = false) => {
     event.preventDefault()
+
+    if (href === '#almacen-page') {
+      setCurrentView('almacen')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
 
     if (href === '#centro-soluciones-page') {
       setCurrentView('centro-soluciones')
@@ -309,7 +335,7 @@ function App() {
             className="group inline-flex items-center gap-3"
           >
             <div className="grid h-12 w-12 place-items-center rounded-2xl border border-emerald-900/20 bg-white shadow-[0_16px_35px_-24px_rgba(20,83,45,0.9)] transition duration-300 group-hover:-translate-y-0.5">
-              <img src="/logoNavBar.png" alt="Logo de ADICONAR" className="h-9 w-9 object-contain" />
+              <img src="./logoNavBar.png" alt="Logo de ADICONAR" className="h-9 w-9 object-contain" />
             </div>
             <div>
               <p className="font-heading text-lg leading-none tracking-tight text-emerald-950">ADICONAR</p>
@@ -331,8 +357,8 @@ function App() {
                       type="button"
                       onClick={(event) => navegarASeccion(event, item.href)}
                       className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
-                          ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                          : 'text-emerald-950 hover:bg-emerald-950/10'
+                        ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
+                        : 'text-emerald-950 hover:bg-emerald-950/10'
                         }`}
                       aria-haspopup="true"
                     >
@@ -359,7 +385,7 @@ function App() {
                                   </div>
                                   <span className="text-[11px] text-slate-500 mt-1 line-clamp-1">{sol.desc}</span>
                                 </a>
-                                
+
                                 <div className="absolute left-[95%] top-0 ml-1 w-[400px] pointer-events-none opacity-0 group-hover/almacen:pointer-events-auto group-hover/almacen:opacity-100 group-focus-within/almacen:pointer-events-auto group-focus-within/almacen:opacity-100 transition-opacity duration-200">
                                   <div className="grid gap-1 rounded-2xl border border-emerald-900/15 bg-white/95 p-3 shadow-[0_28px_48px_-28px_rgba(6,78,59,0.7)] translate-x-1 group-hover/almacen:translate-x-0 transition duration-200">
                                     {categories.map((cat) => (
@@ -403,8 +429,8 @@ function App() {
                   onClick={(event) => navegarASeccion(event, item.href)}
                   aria-current={activeSection === item.href ? 'page' : undefined}
                   className={`rounded-full px-3 py-2 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
-                      ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                      : 'text-emerald-950 hover:bg-emerald-950/10'
+                    ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
+                    : 'text-emerald-950 hover:bg-emerald-950/10'
                     }`}
                 >
                   {item.label}
@@ -511,8 +537,8 @@ function App() {
                                       href={`#categoria/${cat.id}`}
                                       onClick={(event) => navegarASeccion(event, `#categoria/${cat.id}`, true)}
                                       className={`block rounded-xl px-4 py-2 text-xs font-medium transition ${activeSection === `#categoria/${cat.id}`
-                                          ? 'bg-emerald-900 text-white'
-                                          : 'bg-white/40 text-emerald-950 hover:bg-white'
+                                        ? 'bg-emerald-900 text-white'
+                                        : 'bg-white/40 text-emerald-950 hover:bg-white'
                                         }`}
                                     >
                                       • {cat.title}
@@ -528,8 +554,8 @@ function App() {
                               href={sol.href}
                               onClick={(event) => navegarASeccion(event, sol.href, true)}
                               className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition ${activeSection === sol.href
-                                  ? 'bg-emerald-900 text-white'
-                                  : 'bg-white/50 text-emerald-950 hover:bg-white'
+                                ? 'bg-emerald-900 text-white'
+                                : 'bg-white/50 text-emerald-950 hover:bg-white'
                                 }`}
                             >
                               {sol.label}
@@ -547,8 +573,8 @@ function App() {
                     href={item.href}
                     onClick={(event) => navegarASeccion(event, item.href, true)}
                     className={`rise-in block rounded-2xl border px-4 py-3 text-base font-semibold transition ${activeSection === item.href && currentView === 'home'
-                        ? 'border-emerald-900 bg-emerald-900 text-white'
-                        : 'border-emerald-900/20 bg-white text-emerald-950 hover:border-emerald-900/50'
+                      ? 'border-emerald-900 bg-emerald-900 text-white'
+                      : 'border-emerald-900/20 bg-white text-emerald-950 hover:border-emerald-900/50'
                       }`}
                     style={{ animationDelay: `${80 + index * 45}ms` }}
                   >
@@ -594,28 +620,11 @@ function App() {
                     ONG ADICONAR
                   </p>
                   <h1 className="font-heading max-w-[15ch] text-4xl leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
-                    Construimos confianza para transformar territorio.
+                    Centro integral de soluciones para estaciones de servicio.
                   </h1>
                   <p className="max-w-[60ch] text-base leading-relaxed text-emerald-50/90 md:text-lg">
-                    Disenamos procesos comunitarios con enfoque humano, soporte tecnico y alianzas que sostienen resultados reales en campo.
+                    Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
-
-                  <div className="flex flex-wrap gap-3">
-                    <a
-                      href="#contacto"
-                      onClick={(event) => navegarASeccion(event, '#contacto')}
-                      className="rounded-full border border-emerald-200/50 bg-white px-6 py-3 text-sm font-semibold text-emerald-950 transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-100 active:translate-y-[1px]"
-                    >
-                      Sumar una alianza
-                    </a>
-                    <a
-                      href="#pagos"
-                      onClick={(event) => navegarASeccion(event, '#pagos')}
-                      className="rounded-full border border-white/45 bg-transparent px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-white/10 active:translate-y-[1px]"
-                    >
-                      Realizar aporte
-                    </a>
-                  </div>
                 </div>
 
                 <aside className="rise-in self-end rounded-[1.8rem] border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md shadow-[0_24px_44px_-28px_rgba(0,0,0,0.9)]" style={{ animationDelay: '140ms' }}>
@@ -624,17 +633,14 @@ function App() {
                   </p>
                   <div className="mt-4 space-y-3">
                     <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                      <p className="text-3xl font-semibold tracking-tight">47.2%</p>
-                      <p className="mt-1 text-sm text-emerald-50/85">Cobertura de programas en zonas rurales de Narino.</p>
+                      <p className="mt-1 text-sm text-emerald-50/85">Respaldo técnico especializado para EDS</p>
                     </div>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="text-2xl font-semibold tracking-tight">312</p>
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">hogares acompanados</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Cumplimiento normativo y acompañamiento gremial</p>
                       </div>
                       <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="text-2xl font-semibold tracking-tight">18</p>
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">alianzas activas</p>
+                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Soluciones integrales para fortalecer su operación</p>
                       </div>
                     </div>
                   </div>
@@ -691,23 +697,23 @@ function App() {
                       Organizamos capacidades locales con enfoque de derechos.
                     </h2>
                     <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-slate-700">
-                      ADICONAR es una organizacion social que integra formacion, gestion y acompanamiento para fortalecer tejido comunitario y generar resultados medibles.
+                      ADICONAR es una organización gremial comprometida con el fortalecimiento de las estaciones de servicio y el sector de combustibles, brindando acompañamiento técnico, jurídico, operativo y comercial a sus afiliados y aliados.
                     </p>
                   </div>
 
                   <div className="grid gap-5 md:grid-cols-2">
                     <article className="rounded-[1.5rem] border border-emerald-900/12 bg-white p-6 shadow-[0_18px_38px_-32px_rgba(3,42,32,0.9)]">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Mision</p>
-                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">Desarrollo comunitario sostenible</h3>
+                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">COMPROMISO CON EL SECTOR DE COMBUSTIBLES.</h3>
                       <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                        Impulsamos procesos de liderazgo social, inclusion y defensa de derechos para construir paz con justicia territorial.
+                        Trabajamos para fortalecer y respaldar a las estaciones de servicio mediante soluciones integrales, asesoría especializada y servicios confiables que contribuyan al crecimiento, cumplimiento normativo y desarrollo sostenible del sector.
                       </p>
                     </article>
                     <article className="rounded-[1.5rem] border border-emerald-900/12 bg-[#e9efe1] p-6">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Vision</p>
-                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">Incidencia con alianzas reales</h3>
+                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">LIDERAZGO Y RESPALDO PARA LAS EDS.</h3>
                       <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                        Queremos ser una referencia por la calidad del acompanamiento a comunidades, mujeres, ninos y lideres sociales.
+                        Ser el principal referente gremial y centro integral de soluciones para estaciones de servicio en Colombia, reconocido por su liderazgo, innovación y compromiso con el fortalecimiento del sector de combustibles.
                       </p>
                     </article>
                   </div>
@@ -749,8 +755,8 @@ function App() {
                         aria-label={`Ver objetivo ${objetivo.id}`}
                         onClick={() => setObjetivoActivo(index)}
                         className={`h-2.5 rounded-full transition-all ${index === objetivoActivo
-                            ? 'w-10 bg-amber-300'
-                            : 'w-6 bg-emerald-100/30 hover:bg-emerald-100/45'
+                          ? 'w-10 bg-amber-300'
+                          : 'w-6 bg-emerald-100/30 hover:bg-emerald-100/45'
                           }`}
                       />
                     ))}
@@ -760,14 +766,14 @@ function App() {
             </section>
 
             <section id="servicios" className="border-b border-emerald-950/10 py-16 md:py-24">
-              <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-8 lg:grid-cols-[0.85fr_1.15fr]">
                 <div className="sticky top-24 self-start">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Centro de Soluciones</p>
                   <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
-                    Todo lo que su estacion necesita, en un solo lugar.
+                    Ocho soluciones para respaldar su estacion.
                   </h2>
                   <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-slate-700">
-                    Integramos servicios clave para facilitar su operacion, optimizar recursos y brindarle tranquilidad en cada frente normativo y operativo de su negocio.
+                    Integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
                   </p>
                   <a
                     href="#centro-soluciones-page"
@@ -779,8 +785,8 @@ function App() {
                   </a>
                 </div>
 
-                <div className="grid gap-4">
-                  {lineasServicio.map((item) => (
+                <div className="grid gap-4 md:grid-cols-2">
+                  {visibleLineasServicio.map((item) => (
                     <article
                       key={item.code}
                       className="group rounded-[1.4rem] border border-emerald-900/12 bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-900/30"
@@ -796,6 +802,19 @@ function App() {
                       </div>
                     </article>
                   ))}
+
+                  {lineasServicio.length > 4 && (
+                    <div className="md:col-span-2 flex justify-center pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setShowAllServiceLines((prev) => !prev)}
+                        className="inline-flex items-center gap-2 rounded-full border border-emerald-900/20 bg-emerald-950 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-900"
+                      >
+                        {showAllServiceLines ? 'Mostrar menos' : 'Mostrar más'}
+                        <span className="text-[10px]">{showAllServiceLines ? '▲' : '▼'}</span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </section>
@@ -808,28 +827,25 @@ function App() {
                     Suministros y equipos de alta calidad para su estacion.
                   </h2>
                   <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-emerald-50/85">
-                    Garantice la operacion continua de su negocio con nuestro completo catalogo de repuestos, sistemas de descarga, medicion y equipos principales. Todo con respaldo y disponibilidad garantizada.
+                    Contamos con un almacén especializado en accesorios, consumibles y equipos para estaciones de servicio, ofreciendo productos confiables, respaldo técnico y disponibilidad para apoyar la operación continua de las EDS.
                   </p>
 
-                  <div className="mt-7 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
+                  <div className="mt-7 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3 text-center">
                     <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="text-2xl font-semibold text-emerald-50">+250</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">referencias</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Amplio portafolio de accesorios y equipos para EDS.</p>
                     </div>
                     <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="text-2xl font-semibold text-emerald-50">6</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">lineas de producto</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Soluciones integrales para operación, seguridad y conducción de combustible.</p>
                     </div>
                     <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="text-2xl font-semibold text-emerald-50">24/7</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">disponibilidad</p>
+                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Respaldo técnico y acompañamiento especializado.</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="relative overflow-hidden rounded-[2rem] border border-emerald-100/20">
                   <img
-                    src="https://img.freepik.com/vector-gratis/almacen-interior-logistica-entrega-carga_107791-1777.jpg?semt=ais_hybrid&w=740&q=80"
+                    src="https://www.mygestion.com/wp-content/uploads/almacen.jpg"
                     alt="Centro logistico de almacen especializado"
                     className="h-80 w-full object-cover sm:h-[26rem]"
                   />
@@ -837,7 +853,7 @@ function App() {
                   <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-emerald-100/25 bg-emerald-950/65 p-4 text-emerald-50 backdrop-blur-sm">
                     <p className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-100/85">Catalogo organizado</p>
                     <p className="mt-2 text-sm leading-relaxed">
-                      Sistemas de descarga, conduccion, despacho, control y seguridad organizados para facilitar sus pedidos.
+                      Sistemas de descarga, despacho, control y seguridad.
                     </p>
                   </div>
                 </div>
@@ -904,10 +920,10 @@ function App() {
                 <article className="rounded-[2rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Contacto</p>
                   <h2 className="font-heading mt-4 max-w-[12ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
-                    Hablemos de la proxima alianza.
+                    Estamos listos para respaldar su estación de servicio.
                   </h2>
                   <p className="mt-4 max-w-[48ch] text-sm leading-relaxed text-emerald-50/85 md:text-base">
-                    Si quieres apoyar programas sociales, voluntariado o articulacion institucional, comparte tus datos y te escribimos pronto.
+                    Si desea recibir acompañamiento técnico, jurídico, operativo o conocer nuestras soluciones para estaciones de servicio, déjenos sus datos y uno de nuestros asesores se pondrá en contacto con usted.
                   </p>
 
                   <div className="mt-8 space-y-3 text-sm md:text-base">
@@ -1004,6 +1020,8 @@ function App() {
           </>
         ) : currentView === 'category' ? (
           <CategoryPage category={currentCategory} />
+        ) : currentView === 'almacen' ? (
+          <AlmacenPage onNavigate={navegarASeccion} />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage />
         ) : null}

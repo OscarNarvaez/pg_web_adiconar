@@ -1,7 +1,4 @@
-import React from 'react';
-
-const CentroSolucionesPage = () => {
-  return (
+const CentroSolucionesPage = () => (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-16">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <h1 className="font-heading text-4xl text-emerald-950 mb-6 border-b border-emerald-900/10 pb-4">
@@ -51,7 +48,6 @@ const CentroSolucionesPage = () => {
         </div>
       </div>
     </div>
-  );
-};
+)
 
-export default CentroSolucionesPage;
+export default CentroSolucionesPage
