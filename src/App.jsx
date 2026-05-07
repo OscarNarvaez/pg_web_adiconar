@@ -7,6 +7,8 @@ import CategoryPage from './components/CategoryPage'
 import CentroSolucionesPage from './components/CentroSolucionesPage'
 import AlmacenPage from './components/AlmacenPage'
 import TecnicalServicesPage from './components/TecnicalServicesPage'
+import PolizasPage from './components/PolizasPage'
+import AsesoriaPage from './components/AsesoriaPage'
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -180,6 +182,22 @@ function App() {
 
     if (href === '#centro-soluciones-page') {
       setCurrentView('centro-soluciones')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#polizas-page') {
+      setCurrentView('polizas')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#asesoria-page') {
+      setCurrentView('asesoria')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -1033,6 +1051,10 @@ function App() {
           <AlmacenPage onNavigate={navegarASeccion} />
         ) : currentView === 'servicios-tecnicos' ? (
           <TecnicalServicesPage />
+        ) : currentView === 'polizas' ? (
+          <PolizasPage />
+        ) : currentView === 'asesoria' ? (
+          <AsesoriaPage />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : null}

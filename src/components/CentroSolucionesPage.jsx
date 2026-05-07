@@ -35,8 +35,8 @@ const CentroSolucionesPage = ({ onNavigate }) => (
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[
                 { title: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
-                { title: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page', disabled: true },
-                { title: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page', disabled: true },
+                { title: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
+                { title: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
                 { title: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#centro-soluciones-page', disabled: true },
                 { title: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page', disabled: true }
             ].map((item, idx) => (
