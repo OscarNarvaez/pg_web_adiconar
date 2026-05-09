@@ -60,27 +60,22 @@ const accesos = [
 
 const objetivosCarousel = [
   {
-    id: '001',
     texto:
-      'Fortalecer la representación y defensa gremial de las EDS.',
+      'Fortalecer la representación y defensa gremial de las estaciones de servicio.',
   },
   {
-    id: '002',
     texto:
       'Brindar soluciones técnicas y operativas especializadas.',
   },
   {
-    id: '003',
     texto:
       'Promover el cumplimiento normativo y la seguridad operativa.',
   },
   {
-    id: '004',
     texto:
       'Generar alianzas estratégicas que aporten valor al sector.',
   },
   {
-    id: '005',
     texto:
       'Impulsar el crecimiento sostenible y competitivo de las estaciones de servicio.',
   },
@@ -721,10 +716,10 @@ function App() {
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Sobre nosotros</p>
                     <h2 className="font-heading mt-4 max-w-[15ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
-                      Organizamos capacidades locales con enfoque de derechos.
+                      Asociación de Distribuidores Minoristas de Combustible de Nariño
                     </h2>
                     <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-slate-700">
-                      ADICONAR es una organización gremial comprometida con el fortalecimiento de las estaciones de servicio y el sector de combustibles, brindando acompañamiento técnico, jurídico, operativo y comercial a sus afiliados y aliados.
+                      Somos una organización gremial comprometida con el fortalecimiento de las estaciones de servicio y el sector de combustibles, brindando acompañamiento técnico, jurídico, operativo y comercial a sus afiliados y aliados.
                     </p>
                   </div>
 
@@ -740,7 +735,7 @@ function App() {
                       <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Vision</p>
                       <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">LIDERAZGO Y RESPALDO PARA LAS EDS.</h3>
                       <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                        Ser el principal referente gremial y centro integral de soluciones para estaciones de servicio en Colombia, reconocido por su liderazgo, innovación y compromiso con el fortalecimiento del sector de combustibles.
+                        Ser el principal referente gremial y centro integral de soluciones para estaciones de servicio en el suroccidente colombiano, reconocido por su liderazgo, innovación y compromiso con el fortalecimiento del sector de combustibles.
                       </p>
                     </article>
                   </div>
@@ -797,7 +792,7 @@ function App() {
                 <div className="sticky top-24 self-start">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Centro de Soluciones</p>
                   <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
-                    Ocho soluciones para respaldar su estacion.
+                    Gestionamos las soluciones que necesita su EDS.
                   </h2>
                   <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-slate-700">
                     Integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
