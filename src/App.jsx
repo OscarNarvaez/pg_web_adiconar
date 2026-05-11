@@ -9,6 +9,7 @@ import AlmacenPage from './components/AlmacenPage'
 import TecnicalServicesPage from './components/TecnicalServicesPage'
 import PolizasPage from './components/PolizasPage'
 import AsesoriaPage from './components/AsesoriaPage'
+import Footer from './components/Footer'
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -366,9 +367,6 @@ function App() {
             </div>
             <div>
               <p className="font-heading text-lg leading-none tracking-tight text-emerald-950">ADICONAR</p>
-              <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-800/70">
-                Gestion social
-              </p>
             </div>
           </a>
 
@@ -877,12 +875,6 @@ function App() {
                     className="h-80 w-full object-cover sm:h-[26rem]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/35 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-emerald-100/25 bg-emerald-950/65 p-4 text-emerald-50 backdrop-blur-sm">
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-100/85">Catalogo organizado</p>
-                    <p className="mt-2 text-sm leading-relaxed">
-                      Sistemas de descarga, despacho, control y seguridad.
-                    </p>
-                  </div>
                 </div>
               </div>
             </section>
@@ -1060,83 +1052,7 @@ function App() {
         ) : null}
       </main>
 
-      <footer className="relative z-10 border-t border-emerald-950/15 bg-[#0d2721] text-emerald-50">
-        <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 py-12 text-center md:px-8">
-          <div className="flex flex-col items-center">
-            <p className="font-heading text-3xl tracking-tight text-white">ADICONAR</p>
-            <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-emerald-100/85">
-              Impulsamos desarrollo comunitario con metodo, alianzas y gestion transparente para sostener resultados de largo plazo.
-            </p>
-            <a
-              href="#pagos"
-              onClick={(event) => navegarASeccion(event, '#pagos')}
-              className="mt-5 inline-flex rounded-full border border-amber-300/50 bg-amber-300 px-5 py-2.5 text-sm font-semibold text-emerald-950 transition duration-300 hover:-translate-y-0.5 hover:bg-amber-200"
-            >
-              Realizar un aporte
-            </a>
-          </div>
-
-          <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
-            <div className="flex flex-col items-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Navegacion</p>
-              <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
-                {navItems.map((item) => (
-                  <a
-                    key={`footer-${item.href}`}
-                    href={item.href}
-                    onClick={(event) => navegarASeccion(event, item.href)}
-                    className="block transition hover:text-amber-200"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Contacto</p>
-              <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
-                <p>nadiconar@gmail.com</p>
-                <p>+57 312 847 1928</p>
-                <p>Pasto, Colombia</p>
-              </div>
-            </div>
-
-            <div className="flex flex-col items-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Legal</p>
-              <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
-                <a
-                  href="mailto:nadiconar@gmail.com?subject=Solicitud%20politica%20de%20privacidad"
-                  className="block transition hover:text-amber-200"
-                >
-                  Politica de privacidad
-                </a>
-                <a
-                  href="mailto:nadiconar@gmail.com?subject=Solicitud%20terminos%20de%20servicio"
-                  className="block transition hover:text-amber-200"
-                >
-                  Terminos de servicio
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-emerald-100/10 bg-black/20">
-          <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-2 px-4 py-4 text-center text-xs text-emerald-100/70 md:px-8">
-            <p>© {currentYear} ADICONAR ONG. Todos los derechos reservados.</p>
-            <p>
-              Diseñado por{' '}
-              <a
-                href="https://www.linkedin.com/in/oscar-julian-narvaez-5b144120b/"
-                className="text-emerald-100/70 transition hover:text-amber-200"
-              >
-                ZOKY
-              </a>
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer navItems={navItems} currentYear={currentYear} navegarASeccion={navegarASeccion} />
     </div>
   )
 }

@@ -59,7 +59,7 @@ const PolizasPage = () => {
         </div>
 
         {/* Descripción Principal */}
-        <div className="mb-16 grid md:grid-cols-2 gap-12 items-center">
+        <div className="mb-16 grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <div className="space-y-4">
               <p className="text-emerald-900/85 leading-relaxed text-lg">
