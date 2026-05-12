@@ -5,12 +5,12 @@ const AsesoriaPage = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const servicios = [
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Asesoría jurídica para EDS' },
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Asesoría HSE' },
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Asesoría ambiental' },
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Acompañamiento normativo' },
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Respuesta a requerimientos' },
-    { image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80', title: 'Apoyo documental y regulatorio' },
+    { image: 'https://visaserviceeu.com/wp-content/uploads/2024/05/justice-and-law-handshake-concept-male-lawyer-wor-2023-11-27-05-05-17-utc-1024x683.jpg', title: 'Asesoría jurídica para EDS' },
+    { image: 'https://hse-ct.com/wp-content/uploads/2023/09/Nuevo-tamano-Servicios-Consultoria-SST.jpg', title: 'Asesoría HSE' },
+    { image: 'https://hidroredes.co/wp-content/uploads/2023/03/Asesoria-Social.png', title: 'Asesoría ambiental' },
+    { image: 'https://www.arsoutplacement.com/wp-content/uploads/2021/05/Plan-social-acompanamiento.jpg', title: 'Acompañamiento normativo' },
+    { image: 'https://www.ambitojuridico.com/sites/default/files/node/deflt/field_image/1970-01/medi152003contador20shutjpg-1509242312.jpg', title: 'Respuesta a requerimientos' },
+    { image: 'https://sgsystemsglobal.com/wp-content/uploads/2025/10/Document-Management-System-DMS.jpg', title: 'Apoyo documental y regulatorio' },
   ];
 
   const benefits = [
@@ -26,7 +26,7 @@ const AsesoriaPage = () => {
     const interval = setInterval(() => {
       setCarouselIndex((prev) => (prev + 1) % servicios.length);
     }, 4000);
-    
+
     return () => clearInterval(interval);
   }, [servicios.length]);
 
@@ -41,7 +41,7 @@ const AsesoriaPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        
+
         {/* Header Hero */}
         <div className="mb-16 animate-fade-in">
           <div className="inline-block mb-4">
@@ -49,12 +49,12 @@ const AsesoriaPage = () => {
               Centro de Soluciones
             </span>
           </div>
-          
+
           <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight">
             Asesoría Jurídica
             <span className="block text-emerald-600 mt-2">HSE y Ambiental</span>
           </h1>
-          
+
           <p className="text-xl text-emerald-900 font-semibold mb-4">
             Respaldo especializado para estaciones de servicio.
           </p>
@@ -72,12 +72,12 @@ const AsesoriaPage = () => {
               </p>
             </div>
           </div>
-          
+
           <div className="hidden md:flex">
             <div className="relative w-full h-80 rounded-3xl overflow-hidden flex items-center justify-center">
-              <img 
-                src="./logo_servicio_tecnico_eds.svg" 
-                alt="Logo Asesoría Jurídica" 
+              <img
+                src="./logo_servicio_tecnico_eds.svg"
+                alt="Logo Asesoría Jurídica"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -90,16 +90,16 @@ const AsesoriaPage = () => {
             <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-2">Servicios Incluidos</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full"></div>
           </div>
-          
+
           <div className="relative">
             {/* Carrusel Container */}
             <div className="overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-white">
               <div className="relative h-96 md:h-[450px] flex items-center justify-center"
                 style={{ perspective: '1200px' }}>
-                
+
                 {/* Fade overlay izquierdo */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none rounded-l-3xl"></div>
-                
+
                 {/* Fade overlay derecho */}
                 <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none rounded-r-3xl"></div>
 
@@ -115,9 +115,9 @@ const AsesoriaPage = () => {
                 {/* Carrusel items con efecto Coverflow */}
                 <div className="flex justify-center items-center gap-4 md:gap-6 px-12 md:px-20 w-full h-full"
                   style={{ perspective: '1500px' }}>
-                  
+
                   {/* Item Izquierdo */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
                     style={{
                       transform: `rotateY(35deg) translateZ(-100px)`,
@@ -142,7 +142,7 @@ const AsesoriaPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-sm md:text-base text-white leading-tight">
                             {servicios[(carouselIndex - 1 + servicios.length) % servicios.length].title}
@@ -153,7 +153,7 @@ const AsesoriaPage = () => {
                   </div>
 
                   {/* Item Central (Prominente) */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center z-20"
                     style={{
                       transform: `rotateY(0deg) translateZ(100px)`,
@@ -177,7 +177,7 @@ const AsesoriaPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-xl md:text-2xl text-white leading-tight font-bold">
                             {servicios[carouselIndex].title}
@@ -188,7 +188,7 @@ const AsesoriaPage = () => {
                   </div>
 
                   {/* Item Derecho */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
                     style={{
                       transform: `rotateY(-35deg) translateZ(-100px)`,
@@ -213,7 +213,7 @@ const AsesoriaPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-sm md:text-base text-white leading-tight">
                             {servicios[(carouselIndex + 1) % servicios.length].title}
@@ -241,11 +241,10 @@ const AsesoriaPage = () => {
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    idx === carouselIndex
-                      ? 'bg-emerald-600 w-8'
-                      : 'bg-emerald-900/20 hover:bg-emerald-900/40'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === carouselIndex
+                    ? 'bg-emerald-600 w-8'
+                    : 'bg-emerald-900/20 hover:bg-emerald-900/40'
+                    }`}
                   aria-label={`Ir al servicio ${idx + 1}`}
                 />
               ))}
@@ -258,7 +257,7 @@ const AsesoriaPage = () => {
           <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-8 text-center">
             Beneficios
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {benefits.map((benefit, idx) => (
               <div
@@ -281,7 +280,7 @@ const AsesoriaPage = () => {
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
           </div>
-          
+
           <div className="relative">
             <h3 className="font-heading text-3xl md:text-4xl mb-4">
               ¿Necesita respaldo jurídico y normativo?

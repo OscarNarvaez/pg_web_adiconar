@@ -9,6 +9,7 @@ import AlmacenPage from './components/AlmacenPage'
 import TecnicalServicesPage from './components/TecnicalServicesPage'
 import PolizasPage from './components/PolizasPage'
 import AsesoriaPage from './components/AsesoriaPage'
+import TramitesPage from './components/TramitesPage'
 import Footer from './components/Footer'
 
 const navItems = [
@@ -24,7 +25,7 @@ const centroSolucionesItems = [
   { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
   { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page' },
   { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page' },
-  { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#centro-soluciones-page' },
+  { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
   { label: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page' },
 ]
 
@@ -177,6 +178,14 @@ function App() {
 
     if (href === '#centro-soluciones-page') {
       setCurrentView('centro-soluciones')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#tramites-page') {
+      setCurrentView('tramites')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -1052,6 +1061,8 @@ function App() {
           <AsesoriaPage />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
+        ) : currentView === 'tramites' ? (
+          <TramitesPage />
         ) : null}
       </main>
 
