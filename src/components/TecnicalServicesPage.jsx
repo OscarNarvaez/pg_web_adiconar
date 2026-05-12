@@ -31,7 +31,7 @@ const TecnicalServicesPage = () => {
     const interval = setInterval(() => {
       setCarouselIndex((prev) => (prev + 1) % services.length);
     }, 4000); // Cambiar cada 4 segundos
-    
+
     return () => clearInterval(interval);
   }, [services.length]);
 
@@ -46,27 +46,27 @@ const TecnicalServicesPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        
+
         {/* Header Hero */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-16 animate-fade-in text-center">
           <div className="inline-block mb-4">
             <span className="px-4 py-2 rounded-full bg-emerald-100/60 text-emerald-700 text-sm font-semibold">
               Centro de Soluciones
             </span>
           </div>
-          
+
           <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight">
             Servicios Técnicos
             <span className="block text-emerald-600 mt-2">Especializados</span>
           </h1>
-          
+
           <p className="text-xl text-emerald-900 font-semibold mb-4">
             Operación segura, eficiente y especializada.
           </p>
         </div>
 
         {/* Descripción Principal */}
-        <div className="mb-16 grid md:grid-cols-2 gap-12 items-center">
+        {/* Descripción Principal 
           <div className="space-y-6">
             <div className="space-y-4">
               <p className="text-emerald-900/85 leading-relaxed text-lg">
@@ -80,17 +80,20 @@ const TecnicalServicesPage = () => {
               </p>
             </div>
           </div>
-          
-          <div className="hidden md:flex">
-            <div className="relative w-full h-80 rounded-3xl overflow-hidden flex items-center justify-center">
-              <img 
-                src="./logo_servicio_tecnico_eds.svg" 
-                alt="Logo Servicio Técnico EDS" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+          */}
+
+        <div className="hidden md:flex">
+          <div className="relative w-full h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg">
+            <img
+              src="./imagenesCentroSoluciones/serviciosTecnicos.jpeg"
+              alt="Logo Servicio Técnico EDS"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
+        
+        <br />
+        <br />
 
         {/* Servicios Incluidos - Carrusel Coverflow */}
         <div className="mb-16">
@@ -98,16 +101,16 @@ const TecnicalServicesPage = () => {
             <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-2">Servicios Incluidos</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full"></div>
           </div>
-          
+
           <div className="relative">
             {/* Carrusel Container */}
             <div className="overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-white">
               <div className="relative h-96 md:h-[450px] flex items-center justify-center"
                 style={{ perspective: '1200px' }}>
-                
+
                 {/* Fade overlay izquierdo */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none rounded-l-3xl"></div>
-                
+
                 {/* Fade overlay derecho */}
                 <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none rounded-r-3xl"></div>
 
@@ -123,9 +126,9 @@ const TecnicalServicesPage = () => {
                 {/* Carrusel items con efecto Coverflow */}
                 <div className="flex justify-center items-center gap-4 md:gap-6 px-12 md:px-20 w-full h-full"
                   style={{ perspective: '1500px' }}>
-                  
+
                   {/* Item Izquierdo */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
                     style={{
                       transform: `rotateY(35deg) translateZ(-100px)`,
@@ -150,7 +153,7 @@ const TecnicalServicesPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-sm md:text-base text-white leading-tight">
                             {services[(carouselIndex - 1 + services.length) % services.length].title}
@@ -161,7 +164,7 @@ const TecnicalServicesPage = () => {
                   </div>
 
                   {/* Item Central (Prominente) */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center z-20"
                     style={{
                       transform: `rotateY(0deg) translateZ(100px)`,
@@ -185,7 +188,7 @@ const TecnicalServicesPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-xl md:text-2xl text-white leading-tight font-bold">
                             {services[carouselIndex].title}
@@ -196,7 +199,7 @@ const TecnicalServicesPage = () => {
                   </div>
 
                   {/* Item Derecho */}
-                  <div 
+                  <div
                     className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
                     style={{
                       transform: `rotateY(-35deg) translateZ(-100px)`,
@@ -221,7 +224,7 @@ const TecnicalServicesPage = () => {
                         }}
                       >
                         <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-                        
+
                         <div className="relative flex flex-col items-center text-center">
                           <p className="font-heading text-sm md:text-base text-white leading-tight">
                             {services[(carouselIndex + 1) % services.length].title}
@@ -249,11 +252,10 @@ const TecnicalServicesPage = () => {
                 <button
                   key={idx}
                   onClick={() => setCarouselIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    idx === carouselIndex
-                      ? 'bg-emerald-600 w-8'
-                      : 'bg-emerald-900/20 hover:bg-emerald-900/40'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === carouselIndex
+                    ? 'bg-emerald-600 w-8'
+                    : 'bg-emerald-900/20 hover:bg-emerald-900/40'
+                    }`}
                   aria-label={`Ir al servicio ${idx + 1}`}
                 />
               ))}
@@ -266,7 +268,7 @@ const TecnicalServicesPage = () => {
           <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-8 text-center">
             Beneficios
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {benefits.map((benefit, idx) => (
               <div
@@ -289,7 +291,7 @@ const TecnicalServicesPage = () => {
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
           </div>
-          
+
           <div className="relative">
             <h3 className="font-heading text-3xl md:text-4xl mb-4">
               ¿Necesita soporte técnico especializado?

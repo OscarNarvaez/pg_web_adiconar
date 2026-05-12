@@ -43,7 +43,7 @@ const AsesoriaPage = () => {
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
         {/* Header Hero */}
-        <div className="mb-16 animate-fade-in">
+        <div className="mb-16 animate-fade-in text-center">
           <div className="inline-block mb-4">
             <span className="px-4 py-2 rounded-full bg-emerald-100/60 text-emerald-700 text-sm font-semibold">
               Centro de Soluciones
@@ -60,8 +60,8 @@ const AsesoriaPage = () => {
           </p>
         </div>
 
-        {/* Descripción Principal */}
-        <div className="mb-16 grid md:grid-cols-2 gap-12 items-center">
+        
+          {/* 
           <div className="space-y-6">
             <div className="space-y-4">
               <p className="text-emerald-900/85 leading-relaxed text-lg">
@@ -71,19 +71,21 @@ const AsesoriaPage = () => {
                 Nuestro equipo apoya a las EDS en procesos regulatorios, gestión documental y cumplimiento de obligaciones ante entidades de control.
               </p>
             </div>
-          </div>
+          </div>*/}
 
-          <div className="hidden md:flex">
-            <div className="relative w-full h-80 rounded-3xl overflow-hidden flex items-center justify-center">
+          <div className="hidden md:flex justify-center">
+            <div className="relative w-full h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg">
               <img
-                src="./logo_servicio_tecnico_eds.svg"
+                src="./imagenesCentroSoluciones/asesoriaJuridica.jpeg"
                 alt="Logo Asesoría Jurídica"
                 className="w-full h-full object-cover"
               />
             </div>
           </div>
-        </div>
 
+            <br />
+            <br />
+            
         {/* Servicios Incluidos - Carrusel Coverflow */}
         <div className="mb-16">
           <div className="mb-8">

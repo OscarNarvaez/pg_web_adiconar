@@ -42,45 +42,41 @@ const PolizasPage = () => {
 
         {/* Header Hero */}
         <div className="mb-16 animate-fade-in">
-          <div className="inline-block mb-4">
+          <div className="inline-block mb-4 text-center w-full">
             <span className="px-4 py-2 rounded-full bg-emerald-100/60 text-emerald-700 text-sm font-semibold">
               Centro de Soluciones
             </span>
           </div>
 
-          <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight">
+          <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight text-center">
             Gestión de Pólizas
             <span className="block text-emerald-600 mt-2">y Aseguramiento</span>
           </h1>
 
-          <p className="text-xl text-emerald-900 font-semibold mb-4">
+          <p className="text-xl text-emerald-900 font-semibold mb-4 text-center">
             Protección y respaldo para su operación.
           </p>
         </div>
 
-        {/* Descripción Principal */}
-        <div className="mb-16 grid md:grid-cols-2 gap-12">
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <p className="text-emerald-900/85 leading-relaxed text-lg">
-                Acompañamos a las estaciones de servicio en la gestión de pólizas y soluciones de aseguramiento orientadas a proteger la infraestructura, operación y responsabilidad de las EDS.
-              </p>
-              <p className="text-emerald-900/85 leading-relaxed text-lg">
-                Brindamos orientación y acompañamiento en la selección de coberturas adecuadas para el sector de combustibles, facilitando procesos de gestión y renovación de pólizas.
-              </p>
-            </div>
-          </div>
-
-          <div className="hidden md:flex">
-            <div className="relative w-full h-80 rounded-3xl overflow-hidden flex items-center justify-center">
-              <img
-                src="./logo_servicio_tecnico_eds.svg"
-                alt="Logo Gestión de Pólizas"
-                className="w-full h-full object-cover"
-              />
-            </div>
+        <div className="hidden md:flex justify-center">
+          <div className="relative w-full h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg">
+            <img
+              src="./imagenesCentroSoluciones/polizasAseguramiento.jpeg"
+              alt="Logo Gestión de Pólizas"
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
+
+        {/* Descripción Principal */}
+          <div className="space-y-4 text-center md:text-left">
+            <p className="text-emerald-900/85 leading-relaxed text-lg">
+              <br />
+              <br />
+            </p>
+          </div>
+
+
 
         {/* Líneas de Pólizas - Carrusel Coverflow */}
         <div className="mb-16">
