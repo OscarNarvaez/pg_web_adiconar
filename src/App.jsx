@@ -125,6 +125,39 @@ const lineasServicio = [
   },
 ]
 
+const dependenciasContacto = {
+  secretaria: {
+    label: 'Secretaria',
+    contacto: 'Adriana Andrade',
+    telefono: '3185896142',
+    email: 'contacto@adiconar.co',
+  },
+  tesoreria: {
+    label: 'Tesoreria',
+    contacto: 'Bernarda Meneses',
+    telefono: '3183123261',
+    email: 'tesoreria@adiconar.co',
+  },
+  tecnico: {
+    label: 'Técnico',
+    contacto: 'Juan Carlos Flórez',
+    telefono: '3176919910',
+    email: 'serviciotecnico@adiconar.co',
+  },
+  asesoriaJuridica: {
+    label: 'Asesora Jurídica',
+    contacto: 'Karen Rivera Andrade',
+    telefono: '3145640709',
+    email: 'juridica@adiconar.co',
+  },
+  directorEjecutivo: {
+    label: 'Director Ejecutivo',
+    contacto: 'Rodrigo Yepes',
+    telefono: '3164215844',
+    email: 'direccion@adiconar.co',
+  },
+}
+
 function App() {
   const currentYear = new Date().getFullYear()
   const headerRef = useRef(null)
@@ -253,6 +286,31 @@ function App() {
 
   const handleFormChange = (event) => {
     const { id, value } = event.target
+
+    if (id === 'dependencia') {
+      const dependencia = dependenciasContacto[value]
+      const mensajePrellenado = dependencia
+        ? `Hola, mi nombre es _____ y me gustaria comunicarme con ${dependencia.label} para: ______`
+        : ''
+
+      setFormData((prev) => ({
+        ...prev,
+        participacion: value,
+        mensaje: mensajePrellenado,
+      }))
+
+      if (formStatus.type !== 'idle') {
+        setFormStatus({ type: 'idle', message: '' })
+      }
+
+      if (dependencia) {
+        const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensajePrellenado)}`
+        window.location.href = whatsappUrl
+      }
+
+      return
+    }
+
     setFormData((prev) => ({ ...prev, [id]: value }))
 
     if (formStatus.type !== 'idle') {
@@ -263,46 +321,19 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    const nombre = formData.nombre.trim()
-    const correo = formData.correo.trim()
-    const participacion = formData.participacion.trim()
+    const dependencia = dependenciasContacto[formData.participacion]
     const mensaje = formData.mensaje.trim()
-    const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)
 
-    if (!nombre || !correo || !participacion || !mensaje) {
+    if (!dependencia || !mensaje) {
       setFormStatus({
         type: 'error',
-        message: 'Completa todos los campos antes de enviar el formulario.',
+        message: 'Selecciona una dependencia para continuar con el contacto por WhatsApp.',
       })
       return
     }
 
-    if (!emailValido) {
-      setFormStatus({
-        type: 'error',
-        message: 'El correo electronico no tiene un formato valido.',
-      })
-      return
-    }
-
-    setIsSubmitting(true)
-
-    await new Promise((resolve) => {
-      setTimeout(resolve, 950)
-    })
-
-    setIsSubmitting(false)
-    setFormStatus({
-      type: 'success',
-      message: 'Mensaje enviado. Te contactaremos en menos de 24 horas habiles.',
-    })
-
-    setFormData({
-      nombre: '',
-      correo: '',
-      participacion: '',
-      mensaje: '',
-    })
+    const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
+    window.location.href = whatsappUrl
   }
 
   useEffect(() => {
@@ -947,104 +978,64 @@ function App() {
             </section>
 
             <section id="contacto" className="py-16 md:py-24">
-              <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8">
                 <article className="rounded-[2rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-8">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Contacto</p>
                   <h2 className="font-heading mt-4 max-w-[12ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
                     Estamos listos para respaldar su estación de servicio.
                   </h2>
                   <p className="mt-4 max-w-[48ch] text-sm leading-relaxed text-emerald-50/85 md:text-base">
-                    Si desea recibir acompañamiento técnico, jurídico, operativo o conocer nuestras soluciones para estaciones de servicio, déjenos sus datos y uno de nuestros asesores se pondrá en contacto con usted.
+                    Seleccione la dependencia con la que desea comunicarse y se abrirá WhatsApp con un mensaje prellenado para agilizar su atención.
                   </p>
 
-                  <div className="mt-8 space-y-3 text-sm md:text-base">
-                    <p><span className="font-semibold text-white">Correo:</span> nadiconar@gmail.com</p>
-                    <p><span className="font-semibold text-white">Telefono:</span> +57 312 847 1928</p>
-                    <p><span className="font-semibold text-white">Direccion:</span> Pasto - Narino, Colombia</p>
+                  <div className="mt-8 space-y-4 text-sm md:text-base">
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
+                      <div className="mt-3 space-y-2 text-emerald-50/90">
+                        <p><span className="font-semibold text-white">Secretaria:</span> Adriana Andrade - 3185896142</p>
+                        <p><span className="font-semibold text-white">Tesoreria:</span> Bernarda Meneses - 3183123261</p>
+                        <p><span className="font-semibold text-white">Técnico:</span> Juan Carlos Flórez - 3176919910</p>
+                        <p><span className="font-semibold text-white">Asesora Jurídica:</span> Karen Rivera Andrade - 3145640709</p>
+                        <p><span className="font-semibold text-white">Director Ejecutivo:</span> Rodrigo Yepes - 3164215844</p>
+                      </div>
+                    </div>
                   </div>
-                </article>
+                  <br />
+                  <article className="rounded-[2rem] border border-emerald-900/15 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.85)] md:p-8 text-center">
+                    <form className="space-y-4" onSubmit={handleSubmit} noValidate>
+                      <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 text-center">
+                        Cada una de nuestras dependencias esta disponible para atender sus necesidades.
+                      </div>
+                      <div className="space-y-2">
+                        <select
+                          id="dependencia"
+                          value={formData.participacion}
+                          onChange={handleFormChange}
+                          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800"
+                        >
+                          <option className='text-center' value="">Seleccione una dependencia</option>
+                          <option value="secretaria">Secretaria - Adriana Andrade</option>
+                          <option value="tesoreria">Tesoreria - Bernarda Meneses</option>
+                          <option value="tecnico">Técnico - Juan Carlos Flórez</option>
+                          <option value="asesoriaJuridica">Asesora Jurídica - Karen Rivera Andrade</option>
+                          <option value="directorEjecutivo">Director Ejecutivo - Rodrigo Yepes</option>
+                        </select>
+                      </div>
 
-                <article className="rounded-[2rem] border border-emerald-900/15 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.85)] md:p-8">
-                  <form className="space-y-4" onSubmit={handleSubmit} noValidate>
-                    <div className="space-y-2">
-                      <label htmlFor="nombre" className="block text-sm font-semibold text-slate-900">
-                        Nombre completo
-                      </label>
-                      <input
-                        id="nombre"
-                        type="text"
-                        value={formData.nombre}
-                        onChange={handleFormChange}
-                        placeholder="Tu nombre"
-                        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800 placeholder:text-slate-500"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="correo" className="block text-sm font-semibold text-slate-900">
-                        Correo electronico
-                      </label>
-                      <input
-                        id="correo"
-                        type="email"
-                        value={formData.correo}
-                        onChange={handleFormChange}
-                        placeholder="tucorreo@ejemplo.com"
-                        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800 placeholder:text-slate-500"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label htmlFor="participacion" className="block text-sm font-semibold text-slate-900">
-                        Como quieres participar?
-                      </label>
-                      <select
-                        id="participacion"
-                        value={formData.participacion}
-                        onChange={handleFormChange}
-                        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800"
+                      <button
+                        type="submit"
+                        className="inline-flex min-w-[11.5rem] items-center justify-center rounded-full bg-emerald-900 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-emerald-800 active:translate-y-[1px]"
                       >
-                        <option value="">Selecciona una opcion</option>
-                        <option value="donacion">Donacion</option>
-                        <option value="voluntariado">Voluntariado</option>
-                        <option value="alianza">Alianza institucional</option>
-                      </select>
-                    </div>
+                        Abrir WhatsApp
+                      </button>
 
-                    <div className="space-y-2">
-                      <label htmlFor="mensaje" className="block text-sm font-semibold text-slate-900">
-                        Mensaje
-                      </label>
-                      <textarea
-                        id="mensaje"
-                        rows="5"
-                        value={formData.mensaje}
-                        onChange={handleFormChange}
-                        placeholder="Cuentanos como te gustaria participar"
-                        className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800 placeholder:text-slate-500"
-                      />
-                    </div>
-
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="inline-flex min-w-[11.5rem] items-center justify-center rounded-full bg-emerald-900 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-emerald-800 active:translate-y-[1px] disabled:cursor-not-allowed disabled:opacity-70"
-                    >
-                      {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                    </button>
-
-                    {formStatus.type === 'error' && (
-                      <p className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                        {formStatus.message}
-                      </p>
-                    )}
-
-                    {formStatus.type === 'success' && (
-                      <p className="rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-                        {formStatus.message}
-                      </p>
-                    )}
-                  </form>
+                      {formStatus.type === 'error' && (
+                        <p className="rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-700">
+                          {formStatus.message}
+                        </p>
+                      )}
+                    </form>
+                  </article>
                 </article>
               </div>
             </section>
