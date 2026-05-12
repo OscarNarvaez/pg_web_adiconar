@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const AsesoriaPage = ({ onSolicitarAsesoria }) => {
-  const [hoveredService, setHoveredService] = useState(null);
-  const [carouselIndex, setCarouselIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const [startX, setStartX] = useState(0);
 
   const servicios = [
     { image: 'https://visaserviceeu.com/wp-content/uploads/2024/05/justice-and-law-handshake-concept-male-lawyer-wor-2023-11-27-05-05-17-utc-1024x683.jpg', title: 'Asesoría jurídica para EDS' },
@@ -21,21 +22,22 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
     { title: 'Respaldo técnico y gremial', icon: '📚' },
   ];
 
-  // Auto-scroll del carrusel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselIndex((prev) => (prev + 1) % servicios.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, [servicios.length]);
-
-  const handlePrev = () => {
-    setCarouselIndex((prev) => (prev - 1 + servicios.length) % servicios.length);
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    setStartX(e.type.includes('touch') ? e.touches[0].clientX : e.clientX);
   };
 
-  const handleNext = () => {
-    setCarouselIndex((prev) => (prev + 1) % servicios.length);
+  const handleDragMove = (e) => {
+    if (!isDragging) return;
+    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const diff = currentX - startX;
+    setDragOffset(diff);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    setDragOffset(0);
+    setStartX(0);
   };
 
   return (
@@ -86,171 +88,98 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             <br />
             <br />
 
-        {/* Servicios Incluidos - Carrusel Coverflow */}
+        {/* Servicios Incluidos - Carrusel Infinite Scrolling */}
         <div className="mb-16">
           <div className="mb-8">
             <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-2">Servicios Incluidos</h2>
             <div className="w-16 h-1 bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-full"></div>
           </div>
 
-          <div className="relative">
-            {/* Carrusel Container */}
-            <div className="overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-white">
-              <div className="relative h-96 md:h-[450px] flex items-center justify-center"
-                style={{ perspective: '1200px' }}>
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-emerald-50/50 to-white p-8">
+            {/* Fade overlays */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-l-3xl"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
-                {/* Fade overlay izquierdo */}
-                <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none rounded-l-3xl"></div>
-
-                {/* Fade overlay derecho */}
-                <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none rounded-r-3xl"></div>
-
-                {/* Botón Anterior */}
-                <button
-                  onClick={handlePrev}
-                  className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl border-2 border-emerald-900/10 hover:border-emerald-500 flex items-center justify-center text-emerald-950 hover:text-emerald-600 transition-all duration-300 group"
-                  aria-label="Servicio anterior"
-                >
-                  <span className="text-xl group-hover:scale-110 transition-transform">←</span>
-                </button>
-
-                {/* Carrusel items con efecto Coverflow */}
-                <div className="flex justify-center items-center gap-4 md:gap-6 px-12 md:px-20 w-full h-full"
-                  style={{ perspective: '1500px' }}>
-
-                  {/* Item Izquierdo */}
-                  <div
-                    className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
-                    style={{
-                      transform: `rotateY(35deg) translateZ(-100px)`,
-                      transformStyle: 'preserve-3d'
-                    }}
-                  >
-                    <div
-                      className="w-full h-72 md:h-80 transform transition-all duration-500 ease-out"
-                      onMouseEnter={() => setHoveredService(`carousel-${(carouselIndex - 1 + servicios.length) % servicios.length}`)}
-                      onMouseLeave={() => setHoveredService(null)}
-                      onClick={() => setCarouselIndex((carouselIndex - 1 + servicios.length) % servicios.length)}
+            {/* Carrusel infinito con soporte drag */}
+            <div 
+              className="overflow-hidden cursor-grab active:cursor-grabbing"
+              onMouseDown={handleDragStart}
+              onMouseMove={handleDragMove}
+              onMouseUp={handleDragEnd}
+              onMouseLeave={handleDragEnd}
+              onTouchStart={handleDragStart}
+              onTouchMove={handleDragMove}
+              onTouchEnd={handleDragEnd}
+            >
+              <div 
+                className="flex gap-6"
+                style={{
+                  animation: isDragging ? 'none' : 'scroll 30s linear infinite',
+                  transform: isDragging ? `translateX(${dragOffset}px)` : 'translateX(0)',
+                  transition: isDragging ? 'none' : 'transform 0.1s ease-out'
+                }}
+              >
+                {/* Primera iteración */}
+                {servicios.map((servicio, idx) => (
+                  <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
+                    <div 
+                      className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
+                      style={{
+                        backgroundImage: `url('${servicio.image}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
                     >
-                      <div className={`group relative p-6 md:p-8 rounded-2xl border-2 h-full flex flex-col justify-center cursor-pointer overflow-hidden
-                        ${hoveredService === `carousel-${(carouselIndex - 1 + servicios.length) % servicios.length}`
-                          ? 'border-emerald-500 shadow-lg'
-                          : 'border-emerald-900/10 shadow-sm'
-                        }`}
-                        style={{
-                          backgroundImage: `url('${servicios[(carouselIndex - 1 + servicios.length) % servicios.length].image}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-
-                        <div className="relative flex flex-col items-center text-center">
-                          <p className="font-heading text-sm md:text-base text-white leading-tight">
-                            {servicios[(carouselIndex - 1 + servicios.length) % servicios.length].title}
-                          </p>
-                        </div>
+                      {/* Fade effect en bordes de imagen */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
+                      {/* Overlay oscuro */}
+                      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
+                      {/* Texto centrado */}
+                      <div className="absolute inset-0 flex items-center justify-center p-4">
+                        <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
+                          {servicio.title}
+                        </p>
                       </div>
                     </div>
                   </div>
-
-                  {/* Item Central (Prominente) */}
-                  <div
-                    className="flex-shrink-0 w-1/3 h-full flex items-center justify-center z-20"
-                    style={{
-                      transform: `rotateY(0deg) translateZ(100px)`,
-                      transformStyle: 'preserve-3d'
-                    }}
-                  >
-                    <div
-                      className="w-full h-80 md:h-96 transform transition-all duration-500 ease-out"
-                      onMouseEnter={() => setHoveredService(`carousel-${carouselIndex}`)}
-                      onMouseLeave={() => setHoveredService(null)}
+                ))}
+                {/* Segunda iteración para efecto infinito */}
+                {servicios.map((servicio, idx) => (
+                  <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
+                    <div 
+                      className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
+                      style={{
+                        backgroundImage: `url('${servicio.image}')`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                      }}
                     >
-                      <div className={`group relative p-8 md:p-10 rounded-2xl border-2 h-full flex flex-col justify-center transition-all duration-300 cursor-pointer overflow-hidden
-                        ${hoveredService === `carousel-${carouselIndex}`
-                          ? 'border-emerald-500 shadow-2xl'
-                          : 'border-emerald-500/30 shadow-xl'
-                        }`}
-                        style={{
-                          backgroundImage: `url('${servicios[carouselIndex].image}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-black/50 rounded-2xl"></div>
-
-                        <div className="relative flex flex-col items-center text-center">
-                          <p className="font-heading text-xl md:text-2xl text-white leading-tight font-bold">
-                            {servicios[carouselIndex].title}
-                          </p>
-                        </div>
+                      {/* Fade effect en bordes de imagen */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
+                      {/* Overlay oscuro */}
+                      <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
+                      {/* Texto centrado */}
+                      <div className="absolute inset-0 flex items-center justify-center p-4">
+                        <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
+                          {servicio.title}
+                        </p>
                       </div>
                     </div>
                   </div>
-
-                  {/* Item Derecho */}
-                  <div
-                    className="flex-shrink-0 w-1/3 h-full flex items-center justify-center"
-                    style={{
-                      transform: `rotateY(-35deg) translateZ(-100px)`,
-                      transformStyle: 'preserve-3d'
-                    }}
-                  >
-                    <div
-                      className="w-full h-72 md:h-80 transform transition-all duration-500 ease-out"
-                      onMouseEnter={() => setHoveredService(`carousel-${(carouselIndex + 1) % servicios.length}`)}
-                      onMouseLeave={() => setHoveredService(null)}
-                      onClick={() => setCarouselIndex((carouselIndex + 1) % servicios.length)}
-                    >
-                      <div className={`group relative p-6 md:p-8 rounded-2xl border-2 h-full flex flex-col justify-center cursor-pointer overflow-hidden
-                        ${hoveredService === `carousel-${(carouselIndex + 1) % servicios.length}`
-                          ? 'border-emerald-500 shadow-lg'
-                          : 'border-emerald-900/10 shadow-sm'
-                        }`}
-                        style={{
-                          backgroundImage: `url('${servicios[(carouselIndex + 1) % servicios.length].image}')`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center'
-                        }}
-                      >
-                        <div className="absolute inset-0 bg-black/45 rounded-2xl"></div>
-
-                        <div className="relative flex flex-col items-center text-center">
-                          <p className="font-heading text-sm md:text-base text-white leading-tight">
-                            {servicios[(carouselIndex + 1) % servicios.length].title}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Botón Siguiente */}
-                <button
-                  onClick={handleNext}
-                  className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white shadow-lg hover:shadow-xl border-2 border-emerald-900/10 hover:border-emerald-500 flex items-center justify-center text-emerald-950 hover:text-emerald-600 transition-all duration-300 group"
-                  aria-label="Siguiente servicio"
-                >
-                  <span className="text-xl group-hover:scale-110 transition-transform">→</span>
-                </button>
+                ))}
               </div>
             </div>
 
-            {/* Indicadores de posición */}
-            <div className="mt-6 flex justify-center gap-2">
-              {servicios.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCarouselIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === carouselIndex
-                    ? 'bg-emerald-600 w-8'
-                    : 'bg-emerald-900/20 hover:bg-emerald-900/40'
-                    }`}
-                  aria-label={`Ir al servicio ${idx + 1}`}
-                />
-              ))}
-            </div>
+            <style>{`
+              @keyframes scroll {
+                0% {
+                  transform: translateX(0);
+                }
+                100% {
+                  transform: translateX(calc(-50% - 12px));
+                }
+              }
+            `}</style>
           </div>
         </div>
 
