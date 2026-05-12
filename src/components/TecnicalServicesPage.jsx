@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const TecnicalServicesPage = () => {
+const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
   const [hoveredService, setHoveredService] = useState(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -299,7 +299,10 @@ const TecnicalServicesPage = () => {
             <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
               Contáctenos para conocer cómo podemos optimizar la operación de su estación de servicio.
             </p>
-            <button className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+            <button 
+              onClick={() => onSolicitarAsesoria('tecnico')}
+              className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
               Solicitar Asesoría
             </button>
           </div>

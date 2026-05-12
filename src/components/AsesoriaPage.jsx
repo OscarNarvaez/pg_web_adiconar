@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const AsesoriaPage = () => {
+const AsesoriaPage = ({ onSolicitarAsesoria }) => {
   const [hoveredService, setHoveredService] = useState(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -85,7 +85,7 @@ const AsesoriaPage = () => {
 
             <br />
             <br />
-            
+
         {/* Servicios Incluidos - Carrusel Coverflow */}
         <div className="mb-16">
           <div className="mb-8">
@@ -290,7 +290,10 @@ const AsesoriaPage = () => {
             <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
               Contáctenos para conocer nuestras soluciones de asesoría especializada en HSE y cumplimiento normativo.
             </p>
-            <button className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+            <button 
+              onClick={() => onSolicitarAsesoria('asesoriaJuridica')}
+              className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
               Solicitar Asesoría
             </button>
           </div>

@@ -331,6 +331,32 @@ function App() {
     window.location.href = whatsappUrl
   }
 
+  const handleSolicitarAsesoria = (dependenciaKey) => {
+    const dependencia = dependenciasContacto[dependenciaKey]
+    if (dependencia) {
+      const mensajePrellenado = `Hola, mi nombre es _____ y me gustaria comunicarme con la dependencia de ${dependencia.label} para: ______`
+      
+      setFormData((prev) => ({
+        ...prev,
+        participacion: dependenciaKey,
+        mensaje: mensajePrellenado,
+      }))
+      
+      // Navegar a la sección de contacto
+      setCurrentView('home')
+      setActiveSection('#contacto')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      
+      // Hacer scroll suave a la sección de contacto después de un pequeño delay
+      setTimeout(() => {
+        const contactoSection = document.getElementById('contacto')
+        if (contactoSection) {
+          contactoSection.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 300)
+    }
+  }
+
   useEffect(() => {
     const sectionIds = navItems.map((item) => item.href)
 
@@ -1037,15 +1063,15 @@ function App() {
         ) : currentView === 'almacen' ? (
           <AlmacenPage onNavigate={navegarASeccion} />
         ) : currentView === 'servicios-tecnicos' ? (
-          <TecnicalServicesPage />
+          <TecnicalServicesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'polizas' ? (
-          <PolizasPage />
+          <PolizasPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'asesoria' ? (
-          <AsesoriaPage />
+          <AsesoriaPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : currentView === 'tramites' ? (
-          <TramitesPage />
+          <TramitesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : null}
       </main>
 

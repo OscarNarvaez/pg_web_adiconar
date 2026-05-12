@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TramitesPage = () => {
+const TramitesPage = ({ onSolicitarAsesoria }) => {
     const tramites = [
         { icon: '🗂️', title: 'Trámites Ministeriales', desc: 'Radicaciones y solicitudes ante ministerios y entidades nacionales.' },
         { icon: '🏛️', title: 'Corporaciones Ambientales', desc: 'Gestión y permisos ante Corporaciones Autónomas Regionales.' },
@@ -95,7 +95,12 @@ const TramitesPage = () => {
                     <div className="relative">
                         <h3 className="font-heading text-3xl md:text-4xl mb-4">¿Necesita acompañamiento para trámites?</h3>
                         <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">Contáctenos y coordinamos la gestión documental, radicación y seguimiento ante las entidades correspondientes.</p>
-                        <a href="#contacto" className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">Contactar</a>
+                        <button 
+                          onClick={() => onSolicitarAsesoria('secretaria')}
+                          className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                        >
+                          Solicitar Asesoría
+                        </button>
                     </div>
                 </div>
             </div>
