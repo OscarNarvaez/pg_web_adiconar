@@ -23,8 +23,8 @@ const navItems = [
 const centroSolucionesItems = [
   { label: 'Almacén', desc: 'Control de inventario y suministros', href: '#almacen-page' },
   { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
-  { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#centro-soluciones-page' },
-  { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#centro-soluciones-page' },
+  { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
+  { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
   { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
   { label: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page' },
 ]
@@ -1063,15 +1063,15 @@ function App() {
         ) : currentView === 'almacen' ? (
           <AlmacenPage onNavigate={navegarASeccion} />
         ) : currentView === 'servicios-tecnicos' ? (
-          <TecnicalServicesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
+          <TecnicalServicesPage />
         ) : currentView === 'polizas' ? (
-          <PolizasPage onSolicitarAsesoria={handleSolicitarAsesoria} />
+          <PolizasPage />
         ) : currentView === 'asesoria' ? (
-          <AsesoriaPage onSolicitarAsesoria={handleSolicitarAsesoria} />
+          <AsesoriaPage />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : currentView === 'tramites' ? (
-          <TramitesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
+          <TramitesPage />
         ) : null}
       </main>
 
