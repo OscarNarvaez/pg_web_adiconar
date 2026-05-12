@@ -9,7 +9,7 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
           </p>
         </div>
 
-        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-3">
+        <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-4">
           <div className="flex flex-col items-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Navegacion</p>
             <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
@@ -49,6 +49,43 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
                 className="block transition hover:text-amber-200"
               >
                 Terminos de servicio
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Redes sociales</p>
+            <div className="mt-4 space-y-3 text-sm text-emerald-100/85">
+              <a
+                href="https://www.facebook.com/share/17mGRkHmjR/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition hover:text-amber-200"
+                aria-label="Facebook ADICONAR"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1280px-Facebook_f_logo_%282021%29.svg.png"
+                  alt="Facebook"
+                  className="h-5 w-5 rounded"
+                  loading="lazy"
+                />
+                Facebook
+              </a>
+<br />
+              <a
+                href="https://www.instagram.com/adiconarnarino?igsh=a3Z6anF0bDFjbTJz&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 transition hover:text-amber-200"
+                aria-label="Instagram ADICONAR"
+              >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
+                  alt="Instagram"
+                  className="h-5 w-5 rounded"
+                  loading="lazy"
+                />
+                Instagram
               </a>
             </div>
           </div>
