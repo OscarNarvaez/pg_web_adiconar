@@ -1055,6 +1055,22 @@ function App() {
         ) : null}
       </main>
 
+      <a
+        href="https://wa.me/573128471928?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20ADICONAR"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-fab"
+        aria-label="Abrir chat de WhatsApp"
+        title="Hablar por WhatsApp"
+      >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/500px-WhatsApp_icon.png"
+          alt="WhatsApp"
+          className="whatsapp-fab__icon"
+          loading="lazy"
+        />
+      </a>
+
       <Footer navItems={navItems} currentYear={currentYear} navegarASeccion={navegarASeccion} />
     </div>
   )
