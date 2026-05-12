@@ -972,48 +972,45 @@ function App() {
               </div>
             </section>
 
-            <section id="contacto" className="py-16 md:py-24">
-              <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8">
-                <article className="rounded-[2rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Contacto</p>
-                  <h2 className="font-heading mt-4 max-w-[12ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
-                    Estamos listos para respaldar su estación de servicio.
+            <section id="contacto" className="py-16 md:py-10">
+              <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8 ">
+                <article className="rounded-[4rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-10 lg:p-8">
+                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-100/80 text-center">Contacto</p>
+                  <h2 className="font-heading mt-4  text-4xl leading-[1.2] tracking-[-0.02em] text-white md:text-5xl text-center">
+                    Respaldamos su Estación de Servicio.
                   </h2>
-                  <p className="mt-4 max-w-[48ch] text-sm leading-relaxed text-emerald-50/85 md:text-base">
-                    Seleccione la dependencia con la que desea comunicarse y se abrirá WhatsApp con un mensaje prellenado para agilizar su atención.
-                  </p>
 
-                  <div className="mt-8 space-y-4 text-sm md:text-base">
+                  <div className="mt-8 space-y-4 text-sm md:text-base text-center">
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
                       <div className="mt-3 space-y-2 text-emerald-50/90">
-                        <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade</p>
-                        <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses</p>
-                        <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez</p>
                         <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade</p>
                         <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes</p>
+                        <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses</p>
+                        <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade</p>
+                        <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez</p>
                       </div>
                     </div>
                   </div>
                   <br />
-                  <article className="rounded-[2rem] border border-emerald-900/15 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.85)] md:p-8 text-center">
+                  <article className="rounded-[4rem] border border-emerald-900/15 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.85)] md:p-10 lg:p-12 text-center">
                     <form className="space-y-4" onSubmit={handleSubmit} noValidate>
                       <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 text-center">
                         Cada una de nuestras dependencias esta disponible para atender sus necesidades.
                       </div>
-                      <div className="space-y-2">
+                      <div className="space-y-2 text-center">
                         <select
                           id="dependencia"
                           value={formData.participacion}
                           onChange={handleFormChange}
-                          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800"
+                          className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800 text-center focus:border-emerald-900 focus:ring-emerald-900/10 transition"
                         >
                           <option className='text-center' value="">Seleccione una dependencia</option>
-                          <option value="secretaria">Secretaria</option>
-                          <option value="tesoreria">Tesoreria</option>
+                          <option value="directorEjecutivo">Dirección Ejecutiva</option>
                           <option value="tecnico">Dirección Técnica</option>
                           <option value="asesoriaJuridica">Asesoria Jurídica</option>
-                          <option value="directorEjecutivo">Dirección Ejecutiva</option>
+                          <option value="secretaria">Secretaria</option>
+                          <option value="tesoreria">Tesoreria</option>
                         </select>
                       </div>
 
