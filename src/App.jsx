@@ -14,8 +14,7 @@ import Footer from './components/Footer'
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Sobre nosotros', href: '#sobre-nosotros' },
-  { label: 'Servicios', href: '#servicios' },
-  { label: 'Centro de soluciones', href: '#centro-soluciones-page' },
+  { label: 'Centro de soluciones', href: '#almacen' },
   { label: 'Pagos', href: '#pagos' },
   { label: 'Contacto', href: '#contacto' },
 ]
@@ -795,14 +794,6 @@ function App() {
                   <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-slate-700">
                     Integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
                   </p>
-                  <a
-                    href="#centro-soluciones-page"
-                    onClick={(event) => navegarASeccion(event, '#centro-soluciones-page')}
-                    className="mt-8 inline-flex items-center gap-2 rounded-full border border-emerald-900 bg-emerald-900 px-6 py-3 text-sm font-semibold tracking-[0.01em] text-white transition hover:-translate-y-0.5 hover:bg-emerald-800"
-                  >
-                    Conocer mas detalles
-                    <span className="text-[10px]">▼</span>
-                  </a>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
@@ -860,6 +851,23 @@ function App() {
                     <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
                       <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Respaldo técnico y acompañamiento especializado.</p>
                     </div>
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={(event) => navegarASeccion(event, '#almacen-page')}
+                      className="inline-flex items-center justify-center rounded-full border border-amber-300 bg-amber-300 px-6 py-3 text-sm font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
+                    >
+                      Ver productos
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => navegarASeccion(event, '#centro-soluciones-page')}
+                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+                    >
+                      Ir al Centro de Soluciones
+                    </button>
                   </div>
                 </div>
 

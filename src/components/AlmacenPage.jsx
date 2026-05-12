@@ -48,13 +48,20 @@ function AlmacenPage({ onNavigate }) {
                     </div>
                   </div>
 
-                  <div className="mt-8 flex justify-center">
+                  <div className="mt-8 flex flex-wrap justify-center gap-3">
                     <button
                       type="button"
                       onClick={(event) => onNavigate(event, '#categoria/sistemas-descarga')}
                       className="cta-pulse inline-flex rounded-full bg-amber-300 px-5 py-3 text-sm font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
                     >
                       Ver productos
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => onNavigate(event, '#centro-soluciones-page')}
+                      className="inline-flex rounded-full border border-white/15 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+                    >
+                      Ir al Centro de Soluciones
                     </button>
                   </div>
                 </div>
