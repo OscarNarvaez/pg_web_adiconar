@@ -46,8 +46,8 @@ const TramitesPage = ({ onSolicitarAsesoria }) => {
           </div>
           */}
 
-                <div className="hidden md:flex justify-center">
-                    <div className="relative w-full h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg">
+                <div className="flex">
+                    <div className="relative w-full h-100 sm:h-60 md:h-72 lg:h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100">
                         <img src="./imagenesCentroSoluciones/tramitesAnteEntidades.jpeg" alt="Trámites" className="w-full h-full object-cover" />
                     </div>
                 </div>
@@ -95,11 +95,11 @@ const TramitesPage = ({ onSolicitarAsesoria }) => {
                     <div className="relative">
                         <h3 className="font-heading text-3xl md:text-4xl mb-4">¿Necesita acompañamiento para trámites?</h3>
                         <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">Contáctenos y coordinamos la gestión documental, radicación y seguimiento ante las entidades correspondientes.</p>
-                        <button 
-                          onClick={() => onSolicitarAsesoria('secretaria')}
-                          className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                        <button
+                            onClick={() => onSolicitarAsesoria('secretaria')}
+                            className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
                         >
-                          Solicitar Asesoría
+                            Solicitar Asesoría
                         </button>
                     </div>
                 </div>

@@ -84,12 +84,12 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
           </div>
           */}
 
-        <div className="hidden md:flex">
-          <div className="relative w-full h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg">
+        <div className="flex">
+          <div className="relative w-full h-100 sm:h-60 md:h-72 lg:h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100">
             <img
               src="./imagenesCentroSoluciones/serviciosTecnicos.jpeg"
               alt="Logo Servicio Técnico EDS"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-center object-contain"
             />
           </div>
         </div>
