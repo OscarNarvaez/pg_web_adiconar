@@ -290,7 +290,7 @@ function App() {
     if (id === 'dependencia') {
       const dependencia = dependenciasContacto[value]
       const mensajePrellenado = dependencia
-        ? `Hola, mi nombre es _____ y me gustaria comunicarme con ${dependencia.label} para: ______`
+        ? `Hola, mi nombre es _____ y me gustaria comunicarme con la dependencia de ${dependencia.label} para: ______`
         : ''
 
       setFormData((prev) => ({
@@ -301,11 +301,6 @@ function App() {
 
       if (formStatus.type !== 'idle') {
         setFormStatus({ type: 'idle', message: '' })
-      }
-
-      if (dependencia) {
-        const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensajePrellenado)}`
-        window.location.href = whatsappUrl
       }
 
       return
@@ -992,11 +987,11 @@ function App() {
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
                       <div className="mt-3 space-y-2 text-emerald-50/90">
-                        <p><span className="font-semibold text-white">Secretaria:</span> Adriana Andrade - 3185896142</p>
-                        <p><span className="font-semibold text-white">Tesoreria:</span> Bernarda Meneses - 3183123261</p>
-                        <p><span className="font-semibold text-white">Técnico:</span> Juan Carlos Flórez - 3176919910</p>
-                        <p><span className="font-semibold text-white">Asesora Jurídica:</span> Karen Rivera Andrade - 3145640709</p>
-                        <p><span className="font-semibold text-white">Director Ejecutivo:</span> Rodrigo Yepes - 3164215844</p>
+                        <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade</p>
+                        <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses</p>
+                        <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez</p>
+                        <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade</p>
+                        <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes</p>
                       </div>
                     </div>
                   </div>
@@ -1014,11 +1009,11 @@ function App() {
                           className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800"
                         >
                           <option className='text-center' value="">Seleccione una dependencia</option>
-                          <option value="secretaria">Secretaria - Adriana Andrade</option>
-                          <option value="tesoreria">Tesoreria - Bernarda Meneses</option>
-                          <option value="tecnico">Técnico - Juan Carlos Flórez</option>
-                          <option value="asesoriaJuridica">Asesora Jurídica - Karen Rivera Andrade</option>
-                          <option value="directorEjecutivo">Director Ejecutivo - Rodrigo Yepes</option>
+                          <option value="secretaria">Secretaria</option>
+                          <option value="tesoreria">Tesoreria</option>
+                          <option value="tecnico">Dirección Técnica</option>
+                          <option value="asesoriaJuridica">Asesoria Jurídica</option>
+                          <option value="directorEjecutivo">Dirección Ejecutiva</option>
                         </select>
                       </div>
 
