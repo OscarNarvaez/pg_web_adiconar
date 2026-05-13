@@ -38,7 +38,6 @@ const PrensaPage = () => {
         {/* Título */}
         <div className="mb-16 text-center">
           <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight">
-            BOLETINES
             <span className="block text-emerald-600 mt-2">BOLETINES</span>
           </h1>
           <p className="text-lg text-emerald-900/70">
