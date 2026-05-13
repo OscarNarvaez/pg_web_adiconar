@@ -10,6 +10,8 @@ import TecnicalServicesPage from './components/TecnicalServicesPage'
 import PolizasPage from './components/PolizasPage'
 import AsesoriaPage from './components/AsesoriaPage'
 import TramitesPage from './components/TramitesPage'
+import PrensaPage from './components/PrensaPage'
+import ComunicadosPage from './components/ComunicadosPage'
 import Footer from './components/Footer'
 
 const navItems = [
@@ -30,9 +32,8 @@ const centroSolucionesItems = [
 ]
 
 const prensaItems = [
-  { label: 'Noticias', status: 'Proximamente' },
-  { label: 'Comunicados', status: 'Proximamente' },
-  { label: 'Boletines', status: 'Proximamente' },
+  { label: 'Boletines', href: '#prensa-page' },
+  { label: 'Comunicados', href: '#comunicados-page' },
 ]
 
 const accesos = [
@@ -235,6 +236,22 @@ function App() {
 
     if (href === '#asesoria-page') {
       setCurrentView('asesoria')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#prensa-page') {
+      setCurrentView('prensa')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#comunicados-page') {
+      setCurrentView('comunicados')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -530,17 +547,14 @@ function App() {
 
               <div className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] w-56 translate-y-1 rounded-2xl border border-emerald-900/15 bg-white/95 p-2 opacity-0 shadow-[0_28px_48px_-28px_rgba(6,78,59,0.7)] transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
                 {prensaItems.map((item) => (
-                  <button
+                  <a
                     key={item.label}
-                    type="button"
-                    disabled
-                    className="mb-1 flex w-full cursor-not-allowed items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-emerald-950/70 last:mb-0"
+                    href={item.href}
+                    onClick={(event) => navegarASeccion(event, item.href)}
+                    className="mb-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-emerald-950 hover:bg-emerald-50 transition last:mb-0"
                   >
                     <span>{item.label}</span>
-                    <span className="text-[10px] uppercase tracking-[0.12em] text-emerald-800/60">
-                      {item.status}
-                    </span>
-                  </button>
+                  </a>
                 ))}
               </div>
             </div>
@@ -668,12 +682,14 @@ function App() {
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-900">Prensa</p>
               <div className="mt-3 space-y-2">
                 {prensaItems.map((item) => (
-                  <p
+                  <a
                     key={`mobile-${item.label}`}
-                    className="rounded-xl border border-dashed border-emerald-900/20 px-3 py-2 text-sm text-emerald-950/70"
+                    href={item.href}
+                    onClick={(event) => navegarASeccion(event, item.href, true)}
+                    className="rounded-xl border border-emerald-900/20 px-3 py-2 text-sm text-emerald-950 hover:bg-emerald-50 transition block"
                   >
-                    {item.label} - {item.status.toLowerCase()}
-                  </p>
+                    {item.label}
+                  </a>
                 ))}
               </div>
             </div>
@@ -1072,6 +1088,10 @@ function App() {
           <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : currentView === 'tramites' ? (
           <TramitesPage />
+        ) : currentView === 'prensa' ? (
+          <PrensaPage />
+        ) : currentView === 'comunicados' ? (
+          <ComunicadosPage />
         ) : null}
       </main>
 

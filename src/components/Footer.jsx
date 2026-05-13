@@ -29,8 +29,10 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
           <div className="flex flex-col items-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Contacto</p>
             <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
-              <p>nadiconar@gmail.com</p>
-              <p>+57 312 847 1928</p>
+              <p>adiconarnarino@adiconar.co</p>
+              <p>+57 318 589 6142</p>
+              <p>Calle 21 #16 - 44 Navarrete</p>
+              <p>--♪--</p>
               <p>Pasto, Colombia</p>
             </div>
           </div>
@@ -39,13 +41,13 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Legal</p>
             <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
               <a
-                href="mailto:nadiconar@gmail.com?subject=Solicitud%20politica%20de%20privacidad"
+                href="mailto:adiconarnarino@adiconar.co?subject=Solicitud%20politica%20de%20privacidad"
                 className="block transition hover:text-amber-200"
               >
                 Politica de privacidad
               </a>
               <a
-                href="mailto:nadiconar@gmail.com?subject=Solicitud%20terminos%20de%20servicio"
+                href="mailto:adiconarnarino@adiconar.co?subject=Solicitud%20terminos%20de%20servicio"
                 className="block transition hover:text-amber-200"
               >
                 Terminos de servicio
@@ -86,6 +88,17 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
                   loading="lazy"
                 />
                 Instagram
+              </a>
+<br />
+              <a
+                href="#inicio"
+                className="inline-flex items-center gap-2 transition hover:text-amber-200"
+                aria-label="Sitio Web ADICONAR"
+              >
+                <svg className="h-5 w-5 text-emerald-100" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                </svg>
+                adiconar.co
               </a>
             </div>
           </div>
