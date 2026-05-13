@@ -39,7 +39,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
+    <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
         {/* Header Hero */}
@@ -60,23 +60,23 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
           </p>
         </div>
 
-<div className="flex">
-          <div className="relative w-full h-100 sm:h-60 md:h-72 lg:h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100">
+        <div className="flex">
+          <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
             <img
               src="./imagenesCentroSoluciones/polizasAseguramiento.jpeg"
               alt="Logo Gestión de Pólizas"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain animate-floatWave"
             />
           </div>
         </div>
 
         {/* Descripción Principal */}
-          <div className="space-y-4 text-center md:text-left">
-            <p className="text-emerald-900/85 leading-relaxed text-lg">
-              <br />
-              <br />
-            </p>
-          </div>
+        <div className="space-y-4 text-center md:text-left">
+          <p className="text-emerald-900/85 leading-relaxed text-lg">
+            <br />
+            <br />
+          </p>
+        </div>
 
 
 
@@ -93,7 +93,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
             {/* Carrusel infinito con soporte drag */}
-            <div 
+            <div
               className="overflow-hidden cursor-grab active:cursor-grabbing"
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
@@ -103,7 +103,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}
             >
-              <div 
+              <div
                 className="flex gap-6"
                 style={{
                   animation: isDragging ? 'none' : 'scroll 30s linear infinite',
@@ -114,7 +114,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
                 {/* Primera iteración */}
                 {polizas.map((poliza, idx) => (
                   <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${poliza.image}')`,
@@ -138,7 +138,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
                 {/* Segunda iteración para efecto infinito */}
                 {polizas.map((poliza, idx) => (
                   <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${poliza.image}')`,
@@ -211,7 +211,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
             <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
               Contáctenos para conocer nuestras soluciones de pólizas y coberturas adaptadas a su estación de servicio.
             </p>
-            <button 
+            <button
               onClick={() => onSolicitarAsesoria('secretaria')}
               className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >

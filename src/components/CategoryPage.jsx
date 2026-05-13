@@ -89,7 +89,7 @@ export default function CategoryPage({ category }) {
       });
 
   return (
-    <div className="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto min-h-screen">
+    <div className="pt-32 pb-16 px-4 md:px-8 max-w-7xl mx-auto min-h-screen bg-[#f4f5ef]">
       <h1 className="font-heading text-4xl text-emerald-950 mb-10 text-center">{category.title}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((item, idx) => (

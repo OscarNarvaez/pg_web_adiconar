@@ -46,7 +46,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
+    <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
 
         {/* Header Hero */}
@@ -85,11 +85,11 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
           */}
 
         <div className="flex">
-          <div className="relative w-full h-100 sm:h-60 md:h-72 lg:h-90 rounded-3xl overflow-hidden flex items-center justify-center border border-emerald-100 shadow-lg bg-gradient-to-br from-emerald-50 to-emerald-100">
+          <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
             <img
               src="./imagenesCentroSoluciones/serviciosTecnicos.jpeg"
               alt="Logo Servicio Técnico EDS"
-              className="w-full h-full object-center object-contain"
+              className="w-full h-full object-contain animate-floatWave"
             />
           </div>
         </div>

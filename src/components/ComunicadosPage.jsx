@@ -33,12 +33,12 @@ const ComunicadosPage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
+        <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
             <div className="mx-auto max-w-7xl px-4 md:px-8">
                 {/* Título */}
                 <div className="mb-16 text-center">
                     <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight">
-                        <span className="block text-emerald-600 mt-2">BOLETINES</span>
+                        <span className="block text-emerald-600 mt-2">COMUNICADOS</span>
                     </h1>
                     <p className="text-lg text-emerald-900/70">
                         Todos nuestros comunicados oficiales.

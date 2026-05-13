@@ -588,8 +588,8 @@ function App() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true">
           <div className="absolute inset-0 bg-emerald-950/60 backdrop-blur-sm" />
-          <div className="relative ml-auto h-full w-[min(88vw,24rem)] bg-[#f4f5ef] p-6 shadow-[-30px_0_60px_-32px_rgba(2,44,34,0.85)]">
-            <div className="flex items-center justify-between">
+          <div className="relative ml-auto h-full w-[min(88vw,24rem)] bg-[#f4f5ef] p-6 shadow-[-30px_0_60px_-32px_rgba(2,44,34,0.85)] overflow-y-auto">
+            <div className="flex items-center justify-between sticky top-0 bg-[#f4f5ef] pb-4 z-10">
               <p className="font-heading text-xl tracking-tight text-emerald-950">Navegacion</p>
               <button
                 type="button"
@@ -600,7 +600,7 @@ function App() {
               </button>
             </div>
 
-            <nav className="mt-8 space-y-3">
+            <nav className="mt-2 space-y-2">
               {navItems.map((item, index) => {
                 if (item.label === 'Centro de soluciones') {
                   return (
@@ -612,25 +612,25 @@ function App() {
                       >
                         CENTRO DE SOLUCIONES
                       </button>
-                      <div className="grid gap-2 pl-4">
+                      <div className="grid gap-2 pl-3">
                         {centroSolucionesItems.map((sol) => {
                           if (sol.label === 'Almacén') {
                             return (
-                              <div key={sol.label} className="space-y-1 mt-2 mb-2 border-t border-b border-emerald-900/10 py-2">
+                              <div key={sol.label} className="space-y-1 mt-1 mb-1 border-t border-b border-emerald-900/10 py-1">
                                 <a
                                   href={sol.href}
                                   onClick={(event) => navegarASeccion(event, sol.href, true)}
-                                  className="block rounded-xl px-4 py-2.5 text-sm font-semibold transition bg-emerald-900/5 text-emerald-950"
+                                  className="block rounded-xl px-3 py-2 text-xs font-semibold transition bg-emerald-900/5 text-emerald-950"
                                 >
                                   {sol.label}
                                 </a>
-                                <div className="grid gap-1 pl-4 mt-2">
+                                <div className="grid gap-1 pl-2 mt-1">
                                   {categories.map((cat) => (
                                     <a
                                       key={`mobile-cat-${cat.id}`}
                                       href={`#categoria/${cat.id}`}
                                       onClick={(event) => navegarASeccion(event, `#categoria/${cat.id}`, true)}
-                                      className={`block rounded-xl px-4 py-2 text-xs font-medium transition ${activeSection === `#categoria/${cat.id}`
+                                      className={`block rounded-lg px-3 py-1 text-[10px] font-medium transition ${activeSection === `#categoria/${cat.id}`
                                         ? 'bg-emerald-900 text-white'
                                         : 'bg-white/40 text-emerald-950 hover:bg-white'
                                         }`}
@@ -647,7 +647,7 @@ function App() {
                               key={`mobile-sol-${sol.label}`}
                               href={sol.href}
                               onClick={(event) => navegarASeccion(event, sol.href, true)}
-                              className={`block rounded-xl px-4 py-2.5 text-sm font-medium transition ${activeSection === sol.href
+                              className={`block rounded-xl px-3 py-2 text-xs font-medium transition ${activeSection === sol.href
                                 ? 'bg-emerald-900 text-white'
                                 : 'bg-white/50 text-emerald-950 hover:bg-white'
                                 }`}
@@ -666,7 +666,7 @@ function App() {
                     key={item.label}
                     href={item.href}
                     onClick={(event) => navegarASeccion(event, item.href, true)}
-                    className={`rise-in block rounded-2xl border px-4 py-3 text-base font-semibold transition ${activeSection === item.href && currentView === 'home'
+                    className={`rise-in block rounded-2xl border px-3 py-2 text-sm font-semibold transition ${activeSection === item.href && currentView === 'home'
                       ? 'border-emerald-900 bg-emerald-900 text-white'
                       : 'border-emerald-900/20 bg-white text-emerald-950 hover:border-emerald-900/50'
                       }`}
@@ -678,7 +678,7 @@ function App() {
               })}
             </nav>
 
-            <div className="mt-8 rounded-2xl border border-emerald-900/15 bg-white p-4">
+            <div className="mt-4 rounded-2xl border border-emerald-900/15 bg-white p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.15em] text-emerald-900">Prensa</p>
               <div className="mt-3 space-y-2">
                 {prensaItems.map((item) => (
@@ -686,7 +686,7 @@ function App() {
                     key={`mobile-${item.label}`}
                     href={item.href}
                     onClick={(event) => navegarASeccion(event, item.href, true)}
-                    className="rounded-xl border border-emerald-900/20 px-3 py-2 text-sm text-emerald-950 hover:bg-emerald-50 transition block"
+                    className="rounded-xl border border-emerald-900/20 px-3 py-2 text-xs text-emerald-950 hover:bg-emerald-50 transition block"
                   >
                     {item.label}
                   </a>
@@ -713,7 +713,7 @@ function App() {
               <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 pb-16 pt-24 md:px-8 md:pb-20 md:pt-32 lg:grid-cols-[1.1fr_0.9fr]">
                 <div className="rise-in space-y-7">
                   <p className="inline-flex items-center rounded-full border border-white/35 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.19em] text-emerald-50">
-                    ONG ADICONAR
+                    ADICONAR
                   </p>
                   <h1 className="font-heading max-w-[15ch] text-4xl leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
                     Centro integral de soluciones para estaciones de servicio.

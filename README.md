@@ -1,6 +1,6 @@
 # ADICONAR - Sitio Base
 
-Proyecto base del sitio web de la ONG ADICONAR, construido con React + Vite + Tailwind CSS.
+Proyecto base del sitio web de la ADICONAR, construido con React + Vite + Tailwind CSS.
 
 La estructura inicial replica el estilo general de la web de AWALA (home con navbar, hero, secciones institucionales y footer) para continuar agregando contenido real en siguientes iteraciones.
 

@@ -33,7 +33,7 @@ const PrensaPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f4f5ef] to-white pt-32 pb-20">
+    <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         {/* Título */}
         <div className="mb-16 text-center">
