@@ -352,18 +352,18 @@ function App() {
     const dependencia = dependenciasContacto[dependenciaKey]
     if (dependencia) {
       const mensajePrellenado = `Hola, mi nombre es _____ y me gustaria comunicarme con la dependencia de ${dependencia.label} para: ______`
-      
+
       setFormData((prev) => ({
         ...prev,
         participacion: dependenciaKey,
         mensaje: mensajePrellenado,
       }))
-      
+
       // Navegar a la sección de contacto
       setCurrentView('home')
       setActiveSection('#contacto')
       window.scrollTo({ top: 0, behavior: 'smooth' })
-      
+
       // Hacer scroll suave a la sección de contacto después de un pequeño delay
       setTimeout(() => {
         const contactoSection = document.getElementById('contacto')
@@ -702,9 +702,9 @@ function App() {
           <>
             <section id="inicio" className="relative isolate min-h-[100dvh] overflow-hidden border-b border-emerald-950/10 bg-[#e9f0e5] pt-16 md:pt-24">
               <img
-                src="https://situr.narino.gov.co/storage/Clientes/situr_narino/principal/imagenes/contenidos/12127-7_berruecos.jpg"
+                src="/imagenesCentroSoluciones/principalAdiconar.png"
                 alt="Comunidad en territorio"
-                className="absolute inset-0 h-full w-full object-cover brightness-[0.6]"
+                className="absolute inset-0 h-full w-full object-cover brightness-[0.]"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/88 via-emerald-950/74 to-emerald-900/58" />
               <div className="pointer-events-none absolute -left-28 top-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
@@ -722,25 +722,6 @@ function App() {
                     Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
                 </div>
-
-                <aside className="rise-in self-end rounded-[1.8rem] border border-white/20 bg-white/10 p-5 text-white backdrop-blur-md shadow-[0_24px_44px_-28px_rgba(0,0,0,0.9)]" style={{ animationDelay: '140ms' }}>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-50/90">
-                    Prioridades
-                  </p>
-                  <div className="mt-4 space-y-3">
-                    <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                      <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Soluciones integrales para fortalecer sus operaciónes.</p>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Cumplimiento normativo y acompañamiento gremial.</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/15 bg-black/10 p-4">
-                        <p className="mt-1 text-xs uppercase tracking-[0.11em] text-emerald-50/80">Respaldo técnico especializado para EDS.</p>
-                      </div>
-                    </div>
-                  </div>
-                </aside>
               </div>
             </section>
 
@@ -839,16 +820,16 @@ function App() {
                   </div>
 
                   <div className="mt-6 rounded-[1.4rem] border border-emerald-100/20 bg-black/15 p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/80">Objetivo {objetivoActual.id}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/80">Objetivo {objetivoActivo + 1}</p>
                     <p className="mt-3 text-base leading-relaxed text-emerald-50 md:text-lg">{objetivoActual.texto}</p>
                   </div>
 
                   <div className="mt-5 flex flex-wrap items-center gap-2">
                     {objetivosCarousel.map((objetivo, index) => (
                       <button
-                        key={objetivo.id}
+                        key={index}
                         type="button"
-                        aria-label={`Ver objetivo ${objetivo.id}`}
+                        aria-label={`Ver objetivo ${index + 1}`}
                         onClick={() => setObjetivoActivo(index)}
                         className={`h-2.5 rounded-full transition-all ${index === objetivoActivo
                           ? 'w-10 bg-amber-300'
