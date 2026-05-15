@@ -177,6 +177,8 @@ function App() {
     mensaje: '',
   })
   const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' })
+  const [showNotificationPopup, setShowNotificationPopup] = useState(false)
+  const [notificationMessage, setNotificationMessage] = useState('')
 
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
@@ -345,6 +347,47 @@ function App() {
 
     const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
     window.location.href = whatsappUrl
+  }
+
+  const handleSolicitarAsesoria = (dependenciaKey) => {
+    const dependencia = dependenciasContacto[dependenciaKey]
+    if (!dependencia) return
+
+    // Actualizar formData con la dependencia
+    const mensajePrellenado = `Hola, mi nombre es _____ y me gustaria comunicarme con la dependencia de ${dependencia.label} para: ______`
+    setFormData((prev) => ({
+      ...prev,
+      participacion: dependenciaKey,
+      mensaje: mensajePrellenado,
+    }))
+
+    // Mostrar notificación popup
+    setNotificationMessage(
+      `Se ha asignado la dependencia: ${dependencia.label} (${dependencia.contacto}). Te estamos redirigiendo a la sección de contacto.`
+    )
+    setShowNotificationPopup(true)
+
+    // Navegar a contacto después de un pequeño delay
+    setTimeout(() => {
+      setCurrentView('home')
+      setTimeout(() => {
+        const contactoSection = document.getElementById('contacto')
+        if (contactoSection) {
+          const headerHeight = headerRef.current?.getBoundingClientRect().height ?? 0
+          const sectionTop = window.scrollY + contactoSection.getBoundingClientRect().top - headerHeight - 8
+          window.scrollTo({
+            top: Math.max(sectionTop, 0),
+            behavior: 'smooth',
+          })
+          setActiveSection('#contacto')
+        }
+      }, 100)
+
+      // Cerrar popup después de 3 segundos
+      setTimeout(() => {
+        setShowNotificationPopup(false)
+      }, 3000)
+    }, 500)
   }
 
   useEffect(() => {
@@ -1014,7 +1057,7 @@ function App() {
                         type="submit"
                         className="inline-flex min-w-[11.5rem] items-center justify-center rounded-full bg-emerald-900 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:bg-emerald-800 active:translate-y-[1px]"
                       >
-                        Abrir WhatsApp
+                        CONTACTAR
                       </button>
 
                       {formStatus.type === 'error' && (
@@ -1033,20 +1076,20 @@ function App() {
         ) : currentView === 'almacen' ? (
           <AlmacenPage onNavigate={navegarASeccion} />
         ) : currentView === 'servicios-tecnicos' ? (
-          <TecnicalServicesPage />
+          <TecnicalServicesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'polizas' ? (
-          <PolizasPage />
+          <PolizasPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'asesoria' ? (
-          <AsesoriaPage />
+          <AsesoriaPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
         ) : currentView === 'tramites' ? (
-          <TramitesPage />
+          <TramitesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'prensa' ? (
           <PrensaPage />
         ) : currentView === 'comunicados' ? (
           <ComunicadosPage />
-        ) : null}
+        ) : null}}
       </main>
 
       <a
@@ -1064,6 +1107,26 @@ function App() {
           loading="lazy"
         />
       </a>
+
+      {showNotificationPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="mx-4 rounded-2xl bg-white p-8 shadow-2xl animate-pulse-in max-w-sm">
+            <div className="mb-4 flex justify-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
+                <svg className="h-8 w-8 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+              </div>
+            </div>
+            <h3 className="mb-2 text-center font-heading text-xl text-emerald-950">
+              ¡Dependencia Asignada!
+            </h3>
+            <p className="text-center text-slate-700">
+              {notificationMessage}
+            </p>
+          </div>
+        </div>
+      )}
 
       <Footer navItems={navItems} currentYear={currentYear} navegarASeccion={navegarASeccion} />
     </div>

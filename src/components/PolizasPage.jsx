@@ -212,7 +212,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
               Contáctenos para conocer nuestras soluciones de pólizas y coberturas adaptadas a su estación de servicio.
             </p>
             <button
-              onClick={() => onSolicitarAsesoria('secretaria')}
+              onClick={() => onSolicitarAsesoria('asesoriaJuridica')}
               className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >
               Solicitar Asesoría

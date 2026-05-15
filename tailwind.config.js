@@ -28,11 +28,16 @@ export default {
           '50%': { transform: 'translateY(-25px) skewY(-0.5deg)' },
           '75%': { transform: 'translateY(-12px) skewY(0.5deg)' },
         },
+        pulseIn: {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
       },
       animation: {
         float: 'float 5s ease-in-out infinite',
         wave: 'wave 3s ease-in-out infinite',
         floatWave: 'floatWave 6s ease-in-out infinite',
+        'pulse-in': 'pulseIn 0.3s ease-out',
       },
     },
   },
