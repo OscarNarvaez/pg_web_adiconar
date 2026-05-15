@@ -3,7 +3,7 @@ import { comunicadosItems } from '../data/comunicados-items'
 
 const ComunicadosPage = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [direction, setDirection] = useState('next')
+    const [setDirection] = useState('next')
 
     const goToPrevious = () => {
         setDirection('prev')
@@ -103,8 +103,8 @@ const ComunicadosPage = () => {
                                             key={slide.id}
                                             onClick={() => goToSlide((currentIndex + idx + 1) % comunicadosItems.length)}
                                             className={`rounded-2xl overflow-hidden cursor-pointer transform transition-all duration-300 group border border-emerald-900/12 ${idx === 0
-                                                    ? 'ring-2 ring-emerald-500 scale-100'
-                                                    : 'opacity-60 hover:opacity-100 scale-95'
+                                                ? 'ring-2 ring-emerald-500 scale-100'
+                                                : 'opacity-60 hover:opacity-100 scale-95'
                                                 }`}
                                         >
                                             <div className="relative w-full h-32">
@@ -173,8 +173,8 @@ const ComunicadosPage = () => {
                             key={idx}
                             onClick={() => goToSlide(idx)}
                             className={`h-2 md:h-3 rounded-full transition-all duration-300 ${idx === currentIndex
-                                    ? 'bg-emerald-600 w-8 md:w-10'
-                                    : 'bg-emerald-200 hover:bg-emerald-300 w-2 md:w-3'
+                                ? 'bg-emerald-600 w-8 md:w-10'
+                                : 'bg-emerald-200 hover:bg-emerald-300 w-2 md:w-3'
                                 }`}
                             aria-label={`Ir a comunicado ${idx + 1}`}
                         />

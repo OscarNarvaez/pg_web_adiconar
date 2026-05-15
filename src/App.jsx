@@ -176,7 +176,6 @@ function App() {
     participacion: '',
     mensaje: '',
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' })
 
   const totalObjetivos = objetivosCarousel.length
@@ -346,32 +345,6 @@ function App() {
 
     const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
     window.location.href = whatsappUrl
-  }
-
-  const handleSolicitarAsesoria = (dependenciaKey) => {
-    const dependencia = dependenciasContacto[dependenciaKey]
-    if (dependencia) {
-      const mensajePrellenado = `Hola, mi nombre es _____ y me gustaria comunicarme con la dependencia de ${dependencia.label} para: ______`
-
-      setFormData((prev) => ({
-        ...prev,
-        participacion: dependenciaKey,
-        mensaje: mensajePrellenado,
-      }))
-
-      // Navegar a la sección de contacto
-      setCurrentView('home')
-      setActiveSection('#contacto')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-
-      // Hacer scroll suave a la sección de contacto después de un pequeño delay
-      setTimeout(() => {
-        const contactoSection = document.getElementById('contacto')
-        if (contactoSection) {
-          contactoSection.scrollIntoView({ behavior: 'smooth' })
-        }
-      }, 300)
-    }
   }
 
   useEffect(() => {

@@ -179,16 +179,6 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
               </div>
             </div>
 
-            <style>{`
-              @keyframes scroll {
-                0% {
-                  transform: translateX(0);
-                }
-                100% {
-                  transform: translateX(calc(-50% - 12px));
-                }
-              }
-            `}</style>
           </div>
         </div>
 
@@ -239,6 +229,15 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
       </div>
 
       <style>{`
+        @keyframes scroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - 12px));
+          }
+        }
+
         @keyframes fade-in {
           from {
             opacity: 0;
