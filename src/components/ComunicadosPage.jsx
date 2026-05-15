@@ -3,7 +3,7 @@ import { comunicadosItems } from '../data/comunicados-items'
 
 const ComunicadosPage = () => {
     const [currentIndex, setCurrentIndex] = useState(0)
-    const [setDirection] = useState('next')
+    const [direction, setDirection] = useState('next')
 
     const goToPrevious = () => {
         setDirection('prev')
