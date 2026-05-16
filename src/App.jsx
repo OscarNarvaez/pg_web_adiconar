@@ -718,7 +718,7 @@ function App() {
           <>
             <section id="inicio" className="relative isolate min-h-[100dvh] overflow-hidden border-b border-emerald-950/10 bg-[#e9f0e5] pt-16 md:pt-24">
               <img
-                src="/imagenesCentroSoluciones/principalAdiconar.webp"
+                src="/imagenesCentroSoluciones/principalAdiconar.png"
                 alt="Comunidad en territorio"
                 className="absolute inset-0 h-full w-full object-cover brightness-[0.]"
               />
