@@ -915,18 +915,6 @@ function App() {
                     Contamos con un almacén especializado en accesorios, consumibles y equipos para estaciones de servicio, ofreciendo productos confiables, respaldo técnico y disponibilidad para apoyar la operación continua de las EDS.
                   </p>
 
-                  <div className="mt-7 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3 text-center">
-                    <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Amplio portafolio de accesorios y equipos para EDS.</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Soluciones integrales para operación, seguridad y conducción de combustible.</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-100/20 bg-emerald-100/10 p-4">
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-50/80">Respaldo técnico y acompañamiento especializado.</p>
-                    </div>
-                  </div>
-
                   <div className="mt-8 flex flex-wrap gap-3">
                     <button
                       type="button"
