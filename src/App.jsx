@@ -1089,7 +1089,7 @@ function App() {
           <PrensaPage />
         ) : currentView === 'comunicados' ? (
           <ComunicadosPage />
-        ) : null}}
+        ) : null}
       </main>
 
       <a
