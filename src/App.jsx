@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import almacenIcon from './logos/almacen.png'
 import serviciosIcon from './logos/servicios.png'
 import pagosIcon from './logos/pagos.png'
+import principalAdiconar from '../public/imagenesCentroSoluciones/principalAdiconar.webp'
 import { categories } from './data/categories'
 import CategoryPage from './components/CategoryPage'
 import CentroSolucionesPage from './components/CentroSolucionesPage'
@@ -718,7 +719,7 @@ function App() {
           <>
             <section id="inicio" className="relative isolate min-h-[100dvh] overflow-hidden border-b border-emerald-950/10 bg-[#e9f0e5] pt-16 md:pt-24">
               <img
-                src="/imagenesCentroSoluciones/principalAdiconar.webp"
+                src={principalAdiconar}
                 alt="Comunidad en territorio"
                 className="absolute inset-0 h-full w-full object-cover brightness-[0.]"
               />
