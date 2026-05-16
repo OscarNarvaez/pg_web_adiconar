@@ -724,7 +724,7 @@ function App() {
               <img
                 src="/imagenesCentroSoluciones/principalAdiconar.png"
                 alt="Comunidad en territorio"
-                className="absolute inset-0 h-full w-full object-cover brightness-[0.9]"
+                className="absolute inset-0 h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/88 via-emerald-950/74 to-emerald-900/58" />
               <div className="pointer-events-none absolute -left-28 top-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
