@@ -448,13 +448,17 @@ function App() {
           <a
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
-            className="group inline-flex items-center gap-3"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/55 bg-white/75 px-3 py-2 pr-4 shadow-[0_18px_42px_-28px_rgba(3,42,32,0.9)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-emerald-900/15 hover:bg-white hover:shadow-[0_22px_48px_-24px_rgba(3,42,32,0.95)]"
           >
-            <div className="grid h-12 w-12 place-items-center rounded-2xl border border-emerald-900/20 bg-white shadow-[0_16px_35px_-24px_rgba(20,83,45,0.9)] transition duration-300 group-hover:-translate-y-0.5">
-              <img src="./logoNavBar.png" alt="Logo de ADICONAR" className="h-9 w-9 object-contain" />
+            <div className="relative grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-white via-emerald-50 to-emerald-100 ring-1 ring-emerald-900/10 shadow-[0_16px_35px_-26px_rgba(20,83,45,0.9)] transition duration-300 group-hover:-translate-y-0.5">
+              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.95),transparent_36%),linear-gradient(145deg,rgba(16,185,129,0.12),rgba(5,150,105,0.16))]" />
+              <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="relative h-10 w-10 object-contain drop-shadow-[0_8px_16px_rgba(20,83,45,0.25)]" />
             </div>
-            <div>
-              <p className="font-heading text-lg leading-none tracking-tight text-emerald-950">ADICONAR</p>
+            <div className="flex flex-col justify-center">
+              <p className="font-brand text-lg leading-none text-emerald-950 sm:text-[1.8rem] sm:leading-[0.95]">
+                ADICONAR
+              </p>
+              <p className="mt-1.5 h-px w-14 bg-gradient-to-r from-emerald-900/60 via-emerald-700/35 to-transparent" />
             </div>
           </a>
 
@@ -720,7 +724,7 @@ function App() {
               <img
                 src="/imagenesCentroSoluciones/principalAdiconar.png"
                 alt="Comunidad en territorio"
-                className="absolute inset-0 h-full w-full object-cover brightness-[0.]"
+                className="absolute inset-0 h-full w-full object-cover brightness-[0.9]"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/88 via-emerald-950/74 to-emerald-900/58" />
               <div className="pointer-events-none absolute -left-28 top-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
