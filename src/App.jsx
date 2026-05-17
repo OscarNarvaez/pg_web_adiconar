@@ -911,7 +911,7 @@ function App() {
             <section id="almacen" className="border-b border-emerald-950/10 bg-[#0f322b] py-16 md:py-24">
               <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 md:px-8 lg:grid-cols-[1.05fr_0.95fr]">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Almacen especializado</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">CENTRO DE SOLUCIONES</p>
                   <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
                     Suministros y equipos de alta calidad para su estacion.
                   </h2>
