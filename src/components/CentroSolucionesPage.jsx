@@ -38,7 +38,7 @@ const CentroSolucionesPage = ({ onNavigate }) => (
               { title: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
               { title: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
               { title: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
-              { title: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page', disabled: true }
+              { title: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#aliados-page', disabled: false }
             ].map((item, idx) => (
                 <a
                   key={idx}

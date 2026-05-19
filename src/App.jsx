@@ -13,6 +13,7 @@ import TramitesPage from './components/TramitesPage'
 import PrensaPage from './components/PrensaPage'
 import ComunicadosPage from './components/ComunicadosPage'
 import Footer from './components/Footer'
+import AlliesPage from './components/AlliesPage'
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -28,7 +29,7 @@ const centroSolucionesItems = [
   { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
   { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
   { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
-  { label: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#centro-soluciones-page' },
+  { label: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#aliados-page' },
 ]
 
 const prensaItems = [
@@ -213,6 +214,14 @@ function App() {
 
     if (href === '#centro-soluciones-page') {
       setCurrentView('centro-soluciones')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#aliados-page') {
+      setCurrentView('aliados')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -1075,6 +1084,8 @@ function App() {
           <AsesoriaPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'centro-soluciones' ? (
           <CentroSolucionesPage onNavigate={navegarASeccion} />
+        ) : currentView === 'aliados' ? (
+          <AlliesPage />
         ) : currentView === 'tramites' ? (
           <TramitesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'prensa' ? (

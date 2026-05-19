@@ -63,7 +63,7 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
         <div className="flex">
           <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
             <img
-              src="./imagenesCentroSoluciones/polizasAseguramiento.jpeg"
+              src="./imagenesCentroSoluciones/polizasPageALARGADA.jpeg"
               alt="Logo Gestión de Pólizas"
               className="w-full h-full object-contain animate-floatWave"
             />
