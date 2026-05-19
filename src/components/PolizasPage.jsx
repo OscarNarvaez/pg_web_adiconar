@@ -60,13 +60,23 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
           </p>
         </div>
 
-        <div className="flex">
-          <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
-            <img
-              src="./imagenesCentroSoluciones/polizasPageALARGADA.jpeg"
-              alt="Logo Gestión de Pólizas"
-              className="w-full h-full object-contain animate-floatWave"
-            />
+        <div className="relative overflow-hidden rounded-[2rem] border border-emerald-900/10 bg-gradient-to-br from-white via-emerald-50/70 to-emerald-100/60 p-4 md:p-6 shadow-[0_25px_80px_rgba(6,95,70,0.12)]">
+          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_20%,rgba(16,185,129,0.14),transparent_42%),radial-gradient(circle_at_15%_50%,rgba(6,95,70,0.08),transparent_24%),radial-gradient(circle_at_85%_50%,rgba(6,95,70,0.08),transparent_24%)]" />
+          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-[#f4f5ef] via-[#f4f5ef]/85 to-transparent z-10" />
+          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-[#f4f5ef] via-[#f4f5ef]/85 to-transparent z-10" />
+
+          <div className="relative overflow-hidden rounded-[1.6rem] bg-white/45 backdrop-blur-sm">
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#f4f5ef] via-transparent to-[#f4f5ef] opacity-60" />
+
+            <div className="relative flex items-center justify-center min-h-[28rem] sm:min-h-[34rem] md:min-h-[40rem] lg:min-h-[48rem] px-4 sm:px-8 py-6">
+              <div className="absolute inset-x-6 top-6 h-28 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+
+              <img
+                src="./imagenesCentroSoluciones/polizasPageALARGADA.jpeg"
+                alt="Gestión de Pólizas y Aseguramiento"
+                className="relative z-20 w-full max-w-none sm:max-w-4xl md:max-w-6xl h-full object-cover md:object-contain drop-shadow-[0_30px_45px_rgba(15,23,42,0.20)] animate-floatWave"
+              />
+            </div>
           </div>
         </div>
 
