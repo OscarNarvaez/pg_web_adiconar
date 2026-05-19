@@ -922,10 +922,10 @@ function App() {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">CENTRO DE SOLUCIONES</p>
                   <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
-                    Suministros y equipos de alta calidad para su estacion.
+                    Soluciones concretas, oportunas y confiables.
                   </h2>
                   <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-emerald-50/85">
-                    Contamos con un almacén especializado en accesorios, consumibles y equipos para estaciones de servicio, ofreciendo productos confiables, respaldo técnico y disponibilidad para apoyar la operación continua de las EDS.
+                    Más que ofrecer servicios, brindamos apoyo estratégico para fortalecer la operación, optimizar recursos y generar tranquilidad en cada proceso.
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-3">
