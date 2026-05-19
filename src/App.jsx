@@ -12,6 +12,7 @@ import AsesoriaPage from './components/AsesoriaPage'
 import TramitesPage from './components/TramitesPage'
 import PrensaPage from './components/PrensaPage'
 import ComunicadosPage from './components/ComunicadosPage'
+import NoticiasPage from './components/NoticiasPage'
 import Footer from './components/Footer'
 import AlliesPage from './components/AlliesPage'
 
@@ -35,6 +36,7 @@ const centroSolucionesItems = [
 const prensaItems = [
   { label: 'Boletines', href: '#prensa-page' },
   { label: 'Comunicados', href: '#comunicados-page' },
+  { label: 'Noticias', href: '#noticias-page' },
 ]
 
 const accesos = [
@@ -254,6 +256,14 @@ function App() {
 
     if (href === '#prensa-page') {
       setCurrentView('prensa')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      setActiveSection(href)
+      if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#noticias-page') {
+      setCurrentView('noticias')
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
@@ -1090,13 +1100,15 @@ function App() {
           <TramitesPage onSolicitarAsesoria={handleSolicitarAsesoria} />
         ) : currentView === 'prensa' ? (
           <PrensaPage />
+        ) : currentView === 'noticias' ? (
+          <NoticiasPage />
         ) : currentView === 'comunicados' ? (
           <ComunicadosPage />
         ) : null}
       </main>
 
       <a
-        href="https://wa.me/573128471928?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20ADICONAR"
+        href="https://wa.me/573145640709?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20_______"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-fab"

@@ -26,7 +26,6 @@ const AlliesPage = () => {
                 <h1 className="font-heading text-3xl text-emerald-950 mb-4 text-center">{aliadosInfo.title}</h1>
 
                 <p className="text-slate-700 mb-6 whitespace-pre-line text-center">{aliadosInfo.description}</p>
-                <br />
                 <div className="grid gap-6 md:grid-cols-2">
                 </div>
 

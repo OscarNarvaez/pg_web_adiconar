@@ -107,7 +107,7 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
 
       <div className="border-t border-emerald-100/10 bg-black/20">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-2 px-4 py-4 text-center text-xs text-emerald-100/70 md:px-8">
-          <p>© {currentYear} ADICONAR ONG. Todos los derechos reservados.</p>
+          <p>© {currentYear} ADICONAR. Todos los derechos reservados.</p>
           <p>
             Diseñado por{' '}
             <a
