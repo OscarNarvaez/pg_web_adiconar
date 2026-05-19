@@ -11,7 +11,8 @@ const fetchOembed = async (url) => {
         if (!res.ok) return null
         const json = await res.json()
         return json
-    } catch (e) {
+    } catch (err) {
+        console.warn('oEmbed fetch error for', url, err)
         return null
     }
 }
