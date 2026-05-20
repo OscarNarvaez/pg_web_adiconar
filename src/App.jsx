@@ -497,25 +497,16 @@ function App() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-40 backdrop-blur-sm"
         style={{
-          background: 'linear-gradient(to bottom, rgba(111, 114, 111, 0.88) 0%, rgba(112, 124, 112, 0.65) 45%, rgba(122, 136, 123, 0.49) 72%, rgba(255, 255, 255, 0) 100%)',
+          background: 'linear-gradient(to bottom, rgba(244,245,239,0.58) 0%, rgba(239,244,232,0.38) 42%, rgba(234,242,225,0.18) 72%, rgba(234,242,225,0) 100%)',
         }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8">
           <a
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
-            className="group inline-flex items-center gap-3 rounded-full border border-white/55 bg-white/75 px-3 py-2 pr-4 shadow-[0_18px_42px_-28px_rgba(3,42,32,0.9)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-emerald-900/15 hover:bg-white hover:shadow-[0_22px_48px_-24px_rgba(3,42,32,0.95)]"
+            className="inline-flex items-center"
           >
-            <div className="relative grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-white via-emerald-50 to-emerald-100 ring-1 ring-emerald-900/10 shadow-[0_16px_35px_-26px_rgba(20,83,45,0.9)] transition duration-300 group-hover:-translate-y-0.5">
-              <div className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,rgba(183, 255, 180, 0.95),transparent_36%),linear-gradient(145deg,rgba(16,185,129,0.12),rgba(5,150,105,0.16))]" />
-              <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="relative h-10 w-10 object-contain drop-shadow-[0_8px_16px_rgba(20,83,45,0.25)]" />
-            </div>
-            <div className="flex flex-col justify-center">
-              <p className="font-brand text-xl leading-none text-emerald-700 sm:text-[1.7rem] sm:leading-[0.95]">
-                ADICONAR
-              </p>
-              <p className="mt-1.5 h-px w-14 bg-gradient-to-r from-emerald-500/60 via-emerald-700/35 to-transparent" />
-            </div>
+            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 lg:h-20 lg:w-36 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">

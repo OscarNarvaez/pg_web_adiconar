@@ -16,7 +16,6 @@ const AlliesPage = () => {
 
     return (
         <div className="min-h-screen bg-[#f4f5ef] pt-28 pb-16">
-            <br />
             <div className="mx-auto max-w-5xl px-4 md:px-8">
                 <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight text-center">
                     Nuestros
@@ -30,12 +29,6 @@ const AlliesPage = () => {
                 </div>
 
                 <section className="mt-10">
-                    <div className="inline-block mb-4 text-center w-full">
-                        <span className="px-4 py-2 rounded-full bg-emerald-100/60 text-emerald-900 text-sm font-semibold">
-                            ALIADOS
-                        </span>
-                    </div>
-
                     <div className="relative w-screen overflow-hidden carousel-mask left-1/2 right-1/2 -mx-[50vw]">
                         <div className="carousel-track">
                             {logoGroups.map((group, groupIdx) => (
