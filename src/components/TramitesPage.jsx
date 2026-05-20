@@ -35,25 +35,48 @@ const TramitesPage = ({ onSolicitarAsesoria }) => {
                     <p className="text-xl text-emerald-900 font-semibold mb-6">Simplificamos procesos administrativos y garantizamos cumplimiento normativo para su estación de servicio.</p>
                 </div>
 
-                {/* Descripción + Imagen 
-          <div className="space-y-6">
-            <p className="text-emerald-900/85 leading-relaxed text-lg">
-              Facilitamos la realización de trámites y procesos administrativos relacionados con la operación de estaciones de servicio, apoyando en la gestión documental, radicación y cumplimiento de requisitos ante entidades públicas y organismos de control.
-            </p>
-            <p className="text-emerald-900/85 leading-relaxed text-lg">
-              Nuestro equipo coordina con Corporaciones Autónomas Regionales, Ministerios, Superintendencias y autoridades locales para reducir tiempos y mitigar riesgos administrativos.
-            </p>
-          </div>
-          */}
+                <div className="mb-16 grid gap-8 lg:grid-cols-[1fr_1fr] items-start">
+                    <div className="space-y-6 rounded-[2rem] border border-emerald-900/8 bg-white p-6 md:p-8 shadow-lg">
+                        <div>
+                            <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-3">Gestión integral de trámites</h2>
+                            <p className="text-emerald-900/85 leading-relaxed text-lg">
+                                Gestionamos y acompañamos los trámites y permisos requeridos para la operación de su estación de servicio ante las diferentes entidades gubernamentales, garantizando cumplimiento y agilidad en cada proceso.
+                            </p>
+                        </div>
 
-                <div className="flex">
-                    <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
-                        <img src="./imagenesCentroSoluciones/tramitesAnteEntidades.jpeg" alt="Trámites" className="w-full h-full object-contain animate-floatWave" />
+                        <div className="space-y-4">
+                            <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                                <p className="font-semibold text-emerald-900">Gestión integral de trámites</p>
+                                <p className="text-emerald-900/80 mt-1">Nos encargamos de los trámites y permisos necesarios para la operación legal y segura de su estación de servicio.</p>
+                            </div>
+
+                            <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                                <p className="font-semibold text-emerald-900">Acompañamiento personalizado</p>
+                                <p className="text-emerald-900/80 mt-1">Asesoría y seguimiento durante todo el proceso ante las entidades correspondientes.</p>
+                            </div>
+
+                            <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                                <p className="font-semibold text-emerald-900">Agilidad y cumplimiento</p>
+                                <p className="text-emerald-900/80 mt-1">Optimizamos tiempos y aseguramos el cumplimiento normativo en cada trámite.</p>
+                            </div>
+
+                            <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                                <p className="font-semibold text-emerald-900">Tranquilidad y respaldo</p>
+                                <p className="text-emerald-900/80 mt-1">Usted se enfoca en su operación, nosotros nos encargamos de la gestión.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="space-y-5">
+                        <div className="relative overflow-hidden rounded-[2rem] bg-white shadow-[0_24px_70px_rgba(6,95,70,0.12)]">
+                            <img
+                                src="/imagenesCentroSoluciones/tramitesEntidades.jpeg"
+                                alt="Trámites ante entidades"
+                                className="w-full h-[47.5rem] object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
-
-                <br />
-                <br />
 
                 {/* Trámites incluidos - tarjetas */}
                 <div className="mb-12">
