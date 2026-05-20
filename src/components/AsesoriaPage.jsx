@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useInfiniteCarousel } from './useInfiniteCarousel'
 
 const AsesoriaPage = ({ onSolicitarAsesoria }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [startX, setStartX] = useState(0);
+  const { containerRef, trackRef, handlers } = useInfiniteCarousel({ speed: 18 })
 
   const servicios = [
     { image: 'https://visaserviceeu.com/wp-content/uploads/2024/05/justice-and-law-handshake-concept-male-lawyer-wor-2023-11-27-05-05-17-utc-1024x683.jpg', title: 'Asesoría jurídica para EDS' },
@@ -21,24 +19,6 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
     { title: 'Acompañamiento especializado', icon: '👥' },
     { title: 'Respaldo técnico y gremial', icon: '📚' },
   ];
-
-  const handleDragStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.type.includes('touch') ? e.touches[0].clientX : e.clientX);
-  };
-
-  const handleDragMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const diff = currentX - startX;
-    setDragOffset(diff);
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-    setDragOffset(0);
-    setStartX(0);
-  };
 
   return (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
@@ -135,26 +115,13 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             <div className="absolute left-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-l-3xl"></div>
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
-            {/* Carrusel infinito con soporte drag */}
             <div
-              className="overflow-hidden cursor-grab active:cursor-grabbing"
-              onMouseDown={handleDragStart}
-              onMouseMove={handleDragMove}
-              onMouseUp={handleDragEnd}
-              onMouseLeave={handleDragEnd}
-              onTouchStart={handleDragStart}
-              onTouchMove={handleDragMove}
-              onTouchEnd={handleDragEnd}
+              ref={containerRef}
+              className="overflow-x-auto overflow-y-hidden carousel-scrollbar-none cursor-grab active:cursor-grabbing"
+              style={{ touchAction: 'pan-y' }}
+              {...handlers}
             >
-              <div
-                className="flex gap-6"
-                style={{
-                  animation: isDragging ? 'none' : 'scroll 30s linear infinite',
-                  transform: isDragging ? `translateX(${dragOffset}px)` : 'translateX(0)',
-                  transition: isDragging ? 'none' : 'transform 0.1s ease-out'
-                }}
-              >
-                {/* Primera iteración */}
+              <div ref={trackRef} className="flex gap-6 w-max">
                 {servicios.map((servicio, idx) => (
                   <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
                     <div
@@ -162,14 +129,11 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
                       style={{
                         backgroundImage: `url('${servicio.image}')`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundPosition: 'center',
                       }}
                     >
-                      {/* Fade effect en bordes de imagen */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
-                      {/* Overlay oscuro */}
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
-                      {/* Texto centrado */}
                       <div className="absolute inset-0 flex items-center justify-center p-4">
                         <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
                           {servicio.title}
@@ -178,7 +142,6 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
                     </div>
                   </div>
                 ))}
-                {/* Segunda iteración para efecto infinito */}
                 {servicios.map((servicio, idx) => (
                   <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
                     <div
@@ -186,14 +149,11 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
                       style={{
                         backgroundImage: `url('${servicio.image}')`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundPosition: 'center',
                       }}
                     >
-                      {/* Fade effect en bordes de imagen */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
-                      {/* Overlay oscuro */}
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
-                      {/* Texto centrado */}
                       <div className="absolute inset-0 flex items-center justify-center p-4">
                         <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
                           {servicio.title}
@@ -206,13 +166,13 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             </div>
 
             <style>{`
-              @keyframes scroll {
-                0% {
-                  transform: translateX(0);
-                }
-                100% {
-                  transform: translateX(calc(-50% - 12px));
-                }
+              .carousel-scrollbar-none {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+              }
+
+              .carousel-scrollbar-none::-webkit-scrollbar {
+                display: none;
               }
             `}</style>
           </div>

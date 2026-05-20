@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useInfiniteCarousel } from './useInfiniteCarousel'
 
 const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [startX, setStartX] = useState(0);
+  const { containerRef, trackRef, handlers } = useInfiniteCarousel({ speed: 24 })
 
   const services = [
     { image: 'https://www.banoh.co/images/arreglos-locativos-estaciones-de-servicio/remodelacion-estaciones-gasolina-2.jpg', title: 'Construcción y remodelación para EDS' },
@@ -26,24 +24,6 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
     { title: 'Optimización de equipos e infraestructura', icon: '⚙️' },
     { title: 'Acompañamiento especializado para EDS', icon: '👥' },
   ];
-
-  const handleDragStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.type.includes('touch') ? e.touches[0].clientX : e.clientX);
-  };
-
-  const handleDragMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const diff = currentX - startX;
-    setDragOffset(diff);
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-    setDragOffset(0);
-    setStartX(0);
-  };
 
   return (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
@@ -148,22 +128,14 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
 
             {/* Carrusel infinito con soporte drag */}
             <div
-              className="overflow-hidden cursor-grab active:cursor-grabbing"
-              onMouseDown={handleDragStart}
-              onMouseMove={handleDragMove}
-              onMouseUp={handleDragEnd}
-              onMouseLeave={handleDragEnd}
-              onTouchStart={handleDragStart}
-              onTouchMove={handleDragMove}
-              onTouchEnd={handleDragEnd}
+              ref={containerRef}
+              className="overflow-x-auto overflow-y-hidden carousel-scrollbar-none cursor-grab active:cursor-grabbing"
+              style={{ touchAction: 'pan-y' }}
+              {...handlers}
             >
               <div
-                className="flex gap-6"
-                style={{
-                  animation: isDragging ? 'none' : 'scroll 30s linear infinite',
-                  transform: isDragging ? `translateX(${dragOffset}px)` : 'translateX(0)',
-                  transition: isDragging ? 'none' : 'transform 0.1s ease-out'
-                }}
+                ref={trackRef}
+                className="flex gap-6 w-max"
               >
                 {/* Primera iteración */}
                 {services.map((service, idx) => (
@@ -266,13 +238,13 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
       </div>
 
       <style>{`
-        @keyframes scroll {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-50% - 12px));
-          }
+        .carousel-scrollbar-none {
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .carousel-scrollbar-none::-webkit-scrollbar {
+          display: none;
         }
 
         @keyframes fade-in {

@@ -1,4 +1,4 @@
-import React from 'react'
+import { useInfiniteCarousel } from './useInfiniteCarousel'
 import { aliadosInfo } from '../data/aliados'
 
 const logoFiles = [
@@ -12,6 +12,7 @@ const logoFiles = [
 ]
 
 const AlliesPage = () => {
+    const { containerRef, trackRef, handlers } = useInfiniteCarousel({ speed: 18 })
     const logoGroups = [logoFiles, logoFiles]
     const soldicomWhatsappUrl = 'https://wa.me/573116082041'
 
@@ -30,8 +31,16 @@ const AlliesPage = () => {
                 </div>
 
                 <section className="mt-10">
-                    <div className="relative w-screen overflow-hidden carousel-mask left-1/2 right-1/2 -mx-[50vw]">
-                        <div className="carousel-track">
+                    <div
+                        ref={containerRef}
+                        className="relative w-screen overflow-x-auto overflow-y-hidden carousel-mask carousel-scrollbar-none left-1/2 right-1/2 -mx-[50vw] cursor-grab active:cursor-grabbing"
+                        style={{ touchAction: 'pan-y' }}
+                        {...handlers}
+                    >
+                        <div
+                            ref={trackRef}
+                            className="carousel-track"
+                        >
                             {logoGroups.map((group, groupIdx) => (
                                 <div className="carousel-group" key={groupIdx} aria-hidden={groupIdx === 1}>
                                     {group.map((name, idx) => (
@@ -53,8 +62,7 @@ const AlliesPage = () => {
                             display: flex;
                             align-items: center;
                             width: max-content;
-                            /* velocidad constante del carrusel */
-                            animation: marquee 30s linear infinite;
+                            gap: 2rem;
                         }
 
                         .carousel-group {
@@ -90,9 +98,13 @@ const AlliesPage = () => {
                             background: linear-gradient(to left, #f4f5ef 0%, rgba(244,245,239,0) 100%);
                         }
 
-                        @keyframes marquee {
-                            0% { transform: translateX(0); }
-                            100% { transform: translateX(-50%); }
+                        .carousel-scrollbar-none {
+                            scrollbar-width: none;
+                            -ms-overflow-style: none;
+                        }
+
+                        .carousel-scrollbar-none::-webkit-scrollbar {
+                            display: none;
                         }
 
                         @keyframes soldicomPulse {

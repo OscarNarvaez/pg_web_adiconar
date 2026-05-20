@@ -1,9 +1,7 @@
-import { useState } from 'react';
+import { useInfiniteCarousel } from './useInfiniteCarousel'
 
 const PolizasPage = ({ onSolicitarAsesoria }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragOffset, setDragOffset] = useState(0);
-  const [startX, setStartX] = useState(0);
+  const { containerRef, trackRef, handlers } = useInfiniteCarousel({ speed: 18 })
 
   const polizas = [
     { image: 'https://d9b6rardqz97a.cloudfront.net/wp-content/uploads/2019/10/20214019/33-SEGURO_PARA_INDUSTRIA_DE_HIDROCARBUROS-482x390.jpg', title: 'Pólizas de hidrocarburos' },
@@ -19,24 +17,6 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
     { title: 'Coberturas adaptadas al sector', icon: '⚙️' },
     { title: 'Mayor tranquilidad operativa', icon: '✨' },
   ];
-
-  const handleDragStart = (e) => {
-    setIsDragging(true);
-    setStartX(e.type.includes('touch') ? e.touches[0].clientX : e.clientX);
-  };
-
-  const handleDragMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const diff = currentX - startX;
-    setDragOffset(diff);
-  };
-
-  const handleDragEnd = () => {
-    setIsDragging(false);
-    setDragOffset(0);
-    setStartX(0);
-  };
 
   return (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-20">
@@ -125,26 +105,13 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
             <div className="absolute left-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-r from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-l-3xl"></div>
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
-            {/* Carrusel infinito con soporte drag */}
             <div
-              className="overflow-hidden cursor-grab active:cursor-grabbing"
-              onMouseDown={handleDragStart}
-              onMouseMove={handleDragMove}
-              onMouseUp={handleDragEnd}
-              onMouseLeave={handleDragEnd}
-              onTouchStart={handleDragStart}
-              onTouchMove={handleDragMove}
-              onTouchEnd={handleDragEnd}
+              ref={containerRef}
+              className="overflow-x-auto overflow-y-hidden carousel-scrollbar-none cursor-grab active:cursor-grabbing"
+              style={{ touchAction: 'pan-y' }}
+              {...handlers}
             >
-              <div
-                className="flex gap-6"
-                style={{
-                  animation: isDragging ? 'none' : 'scroll 30s linear infinite',
-                  transform: isDragging ? `translateX(${dragOffset}px)` : 'translateX(0)',
-                  transition: isDragging ? 'none' : 'transform 0.1s ease-out'
-                }}
-              >
-                {/* Primera iteración */}
+              <div ref={trackRef} className="flex gap-6 w-max">
                 {polizas.map((poliza, idx) => (
                   <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
                     <div
@@ -152,14 +119,11 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
                       style={{
                         backgroundImage: `url('${poliza.image}')`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundPosition: 'center',
                       }}
                     >
-                      {/* Fade effect en bordes de imagen */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
-                      {/* Overlay oscuro */}
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
-                      {/* Texto centrado */}
                       <div className="absolute inset-0 flex items-center justify-center p-4">
                         <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
                           {poliza.title}
@@ -168,7 +132,6 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
                     </div>
                   </div>
                 ))}
-                {/* Segunda iteración para efecto infinito */}
                 {polizas.map((poliza, idx) => (
                   <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
                     <div
@@ -176,14 +139,11 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
                       style={{
                         backgroundImage: `url('${poliza.image}')`,
                         backgroundSize: 'cover',
-                        backgroundPosition: 'center'
+                        backgroundPosition: 'center',
                       }}
                     >
-                      {/* Fade effect en bordes de imagen */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-transparent pointer-events-none"></div>
-                      {/* Overlay oscuro */}
                       <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300"></div>
-                      {/* Texto centrado */}
                       <div className="absolute inset-0 flex items-center justify-center p-4">
                         <p className="font-heading text-sm md:text-base text-white text-center font-bold line-clamp-3">
                           {poliza.title}
@@ -196,13 +156,13 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
             </div>
 
             <style>{`
-              @keyframes scroll {
-                0% {
-                  transform: translateX(0);
-                }
-                100% {
-                  transform: translateX(calc(-50% - 12px));
-                }
+              .carousel-scrollbar-none {
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+              }
+
+              .carousel-scrollbar-none::-webkit-scrollbar {
+                display: none;
               }
             `}</style>
           </div>
