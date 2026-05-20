@@ -19,7 +19,6 @@ const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Sobre nosotros', href: '#sobre-nosotros' },
   { label: 'Centro de soluciones', href: '#almacen' },
-  { label: 'Contacto', href: '#contacto' },
 ]
 
 const centroSolucionesItems = [
@@ -140,7 +139,7 @@ const dependenciasContacto = {
   directorEjecutivo: {
     label: 'Director Ejecutivo',
     contacto: 'Rodrigo Yepes',
-    telefono: '3164215844',
+    telefono: '3185896142',
     email: 'direccion@adiconar.co',
   },
 }
@@ -462,7 +461,8 @@ function App() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-40 backdrop-blur-lg"
         style={{
-          background: 'linear-gradient(to bottom, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%',
+          background: 'rgba(255, 255, 255, 0.72)',
+          borderBottom: '1px solid rgba(6, 78, 59, 0.08)',
         }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 md:px-8">
@@ -578,6 +578,7 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
+                onClick={(event) => navegarASeccion(event, '#prensa')}
                 className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-emerald-800 px-2.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white"
                 aria-haspopup="true"
               >
@@ -598,6 +599,18 @@ function App() {
                 ))}
               </div>
             </div>
+
+            <a
+              href="#contacto"
+              onClick={(event) => navegarASeccion(event, '#contacto')}
+              aria-current={activeSection === '#contacto' ? 'page' : undefined}
+              className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === '#contacto' && currentView === 'home'
+                ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
+                : 'text-emerald-900 hover:bg-emerald-950/10'
+                }`}
+            >
+              <span className="desktop-nav-outline-text">Contacto</span>
+            </a>
           </nav>
 
           <button
@@ -960,6 +973,67 @@ function App() {
                     className="h-80 w-full object-cover sm:h-[26rem]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/35 to-transparent" />
+                </div>
+              </div>
+            </section>
+
+            <section id="prensa" className="py-16 md:py-24">
+              <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+                <div className="text-center mb-12">
+                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-900/70 mb-4">Manténgase informado</p>
+                  <h2 className="font-heading text-4xl md:text-5xl leading-[1.2] tracking-[-0.02em] text-emerald-950 mb-4">
+                    Prensa
+                  </h2>
+                  <p className="text-lg text-slate-700 max-w-2xl mx-auto">
+                    Aquí encontrarás lo más relevante del sector de estaciones de servicio, noticias de interés y comunicados oficiales de ADICONAR.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-3 max-w-3xl mx-auto">
+                  <a
+                    href="#prensa-page"
+                    onClick={(event) => navegarASeccion(event, '#prensa-page')}
+                    className="group rounded-2xl border border-emerald-900/15 bg-white p-6 text-center transition duration-300 hover:border-emerald-900/30 hover:shadow-[0_20px_40px_-20px_rgba(6,78,59,0.2)] hover:-translate-y-1"
+                  >
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-900/10 group-hover:bg-emerald-900/15 transition mb-3">
+                      <span className="text-lg">📄</span>
+                    </div>
+                    <h3 className="font-semibold text-emerald-950 text-lg">Boletines</h3>
+                    <p className="text-sm text-slate-600 mt-2">Últimos boletines y comunicados del sector</p>
+                    <div className="mt-4">
+                      <span className="inline-flex items-center justify-center rounded-full bg-emerald-900 px-3 py-1 text-sm font-semibold text-white">Saber más</span>
+                    </div>
+                  </a>
+
+                  <a
+                    href="#comunicados-page"
+                    onClick={(event) => navegarASeccion(event, '#comunicados-page')}
+                    className="group rounded-2xl border border-emerald-900/15 bg-white p-6 text-center transition duration-300 hover:border-emerald-900/30 hover:shadow-[0_20px_40px_-20px_rgba(6,78,59,0.2)] hover:-translate-y-1"
+                  >
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-900/10 group-hover:bg-emerald-900/15 transition mb-3">
+                      <span className="text-lg">📢</span>
+                    </div>
+                    <h3 className="font-semibold text-emerald-950 text-lg">Comunicados</h3>
+                    <p className="text-sm text-slate-600 mt-2">Comunicados oficiales de ADICONAR</p>
+                    <div className="mt-4">
+                      <span className="inline-flex items-center justify-center rounded-full bg-emerald-900 px-3 py-1 text-sm font-semibold text-white">Saber más</span>
+                    </div>
+                  </a>
+
+                  <a
+                    href="#noticias-page"
+                    onClick={(event) => navegarASeccion(event, '#noticias-page')}
+                    className="group rounded-2xl border border-emerald-900/15 bg-white p-6 text-center transition duration-300 hover:border-emerald-900/30 hover:shadow-[0_20px_40px_-20px_rgba(6,78,59,0.2)] hover:-translate-y-1"
+                  >
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-900/10 group-hover:bg-emerald-900/15 transition mb-3">
+                      <span className="text-lg">📰</span>
+                    </div>
+                    <h3 className="font-semibold text-emerald-950 text-lg">Noticias</h3>
+                    <p className="text-sm text-slate-600 mt-2">Noticias e información de interés</p>
+                    <div className="mt-4">
+                      <span className="inline-flex items-center justify-center rounded-full bg-emerald-900 px-3 py-1 text-sm font-semibold text-white">Saber más</span>
+                    </div>
+                  </a>
                 </div>
               </div>
             </section>

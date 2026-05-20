@@ -4,9 +4,6 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 py-12 text-center md:px-8">
         <div className="flex flex-col items-center">
           <p className="font-heading text-3xl tracking-tight text-white">ADICONAR</p>
-          <p className="mt-3 max-w-[48ch] text-sm leading-relaxed text-emerald-100/85">
-            Impulsamos desarrollo comunitario con metodo, alianzas y gestion transparente para sostener resultados de largo plazo.
-          </p>
         </div>
 
         <div className="grid w-full grid-cols-1 gap-10 md:grid-cols-4">
