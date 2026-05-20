@@ -133,13 +133,14 @@ const dependenciasContacto = {
   },
   asesoriaJuridica: {
     label: 'Asesora Jurídica',
-    contacto: 'Adriana Andrade',
-    telefono: '3185896142',
+    contacto: 'Karen Rivera Andrade',
+    telefono: '3145640709',
     email: 'juridica@adiconar.co',
   },
   directorEjecutivo: {
     label: 'Director Ejecutivo',
     contacto: 'Rodrigo Yepes',
+    telefono: '3164215844',
     email: 'direccion@adiconar.co',
   },
 }
@@ -164,12 +165,6 @@ function App() {
   const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' })
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [notificationMessage, setNotificationMessage] = useState('')
-  const [showEmailChooser, setShowEmailChooser] = useState(false)
-  const [emailChooserData, setEmailChooserData] = useState({
-    dependencia: null,
-    subject: '',
-    body: '',
-  })
 
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
@@ -352,13 +347,9 @@ function App() {
       return
     }
 
-    if (formData.participacion === 'directorEjecutivo' && dependencia.email) {
-      setEmailChooserData({
-        dependencia,
-        subject: `Contacto desde ADICONAR - ${dependencia.label}`,
-        body: mensaje,
-      })
-      setShowEmailChooser(true)
+    if (dependencia.telefono) {
+      const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
+      window.location.href = whatsappUrl
       return
     }
 
@@ -369,37 +360,11 @@ function App() {
       return
     }
 
-    if (dependencia.telefono) {
-      const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
-      window.location.href = whatsappUrl
-      return
-    }
-
     // Fallback: mostrar error si no hay método de contacto
     setFormStatus({
       type: 'error',
       message: 'No se encontró un método de contacto para la dependencia seleccionada.',
     })
-  }
-
-  const abrirCorreoSeleccionado = (medio) => {
-    const dependencia = emailChooserData.dependencia
-    if (!dependencia?.email) return
-
-    const subject = encodeURIComponent(emailChooserData.subject)
-    const body = encodeURIComponent(emailChooserData.body)
-
-    const destinos = {
-      gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(dependencia.email)}&su=${subject}&body=${body}`,
-      outlook: `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(dependencia.email)}&subject=${subject}&body=${body}`,
-      mailto: `mailto:${dependencia.email}?subject=${subject}&body=${body}`,
-    }
-
-    const url = destinos[medio]
-    if (!url) return
-
-    window.open(url, '_blank', 'noopener,noreferrer')
-    setShowEmailChooser(false)
   }
 
   const handleSolicitarAsesoria = (dependenciaKey) => {
@@ -495,18 +460,26 @@ function App() {
 
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-40 backdrop-blur-sm"
+        className="fixed inset-x-0 top-0 z-40 backdrop-blur-lg"
         style={{
-          background: 'linear-gradient(to bottom, rgba(244,245,239,0.58) 0%, rgba(239,244,232,0.38) 42%, rgba(234,242,225,0.18) 72%, rgba(234,242,225,0) 100%)',
+          background: 'linear-gradient(to bottom, rgba(76, 116, 73, 0.83) 0%, rgba(108, 171, 112, 0.56) 42%, rgba(99, 179, 104, 0.4) 72%, rgba(234,242,225,0) 100%)',
         }}
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 md:px-8">
           <a
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
-            className="inline-flex items-center"
+            className="group relative inline-flex items-center overflow-hidden rounded-[1.6rem] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(243,250,245,0.76)_45%,rgba(222,242,229,0.7)_100%)] px-4 py-1 shadow-[0_18px_42px_-22px_rgba(6,78,59,0.5)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_55px_-24px_rgba(6,78,59,0.6)]"
           >
-            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 lg:h-36 lg:w-36 object-contain bg-white p-2 rounded-full" />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-3 top-1/2 h-7 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.45)_40%,rgba(255,255,255,0)_100%)] opacity-70 transition duration-300 group-hover:opacity-100"
+            />
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-4 -top-4 h-14 w-14 rounded-full bg-emerald-300/25 blur-2xl transition duration-300 group-hover:bg-emerald-300/35"
+            />
+            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="relative z-10 h-14 w-auto sm:h-16 md:h-20 lg:h-20 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
@@ -520,7 +493,7 @@ function App() {
                     <button
                       type="button"
                       onClick={(event) => navegarASeccion(event, item.href)}
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
+                      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
                         ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
                         : 'text-white hover:bg-emerald-950/10'
                         }`}
@@ -592,7 +565,7 @@ function App() {
                   href={item.href}
                   onClick={(event) => navegarASeccion(event, item.href)}
                   aria-current={activeSection === item.href ? 'page' : undefined}
-                  className={`rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
+                  className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
                     ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
                     : 'text-white hover:bg-emerald-950/10'
                     }`}
@@ -605,7 +578,7 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-emerald-800 px-3 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-emerald-800 px-2.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white"
                 aria-haspopup="true"
               >
                 <span className="desktop-nav-outline-text">Prensa</span>
@@ -1091,65 +1064,6 @@ function App() {
           loading="lazy"
         />
       </a>
-
-      {showEmailChooser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg rounded-[2rem] border border-emerald-900/10 bg-white p-6 shadow-2xl md:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Contacto por correo</p>
-                <h3 className="mt-2 font-heading text-3xl tracking-[-0.02em] text-emerald-950">
-                  Elegir medio de correo
-                </h3>
-              </div>
-              <button
-                type="button"
-                onClick={() => setShowEmailChooser(false)}
-                className="rounded-full border border-emerald-900/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900"
-              >
-                Cerrar
-              </button>
-            </div>
-
-            <p className="mt-4 text-sm leading-relaxed text-slate-700">
-              Se abrirá un mensaje automático para {emailChooserData.dependencia?.label?.toLowerCase()}. Puedes elegir el servicio de correo que prefieras.
-            </p>
-
-            <div className="mt-4 rounded-2xl border border-emerald-900/10 bg-emerald-50 p-4 text-sm text-emerald-950">
-              <p className="font-semibold">Para:</p>
-              <p className="mt-1 break-all">{emailChooserData.dependencia?.email}</p>
-              <p className="mt-3 font-semibold">Asunto:</p>
-              <p className="mt-1">{emailChooserData.subject}</p>
-              <p className="mt-3 font-semibold">Mensaje:</p>
-              <p className="mt-1 whitespace-pre-wrap text-slate-700">{emailChooserData.body}</p>
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              <button
-                type="button"
-                onClick={() => abrirCorreoSeleccionado('gmail')}
-                className="rounded-2xl bg-emerald-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-900"
-              >
-                Gmail
-              </button>
-              <button
-                type="button"
-                onClick={() => abrirCorreoSeleccionado('outlook')}
-                className="rounded-2xl border border-emerald-900/15 bg-white px-4 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
-              >
-                Outlook
-              </button>
-              <button
-                type="button"
-                onClick={() => abrirCorreoSeleccionado('mailto')}
-                className="rounded-2xl border border-emerald-900/15 bg-white px-4 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
-              >
-                Correo predeterminado
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
 
       {showNotificationPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">

@@ -9,11 +9,11 @@ const logoFiles = [
     'logo5.png',
     'logo8.png',
     'logo9.png',
-    'logo10.png',
 ]
 
 const AlliesPage = () => {
     const logoGroups = [logoFiles, logoFiles]
+    const soldicomWhatsappUrl = 'https://wa.me/573116082041'
 
     return (
         <div className="min-h-screen bg-[#f4f5ef] pt-28 pb-16">
@@ -98,10 +98,91 @@ const AlliesPage = () => {
                             100% { transform: translateX(-50%); }
                         }
 
+                        @keyframes soldicomPulse {
+                            0%, 100% { box-shadow: 0 20px 50px -28px rgba(6,78,59,0.45), 0 0 0 0 rgba(16,185,129,0.12); }
+                            50% { box-shadow: 0 28px 70px -30px rgba(6,78,59,0.55), 0 0 0 10px rgba(16,185,129,0.04); }
+                        }
+
+                        @keyframes soldicomFloat {
+                            0%, 100% { transform: translateY(0) scale(1); }
+                            50% { transform: translateY(-4px) scale(1.02); }
+                        }
+
+                        @keyframes soldicomShine {
+                            0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+                            25% { opacity: 0.6; }
+                            50% { opacity: 0.12; }
+                            100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+                        }
+
+                        .soldicom-cta {
+                            position: relative;
+                            animation: soldicomPulse 4.6s ease-in-out infinite;
+                        }
+
+                        .soldicom-cta::before {
+                            content: '';
+                            position: absolute;
+                            inset: 0;
+                            background: linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,255,255,0.75) 48%, rgba(255,255,255,0) 60%);
+                            opacity: 0;
+                            pointer-events: none;
+                            transform: translateX(-120%) skewX(-18deg);
+                        }
+
+                        .soldicom-cta:hover::before {
+                            animation: soldicomShine 1.15s ease forwards;
+                        }
+
+                        .soldicom-logo-wrap {
+                            animation: soldicomFloat 3.8s ease-in-out infinite;
+                        }
+
+                        .soldicom-logo {
+                            animation: soldicomFloat 4.4s ease-in-out infinite reverse;
+                        }
+
+                        .soldicom-cta:hover .soldicom-logo-wrap,
+                        .soldicom-cta:hover .soldicom-logo {
+                            animation-play-state: paused;
+                        }
+
                         @media (max-width: 640px) {
                             .carousel-track { animation-duration: 56s; }
                         }
                     `}</style>
+                </section>
+
+                <section className="mt-8 flex justify-center">
+                    <a
+                        href={soldicomWhatsappUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="soldicom-cta group w-full max-w-3xl overflow-hidden rounded-[2rem] border border-emerald-900/10 bg-white/85 p-4 shadow-[0_20px_50px_-28px_rgba(6,78,59,0.45)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_28px_70px_-30px_rgba(6,78,59,0.55)] sm:p-5"
+                        aria-label="Abrir WhatsApp para comunicarte con el Fondo de Protección Solidaria SOLDICOM"
+                    >
+                        <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
+                            <div className="soldicom-logo-wrap flex h-28 w-28 flex-none items-center justify-center rounded-full bg-white p-3 shadow-[0_12px_28px_-14px_rgba(6,78,59,0.35)] sm:h-32 sm:w-32">
+                                <img
+                                    src="/logosAliados/logo10.png"
+                                    alt="Fondo de Protección Solidaria SOLDICOM"
+                                    className="soldicom-logo h-full w-full object-contain"
+                                />
+                            </div>
+
+                            <div className="max-w-xl">
+                                <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald-700/80">
+                                    Contacto directo
+                                </p>
+                                <h2 className="mt-2 text-xl font-semibold text-emerald-950 sm:text-2xl">
+                                    Puedes comunicarte con el Fondo de Protección Solidaria SOLDICOM
+                                </h2>
+                                <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                                    Toca este bloque para abrir una conversación por WhatsApp con atención rápida y cercana.
+                                </p>
+                            </div>
+                        </div>
+                    </a>
                 </section>
             </div>
         </div>
