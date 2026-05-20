@@ -9,6 +9,7 @@ const logoFiles = [
     'logo5.png',
     'logo8.png',
     'logo9.png',
+    'logo10.png',
 ]
 
 const AlliesPage = () => {

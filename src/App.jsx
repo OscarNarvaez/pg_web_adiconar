@@ -506,7 +506,7 @@ function App() {
             onClick={(event) => navegarASeccion(event, '#inicio')}
             className="inline-flex items-center"
           >
-            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 lg:h-20 lg:w-36 object-contain" />
+            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="h-20 w-20 sm:h-24 sm:w-24 md:h-32 md:w-32 lg:h-36 lg:w-36 object-contain bg-white p-2 rounded-full" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
