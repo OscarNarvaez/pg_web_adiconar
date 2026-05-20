@@ -172,6 +172,12 @@ function App() {
   const [formStatus, setFormStatus] = useState({ type: 'idle', message: '' })
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [notificationMessage, setNotificationMessage] = useState('')
+  const [showEmailChooser, setShowEmailChooser] = useState(false)
+  const [emailChooserData, setEmailChooserData] = useState({
+    dependencia: null,
+    subject: '',
+    body: '',
+  })
 
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
@@ -354,7 +360,16 @@ function App() {
       return
     }
 
-    // Si la dependencia tiene un email, abrir cliente de correo
+    if (formData.participacion === 'directorEjecutivo' && dependencia.email) {
+      setEmailChooserData({
+        dependencia,
+        subject: `Contacto desde ADICONAR - ${dependencia.label}`,
+        body: mensaje,
+      })
+      setShowEmailChooser(true)
+      return
+    }
+
     if (dependencia.email) {
       const subject = `Contacto desde ADICONAR - ${dependencia.label}`
       const mailto = `mailto:${dependencia.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mensaje)}`
@@ -362,7 +377,6 @@ function App() {
       return
     }
 
-    // Si no, intentar por WhatsApp si hay telefono disponible
     if (dependencia.telefono) {
       const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
       window.location.href = whatsappUrl
@@ -374,6 +388,26 @@ function App() {
       type: 'error',
       message: 'No se encontró un método de contacto para la dependencia seleccionada.',
     })
+  }
+
+  const abrirCorreoSeleccionado = (medio) => {
+    const dependencia = emailChooserData.dependencia
+    if (!dependencia?.email) return
+
+    const subject = encodeURIComponent(emailChooserData.subject)
+    const body = encodeURIComponent(emailChooserData.body)
+
+    const destinos = {
+      gmail: `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(dependencia.email)}&su=${subject}&body=${body}`,
+      outlook: `https://outlook.office.com/mail/deeplink/compose?to=${encodeURIComponent(dependencia.email)}&subject=${subject}&body=${body}`,
+      mailto: `mailto:${dependencia.email}?subject=${subject}&body=${body}`,
+    }
+
+    const url = destinos[medio]
+    if (!url) return
+
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setShowEmailChooser(false)
   }
 
   const handleSolicitarAsesoria = (dependenciaKey) => {
@@ -867,7 +901,6 @@ function App() {
                   </div>
 
                   <div className="mt-6 rounded-[1.4rem] border border-emerald-100/20 bg-black/15 p-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/80">Objetivo {objetivoActivo + 1}</p>
                     <p className="mt-3 text-base leading-relaxed text-emerald-50 md:text-lg">{objetivoActual.texto}</p>
                   </div>
 
@@ -1075,6 +1108,65 @@ function App() {
           loading="lazy"
         />
       </a>
+
+      {showEmailChooser && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 px-4 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-[2rem] border border-emerald-900/10 bg-white p-6 shadow-2xl md:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Contacto por correo</p>
+                <h3 className="mt-2 font-heading text-3xl tracking-[-0.02em] text-emerald-950">
+                  Elegir medio de correo
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowEmailChooser(false)}
+                className="rounded-full border border-emerald-900/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900"
+              >
+                Cerrar
+              </button>
+            </div>
+
+            <p className="mt-4 text-sm leading-relaxed text-slate-700">
+              Se abrirá un mensaje automático para {emailChooserData.dependencia?.label?.toLowerCase()}. Puedes elegir el servicio de correo que prefieras.
+            </p>
+
+            <div className="mt-4 rounded-2xl border border-emerald-900/10 bg-emerald-50 p-4 text-sm text-emerald-950">
+              <p className="font-semibold">Para:</p>
+              <p className="mt-1 break-all">{emailChooserData.dependencia?.email}</p>
+              <p className="mt-3 font-semibold">Asunto:</p>
+              <p className="mt-1">{emailChooserData.subject}</p>
+              <p className="mt-3 font-semibold">Mensaje:</p>
+              <p className="mt-1 whitespace-pre-wrap text-slate-700">{emailChooserData.body}</p>
+            </div>
+
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              <button
+                type="button"
+                onClick={() => abrirCorreoSeleccionado('gmail')}
+                className="rounded-2xl bg-emerald-950 px-4 py-3 text-sm font-semibold text-white transition hover:bg-emerald-900"
+              >
+                Gmail
+              </button>
+              <button
+                type="button"
+                onClick={() => abrirCorreoSeleccionado('outlook')}
+                className="rounded-2xl border border-emerald-900/15 bg-white px-4 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
+              >
+                Outlook
+              </button>
+              <button
+                type="button"
+                onClick={() => abrirCorreoSeleccionado('mailto')}
+                className="rounded-2xl border border-emerald-900/15 bg-white px-4 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-50"
+              >
+                Correo predeterminado
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showNotificationPopup && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
