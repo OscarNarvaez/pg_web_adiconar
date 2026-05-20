@@ -29,7 +29,7 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
           <div className="flex flex-col items-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Contacto</p>
             <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
-              <p>adiconarnarino@adiconar.co</p>
+              <p>contacto@adiconar.co</p>
               <p>+57 318 589 6142</p>
               <p>Calle 21 #16 - 44 Navarrete</p>
               <p>--♪--</p>
@@ -41,13 +41,13 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/65">Legal</p>
             <div className="mt-4 space-y-2 text-sm text-emerald-100/85">
               <a
-                href="mailto:adiconarnarino@adiconar.co?subject=Solicitud%20politica%20de%20privacidad"
+                href="mailto:contacto@adiconar.co?subject=Solicitud%20politica%20de%20privacidad"
                 className="block transition hover:text-amber-200"
               >
                 Politica de privacidad
               </a>
               <a
-                href="mailto:adiconarnarino@adiconar.co?subject=Solicitud%20terminos%20de%20servicio"
+                href="mailto:contacto@adiconar.co?subject=Solicitud%20terminos%20de%20servicio"
                 className="block transition hover:text-amber-200"
               >
                 Terminos de servicio
