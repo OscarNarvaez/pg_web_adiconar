@@ -1,9 +1,12 @@
 export const aliadosInfo = {
     title: 'Respaldo para fortalecer las estaciones de servicio',
-    description: `En ADICONAR trabajamos de manera articulada con organizaciones, empresas y aliados estratégicos que aportan soluciones especializadas para el fortalecimiento del sector de combustibles y las estaciones de servicio.
-Nuestra red de aliados permite brindar acompañamiento integral en áreas técnicas, jurídicas, ambientales, operativas y comerciales, facilitando a nuestros afiliados el acceso a servicios especializados, soporte técnico y soluciones confiables para su operación.
-ADICONAR hace parte de Fendipetróleo y del Comité Intergremial de Nariño, fortaleciendo la representación gremial y el trabajo conjunto en beneficio del sector.
-Asimismo, contamos con convenios y articulación con empresas aliadas especializadas como Epsicol, HSD Ingeniería SAS, LABCYS, Gómez y Velásquez, Egaval y Equipetrol, entre otros aliados estratégicos que respaldan diferentes áreas de servicio para las EDS.`,
+    description: `En ADICONAR construimos alianzas estratégicas que fortalecen y respaldan a las estaciones de servicio, conectando a nuestros afiliados con soluciones confiables, especializadas y enfocadas en las necesidades reales del sector de combustibles.
+Institucionales: Comité Intergremial, Fendipetróleo, SOLDICOM
+Trabajamos articuladamente con organizaciones gremiales e institucionales que nos permiten representar, defender y fortalecer los intereses de las estaciones de servicio y distribuidores minoristas de combustible.
+Servicios Técnicos: Epsicol, HSD Ingeniería SAS, LABCYS
+Contamos con aliados técnicos especializados que respaldan a nuestras EDS afiliadas mediante soluciones en ingeniería, pruebas técnicas, mantenimiento y soporte operativo para garantizar seguridad y cumplimiento normativo.
+Aseguramiento: Inaseg, Ceballos y Salazar LTDA
+A través de nuestras alianzas en aseguramiento, brindamos a las estaciones de servicio acceso a soluciones integrales de protección y respaldo para su operación, infraestructura y actividad comercial.`,
     quePermiten: [
         'Soluciones técnicas especializadas',
         'Servicios de ingeniería y laboratorio',

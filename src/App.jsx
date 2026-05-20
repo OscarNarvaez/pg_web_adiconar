@@ -79,42 +79,34 @@ const objetivosCarousel = [
 
 const lineasServicio = [
   {
-    code: 'S01',
     title: 'Servicios técnicos para EDS',
     copy: 'Atención especializada para garantizar el correcto funcionamiento de equipos, infraestructura y tecnología de su estación.',
   },
   {
-    code: 'S02',
     title: 'Accesorios y suministros especializados',
     copy: 'Catálogo completo de repuestos, consumibles y componentes para sostener la operación diaria de su estación.',
   },
   {
-    code: 'S03',
     title: 'Gestión de pólizas y aseguramiento',
     copy: 'Protección integral con acompañamiento experto para cubrir los frentes de riesgo de su operación.',
   },
   {
-    code: 'S04',
     title: 'Asesoría jurídica, HSE y ambiental',
     copy: 'Respaldo legal, técnico y ambiental enfocado en cumplimiento, seguridad y gestión responsable.',
   },
   {
-    code: 'S05',
     title: 'Trámites ante entidades gubernamentales',
     copy: 'Gestión eficiente ante autoridades y organismos para asegurar procesos sin trabas y con soporte continuo.',
   },
   {
-    code: 'S06',
     title: 'Aforo y pruebas técnicas',
     copy: 'Verificación, medición y pruebas especializadas para validar la operación y el estado de sus sistemas.',
   },
   {
-    code: 'S07',
     title: 'Construcción y remodelación para EDS',
     copy: 'Diseño, adecuación y modernización de espacios e infraestructura para mejorar la funcionalidad de su estación.',
   },
   {
-    code: 'S08',
     title: 'Aliados corporativos y convenios estratégicos',
     copy: 'Conexión con partners estratégicos para sumar valor, eficiencia y oportunidades comerciales a su estación.',
   },
@@ -519,10 +511,10 @@ function App() {
               <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="relative h-10 w-10 object-contain drop-shadow-[0_8px_16px_rgba(20,83,45,0.25)]" />
             </div>
             <div className="flex flex-col justify-center">
-              <p className="font-brand text-lg leading-none text-emerald-950 sm:text-[1.8rem] sm:leading-[0.95]">
+              <p className="font-brand text-xl leading-none text-emerald-700 sm:text-[1.7rem] sm:leading-[0.95]">
                 ADICONAR
               </p>
-              <p className="mt-1.5 h-px w-14 bg-gradient-to-r from-emerald-900/60 via-emerald-700/35 to-transparent" />
+              <p className="mt-1.5 h-px w-14 bg-gradient-to-r from-emerald-500/60 via-emerald-700/35 to-transparent" />
             </div>
           </a>
 
@@ -537,13 +529,13 @@ function App() {
                     <button
                       type="button"
                       onClick={(event) => navegarASeccion(event, item.href)}
-                      className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
+                      className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
                         ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                        : 'text-emerald-950 hover:bg-emerald-950/10'
+                        : 'text-emerald-100 hover:bg-emerald-950/10'
                         }`}
                       aria-haspopup="true"
                     >
-                      CENTRO DE SOLUCIONES
+                      <span className="desktop-nav-outline-text">CENTRO DE SOLUCIONES</span>
                       <span className="text-[10px] ml-1">▼</span>
                     </button>
 
@@ -609,12 +601,12 @@ function App() {
                   href={item.href}
                   onClick={(event) => navegarASeccion(event, item.href)}
                   aria-current={activeSection === item.href ? 'page' : undefined}
-                  className={`rounded-full px-3 py-2 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
+                  className={`rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
                     ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                    : 'text-emerald-950 hover:bg-emerald-950/10'
+                    : 'text-emerald-100 hover:bg-emerald-950/10'
                     }`}
                 >
-                  {item.label}
+                  <span className="desktop-nav-outline-text">{item.label}</span>
                 </a>
               )
             })}
@@ -622,10 +614,10 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-white/80 px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-emerald-900"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-white/80 px-3 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-emerald-900"
                 aria-haspopup="true"
               >
-                Prensa
+                <span className="desktop-nav-outline-text">Prensa</span>
                 <span className="text-[10px]">▼</span>
               </button>
 
@@ -943,10 +935,7 @@ function App() {
                       key={item.code}
                       className="group rounded-[1.4rem] border border-emerald-900/12 bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-900/30"
                     >
-                      <div className="flex items-start gap-4">
-                        <div className="rounded-xl border border-emerald-900/20 bg-emerald-900/5 px-3 py-2 text-xs font-semibold tracking-[0.14em] text-emerald-900">
-                          {item.code}
-                        </div>
+                      <div className="flex items-start gap-4 text-center">
                         <div>
                           <h3 className="font-heading text-2xl tracking-[-0.02em] text-emerald-950">{item.title}</h3>
                           <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.copy}</p>
