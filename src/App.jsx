@@ -141,14 +141,13 @@ const dependenciasContacto = {
   },
   asesoriaJuridica: {
     label: 'Asesora Jurídica',
-    contacto: 'Karen Rivera Andrade',
-    telefono: '3145640709',
+    contacto: 'Adriana Andrade',
+    telefono: '3185896142',
     email: 'juridica@adiconar.co',
   },
   directorEjecutivo: {
     label: 'Director Ejecutivo',
     contacto: 'Rodrigo Yepes',
-    telefono: '3164215844',
     email: 'direccion@adiconar.co',
   },
 }
@@ -350,13 +349,31 @@ function App() {
     if (!dependencia || !mensaje) {
       setFormStatus({
         type: 'error',
-        message: 'Selecciona una dependencia para continuar con el contacto por WhatsApp.',
+        message: 'Selecciona una dependencia y escribe un mensaje para contactar.',
       })
       return
     }
 
-    const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
-    window.location.href = whatsappUrl
+    // Si la dependencia tiene un email, abrir cliente de correo
+    if (dependencia.email) {
+      const subject = `Contacto desde ADICONAR - ${dependencia.label}`
+      const mailto = `mailto:${dependencia.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(mensaje)}`
+      window.location.href = mailto
+      return
+    }
+
+    // Si no, intentar por WhatsApp si hay telefono disponible
+    if (dependencia.telefono) {
+      const whatsappUrl = `https://wa.me/57${dependencia.telefono}?text=${encodeURIComponent(mensaje)}`
+      window.location.href = whatsappUrl
+      return
+    }
+
+    // Fallback: mostrar error si no hay método de contacto
+    setFormStatus({
+      type: 'error',
+      message: 'No se encontró un método de contacto para la dependencia seleccionada.',
+    })
   }
 
   const handleSolicitarAsesoria = (dependenciaKey) => {

@@ -58,14 +58,14 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
           </h1>
         </div>
 
-        <div className="rounded-[2rem] border border-emerald-900/10 bg-gradient-to-br from-emerald-950 to-emerald-800 p-6 text-white shadow-[0_20px_60px_rgba(6,95,70,0.18)]">
-          <p className="text-1xl md:text-2xl font-heading leading-tight text-center">
+        <div className="rounded-[1rem] border border-emerald-900/10 bg-gradient-to-br from-emerald-950 to-emerald-800 p-6 text-white shadow-[0_20px_60px_rgba(6,95,70,0.18)]">
+          <p className="text-1xl md:text-1xl font-heading leading-tight text-center">
             CUMPLIMIENTO NORMATIVO, SEGURIDAD Y SOSTENIBILIDAD PARA SU OPERACIÓN.
           </p>
         </div>
         <br />
 
-        <div className="mb-16 grid gap-8 lg:grid-cols-[1fr_1fr] items-start">
+        <div className="mb-16 grid gap-10 lg:grid-cols-[1fr_1fr] items-start text-center">
           <div className="space-y-6 rounded-[2rem] border border-emerald-900/10 bg-white/80 p-6 md:p-8 shadow-[0_20px_60px_rgba(6,95,70,0.08)] backdrop-blur-sm">
             <p className="text-lg md:text-xl leading-relaxed text-emerald-900/90 font-medium text-center">
               Acompañamiento integral para el cumplimiento normativo, la gestión responsable y la protección de su operación, su equipo y el medio ambiente.
