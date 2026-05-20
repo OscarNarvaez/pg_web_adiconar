@@ -17,6 +17,7 @@ const AlliesPage = () => {
 
     return (
         <div className="min-h-screen bg-[#f4f5ef] pt-28 pb-16">
+            <br />
             <div className="mx-auto max-w-5xl px-4 md:px-8">
                 <h1 className="font-heading text-5xl md:text-6xl text-emerald-950 mb-6 leading-tight text-center">
                     Nuestros
