@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import almacenIcon from './logos/almacen.png'
 import serviciosIcon from './logos/servicios.png'
-import pagosIcon from './logos/pagos.png'
 import { categories } from './data/categories'
 import CategoryPage from './components/CategoryPage'
 import CentroSolucionesPage from './components/CentroSolucionesPage'
@@ -20,7 +19,6 @@ const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Sobre nosotros', href: '#sobre-nosotros' },
   { label: 'Centro de soluciones', href: '#almacen' },
-  { label: 'Pagos', href: '#pagos' },
   { label: 'Contacto', href: '#contacto' },
 ]
 
@@ -52,13 +50,6 @@ const accesos = [
     href: '#almacen-page',
     copy: 'Catalogo completo de repuestos, equipos y consumibles con disponibilidad 24/7.',
     icon: almacenIcon,
-    size: 'small',
-  },
-  {
-    title: 'Pagos y Facturacion',
-    href: '#pagos',
-    copy: 'Plataforma segura y agil para transacciones, pagos de servicios y facturacion electronica.',
-    icon: pagosIcon,
     size: 'small',
   },
 ]
