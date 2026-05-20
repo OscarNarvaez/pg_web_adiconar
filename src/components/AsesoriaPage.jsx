@@ -56,37 +56,72 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             Asesoría Jurídica
             <span className="block text-emerald-600 mt-2">HSE y Ambiental</span>
           </h1>
-
-          <p className="text-xl text-emerald-900 font-semibold mb-4">
-            Respaldo especializado para estaciones de servicio.
-          </p>
         </div>
 
-        
-          {/* 
-          <div className="space-y-6">
-            <div className="space-y-4">
-              <p className="text-emerald-900/85 leading-relaxed text-lg">
-                Ofrecemos acompañamiento jurídico, ambiental y HSE enfocado en las necesidades del sector de combustibles, brindando orientación especializada para el cumplimiento normativo y la atención de requerimientos técnicos y administrativos.
-              </p>
-              <p className="text-emerald-900/85 leading-relaxed text-lg">
-                Nuestro equipo apoya a las EDS en procesos regulatorios, gestión documental y cumplimiento de obligaciones ante entidades de control.
-              </p>
-            </div>
-          </div>*/}
+        <div className="rounded-[2rem] border border-emerald-900/10 bg-gradient-to-br from-emerald-950 to-emerald-800 p-6 text-white shadow-[0_20px_60px_rgba(6,95,70,0.18)]">
+          <p className="text-1xl md:text-2xl font-heading leading-tight text-center">
+            CUMPLIMIENTO NORMATIVO, SEGURIDAD Y SOSTENIBILIDAD PARA SU OPERACIÓN.
+          </p>
+        </div>
+        <br />
 
-         <div className="flex">
-          <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
-              <img
-                src="./imagenesCentroSoluciones/asesoriaJuridica.jpeg"
-                alt="Logo Asesoría Jurídica"
-                className="w-full h-full object-contain animate-floatWave"
-              />
+        <div className="mb-16 grid gap-8 lg:grid-cols-[1fr_1fr] items-start">
+          <div className="space-y-6 rounded-[2rem] border border-emerald-900/10 bg-white/80 p-6 md:p-8 shadow-[0_20px_60px_rgba(6,95,70,0.08)] backdrop-blur-sm">
+            <p className="text-lg md:text-xl leading-relaxed text-emerald-900/90 font-medium text-center">
+              Acompañamiento integral para el cumplimiento normativo, la gestión responsable y la protección de su operación, su equipo y el medio ambiente.
+            </p>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">ASESORÍA JURÍDICA</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Acompañamiento legal en asuntos regulatorios, contractuales y normativos para proteger su operación y sus intereses.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">HSE (SALUD, SEGURIDAD Y ENTORNO)</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Diseño e implementación de sistemas de gestión HSE, evaluación de riesgos, capacitación y acompañamiento para una operación segura.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">ASESORÍA AMBIENTAL</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Gestión ambiental integral, permisos, planes de manejo y cumplimiento de la normatividad ambiental vigente.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">ACOMPAÑAMIENTO ESPECIALIZADO</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Equipo de profesionales expertos que brindan soluciones prácticas y efectivas para su estación de servicio.
+                </p>
+              </div>
+              <div>
+
+              </div>
+
+              <br />
+              <div>
+
+              </div>
             </div>
           </div>
 
-            <br />
-            <br />
+          <div className="space-y-5">
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-emerald-900/10 bg-white shadow-[0_24px_70px_rgba(6,95,70,0.12)]">
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/35 via-transparent to-transparent pointer-events-none"></div>
+              <img
+                src="/imagenesCentroSoluciones/servicioJuridico.jpeg"
+                alt="Servicio jurídico, HSE y ambiental"
+                className="h-full w-full object-cover min-h-[24rem] md:min-h-[30rem]"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Servicios Incluidos - Carrusel Infinite Scrolling */}
         <div className="mb-16">
@@ -101,7 +136,7 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
             {/* Carrusel infinito con soporte drag */}
-            <div 
+            <div
               className="overflow-hidden cursor-grab active:cursor-grabbing"
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
@@ -111,7 +146,7 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}
             >
-              <div 
+              <div
                 className="flex gap-6"
                 style={{
                   animation: isDragging ? 'none' : 'scroll 30s linear infinite',
@@ -122,7 +157,7 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
                 {/* Primera iteración */}
                 {servicios.map((servicio, idx) => (
                   <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${servicio.image}')`,
@@ -146,7 +181,7 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
                 {/* Segunda iteración para efecto infinito */}
                 {servicios.map((servicio, idx) => (
                   <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${servicio.image}')`,
@@ -219,7 +254,7 @@ const AsesoriaPage = ({ onSolicitarAsesoria }) => {
             <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
               Contáctenos para conocer nuestras soluciones de asesoría especializada en HSE y cumplimiento normativo.
             </p>
-            <button 
+            <button
               onClick={() => onSolicitarAsesoria('asesoriaJuridica')}
               className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >

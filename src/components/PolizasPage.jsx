@@ -60,45 +60,58 @@ const PolizasPage = ({ onSolicitarAsesoria }) => {
           </p>
         </div>
 
-        {/* Mobile: solo la imagen, sin bordes ni animaciones */}
-        <div className="sm:hidden mb-4">
-          <img
-            src="./imagenesCentroSoluciones/polizasPageALARGADA.jpeg"
-            alt="Gestión de Pólizas y Aseguramiento"
-            className="w-full h-auto object-contain"
-          />
-        </div>
+        <div className="mb-16 grid gap-8 lg:grid-cols-[4.7fr_3.8fr] items-start">
+          <div className="space-y-6 rounded-[2rem] border border-emerald-900/10 bg-white/80 p-6 md:p-8 shadow-[0_20px_60px_rgba(6,95,70,0.08)] backdrop-blur-sm">
+            <p className="text-lg md:text-xl leading-relaxed text-emerald-900/90 font-medium">
+              Protección integral para su estación de servicio, con acompañamiento especializado en la gestión de pólizas y coberturas que respaldan su operación y patrimonio.
+            </p>
 
-        {/* Desktop/tablet: versión estilizada con profundidad y difuminados */}
-        <div className="hidden sm:block relative overflow-hidden rounded-[2rem] border border-emerald-900/10 bg-gradient-to-br from-white via-emerald-50/70 to-emerald-100/60 p-4 md:p-6 shadow-[0_25px_80px_rgba(6,95,70,0.12)]">
-          <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_20%,rgba(16,185,129,0.14),transparent_42%),radial-gradient(circle_at_15%_50%,rgba(6,95,70,0.08),transparent_24%),radial-gradient(circle_at_85%_50%,rgba(6,95,70,0.08),transparent_24%)]" />
-          <div className="absolute inset-y-0 left-0 w-24 md:w-32 pointer-events-none bg-gradient-to-r from-[#f4f5ef] via-[#f4f5ef]/85 to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-24 md:w-32 pointer-events-none bg-gradient-to-l from-[#f4f5ef] via-[#f4f5ef]/85 to-transparent z-10" />
+            <div className="grid gap-7 md:grid-cols-2">
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">PROTEGEMOS LO QUE MÁS LE IMPORTA</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Coberturas diseñadas para proteger su estación, equipos, instalaciones, inventarios y operación.
+                </p>
+              </div>
 
-          <div className="relative overflow-hidden rounded-[1.6rem] bg-white/45 backdrop-blur-sm">
-            <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-[#f4f5ef] via-transparent to-[#f4f5ef] opacity-60" />
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">ACOMPAÑAMIENTO ESPECIALIZADO</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Asesoría personalizada para identificar los riesgos de su operación y gestionar las pólizas adecuadas.
+                </p>
+              </div>
 
-            <div className="relative flex items-center justify-center min-h-[28rem] sm:min-h-[34rem] md:min-h-[10rem] lg:min-h-[48rem] px-4 sm:px-8 py-6">
-              <div className="absolute inset-x-6 top-6 h-28 rounded-full bg-emerald-500/10 blur-3xl pointer-events-none" />
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">GESTIÓN ÁGIL Y EFICIENTE</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Nos encargamos de todo el proceso: cotización, contratación, renovación y seguimiento.
+                </p>
+              </div>
 
-              <img
-                src="./imagenesCentroSoluciones/polizasPageALARGADA.jpeg"
-                alt="Gestión de Pólizas y Aseguramiento"
-                className="relative z-20 w-full max-w-6xl h-auto object-contain drop-shadow-[0_30px_45px_rgba(15,23,42,0.20)] animate-floatWave"
-              />
+              <div className="rounded-2xl border border-emerald-900/10 bg-emerald-50/70 p-5">
+                <p className="text-sm font-bold tracking-[0.18em] text-emerald-700 mb-2">RESPALDO Y TRANQUILIDAD</p>
+                <p className="text-emerald-900/85 leading-relaxed">
+                  Alianzas con aseguradoras confiables para brindarle el respaldo que su estación necesita.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-emerald-900/10 bg-white p-5 shadow-sm">
+              <p className="text-sm font-bold tracking-[0.2em] text-emerald-700 mb-2">ESTAMOS PARA ASESORARLO</p>
+              <p className="text-emerald-900/85 leading-relaxed">
+                Encontramos la póliza que mejor se adapta a su operación y necesidad.
+              </p>
             </div>
           </div>
+
+          <div className="flex items-center justify-center">
+            <img
+              src="/imagenesCentroSoluciones/polizasAseguramiento.jpeg"
+              alt="Gestión de Pólizas y Aseguramiento"
+              className="w-full h-auto rounded-[2rem] object-cover"
+            />
+          </div>
         </div>
-
-        {/* Descripción Principal */}
-        <div className="space-y-4 text-center md:text-left">
-          <p className="text-emerald-900/85 leading-relaxed text-lg">
-            <br />
-            <br />
-          </p>
-        </div>
-
-
 
         {/* Líneas de Pólizas - Carrusel Infinite Scrolling */}
         <div className="mb-16">
