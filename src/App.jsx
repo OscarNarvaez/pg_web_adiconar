@@ -531,7 +531,7 @@ function App() {
                       onClick={(event) => navegarASeccion(event, item.href)}
                       className={`inline-flex items-center gap-1 rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
                         ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                        : 'text-emerald-100 hover:bg-emerald-950/10'
+                        : 'text-white hover:bg-emerald-950/10'
                         }`}
                       aria-haspopup="true"
                     >
@@ -603,7 +603,7 @@ function App() {
                   aria-current={activeSection === item.href ? 'page' : undefined}
                   className={`rounded-full px-3 py-2 text-base font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
                     ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                    : 'text-emerald-100 hover:bg-emerald-950/10'
+                    : 'text-white hover:bg-emerald-950/10'
                     }`}
                 >
                   <span className="desktop-nav-outline-text">{item.label}</span>
@@ -614,7 +614,7 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-white/80 px-3 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-emerald-900"
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-emerald-800 px-3 py-2 text-sm font-semibold uppercase tracking-[0.14em] text-white"
                 aria-haspopup="true"
               >
                 <span className="desktop-nav-outline-text">Prensa</span>

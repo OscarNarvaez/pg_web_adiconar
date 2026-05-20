@@ -7,9 +7,8 @@ const logoFiles = [
     'logo3.png',
     'logo4.jpeg',
     'logo5.png',
-    'logo6.png',
-    'logo7.png',
     'logo8.png',
+    'logo9.png',
 ]
 
 const AlliesPage = () => {
@@ -37,7 +36,7 @@ const AlliesPage = () => {
                         </span>
                     </div>
 
-                    <div className="relative w-full overflow-hidden carousel-mask">
+                    <div className="relative w-screen overflow-hidden carousel-mask left-1/2 right-1/2 -mx-[50vw]">
                         <div className="carousel-track">
                             {logoGroups.map((group, groupIdx) => (
                                 <div className="carousel-group" key={groupIdx} aria-hidden={groupIdx === 1}>
@@ -46,7 +45,7 @@ const AlliesPage = () => {
                                             <img
                                                 src={`/logosAliados/${name}`}
                                                 alt={name}
-                                                className="h-20 md:h-24 object-contain transition-transform duration-300 hover:scale-105"
+                                                className="h-24 md:h-28 object-contain transition-transform duration-300 hover:scale-105"
                                             />
                                         </div>
                                     ))}
