@@ -53,11 +53,8 @@ const AlliesPage = () => {
                             display: flex;
                             align-items: center;
                             width: max-content;
-                            animation: marquee 42s linear infinite;
-                        }
-
-                        .carousel-track:hover {
-                            animation-play-state: paused;
+                            /* velocidad constante del carrusel */
+                            animation: marquee 30s linear infinite;
                         }
 
                         .carousel-group {
@@ -147,9 +144,7 @@ const AlliesPage = () => {
                             animation-play-state: paused;
                         }
 
-                        @media (max-width: 640px) {
-                            .carousel-track { animation-duration: 56s; }
-                        }
+                        /* velocidad constante en todos los tamaños; sin overrides por hover */
                     `}</style>
                 </section>
 
@@ -162,7 +157,7 @@ const AlliesPage = () => {
                         aria-label="Abrir WhatsApp para comunicarte con el Fondo de Protección Solidaria SOLDICOM"
                     >
                         <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:text-left">
-                            <div className="soldicom-logo-wrap flex h-28 w-28 flex-none items-center justify-center rounded-full bg-white p-3 shadow-[0_12px_28px_-14px_rgba(6,78,59,0.35)] sm:h-32 sm:w-32">
+                            <div className="soldicom-logo-wrap flex h-28 w-28 flex-none items-center justify-center rounded-full bg-white p-0 shadow-[0_12px_28px_-14px_rgba(6,78,59,0.35)] sm:h-32 sm:w-32">
                                 <img
                                     src="/logosAliados/logo10.png"
                                     alt="Fondo de Protección Solidaria SOLDICOM"
@@ -170,16 +165,13 @@ const AlliesPage = () => {
                                 />
                             </div>
 
-                            <div className="max-w-xl">
+                            <div className="max-w-xl text-center">
                                 <p className="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-emerald-700/80">
-                                    Contacto directo
+                                    Contacto
                                 </p>
                                 <h2 className="mt-2 text-xl font-semibold text-emerald-950 sm:text-2xl">
-                                    Puedes comunicarte con el Fondo de Protección Solidaria SOLDICOM
+                                    !! Aqui tienes un enlace de comunicacion directo con SOLDICOM ¡¡
                                 </h2>
-                                <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
-                                    Toca este bloque para abrir una conversación por WhatsApp con atención rápida y cercana.
-                                </p>
                             </div>
                         </div>
                     </a>

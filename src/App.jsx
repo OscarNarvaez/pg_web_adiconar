@@ -461,7 +461,7 @@ function App() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-40 backdrop-blur-lg"
         style={{
-          background: 'rgba(255, 255, 255, 0.72)',
+          background: 'rgba(255, 255, 255, 0.37)',
           borderBottom: '1px solid rgba(6, 78, 59, 0.08)',
         }}
       >
@@ -1041,10 +1041,10 @@ function App() {
             <section id="contacto" className="py-16 md:py-10">
               <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8 ">
                 <article className="rounded-[4rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-10 lg:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-100/80 text-center">Contacto</p>
-                  <h2 className="font-heading mt-4  text-4xl leading-[1.2] tracking-[-0.02em] text-white md:text-5xl text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-100/80 text-center">CONTACTANOS</p>
+                  <h3 className="font-heading mt-2  text-2xl leading-[1.2] tracking-[-0.02em] text-white md:text-3xl text-center">
                     Respaldamos su Estación de Servicio.
-                  </h2>
+                  </h3>
 
                   <div className="mt-8 space-y-4 text-sm md:text-base text-center">
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
