@@ -84,18 +84,55 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
           </div>
           */}
 
-        <div className="flex">
-          <div className="relative w-full h-96 sm:h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden flex items-center justify-center">
-            <img
-              src="./imagenesCentroSoluciones/serviciosTecnicos.jpeg"
-              alt="Logo Servicio Técnico EDS"
-              className="w-full h-full object-contain animate-floatWave"
-            />
+        <div className="mb-16 grid gap-8 lg:grid-cols-[1fr_1fr] items-start">
+          <div className="space-y-6">
+            <div className="rounded-[2rem] border border-emerald-900/8 bg-white p-6 md:p-8 shadow-lg">
+              <div>
+                <h3 className="font-heading text-2xl md:text-3xl text-emerald-950">Soluciones técnicas especializadas</h3>
+                <p className="mt-3 text-emerald-900/85">Garantizamos la seguridad, eficiencia y continuidad operativa de su estación de servicio mediante servicios técnicos integrales.</p>
+              </div>
+
+              <div className="mt-6 flex flex-col gap-6">
+                <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                  <p className="font-semibold text-emerald-900">Respaldo técnico especializado</p>
+                  <p className="text-emerald-900/80 mt-1">Soporte técnico dedicado para EDS.</p>
+                </div>
+
+                <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                  <p className="font-semibold text-emerald-900">Cumplimiento normativo</p>
+                  <p className="text-emerald-900/80 mt-1">Acompañamiento gremial y gestión documental.</p>
+                </div>
+
+                <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                  <p className="font-semibold text-emerald-900">Soluciones integrales</p>
+                  <p className="text-emerald-900/80 mt-1">Mantenimiento, pruebas y adecuaciones.</p>
+                </div>
+
+                <div className="p-4 rounded-lg border-l-4 border-emerald-600 bg-emerald-50/60">
+                  <p className="font-semibold text-emerald-900">Acompañamiento personalizado</p>
+                  <p className="text-emerald-900/80 mt-1">Planes y acciones a la medida de su operación.</p>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <div className="rounded-xl border border-emerald-100 p-4 bg-emerald-50">
+                  <p className="text-sm font-semibold text-emerald-700">¿Necesita diagnóstico rápido?</p>
+                  <p className="text-sm text-emerald-900/80">Solicite una visita técnica y recibirá un informe con acciones priorizadas.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="relative self-stretch h-full">
+            <div>
+              <img
+                src="/imagenesCentroSoluciones/servicioTecnico.jpeg"
+                alt="Servicio Técnico EDS"
+                className=" max-h-[44.2rem] object-contain rounded-[1.6rem]"
+              />
+            </div>
           </div>
         </div>
-        
-        <br />
-        <br />
 
         {/* Servicios Incluidos - Carrusel Infinite Scrolling */}
         <div className="mb-16">
@@ -110,7 +147,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-20 bg-gradient-to-l from-emerald-50 via-emerald-50/40 to-transparent z-20 pointer-events-none rounded-r-3xl"></div>
 
             {/* Carrusel infinito con soporte drag */}
-            <div 
+            <div
               className="overflow-hidden cursor-grab active:cursor-grabbing"
               onMouseDown={handleDragStart}
               onMouseMove={handleDragMove}
@@ -120,7 +157,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
               onTouchMove={handleDragMove}
               onTouchEnd={handleDragEnd}
             >
-              <div 
+              <div
                 className="flex gap-6"
                 style={{
                   animation: isDragging ? 'none' : 'scroll 30s linear infinite',
@@ -131,7 +168,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
                 {/* Primera iteración */}
                 {services.map((service, idx) => (
                   <div key={`carousel-1-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${service.image}')`,
@@ -155,7 +192,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
                 {/* Segunda iteración para efecto infinito */}
                 {services.map((service, idx) => (
                   <div key={`carousel-2-${idx}`} className="flex-shrink-0 w-48 md:w-56 h-64 md:h-72">
-                    <div 
+                    <div
                       className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-emerald-900/10 shadow-lg hover:shadow-xl hover:border-emerald-500 transition-all duration-300 cursor-pointer group"
                       style={{
                         backgroundImage: `url('${service.image}')`,
@@ -218,7 +255,7 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
             <p className="text-emerald-100 text-lg mb-8 max-w-2xl mx-auto">
               Contáctenos para conocer cómo podemos optimizar la operación de su estación de servicio.
             </p>
-            <button 
+            <button
               onClick={() => onSolicitarAsesoria('tecnico')}
               className="px-8 py-3 bg-white text-emerald-950 font-heading font-bold rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
             >

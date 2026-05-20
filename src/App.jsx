@@ -748,7 +748,7 @@ function App() {
                   <h1 className="font-heading max-w-[15ch] text-4xl leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
                     Centro integral de soluciones para estaciones de servicio.
                   </h1>
-                  <p className="max-w-[60ch] text-base leading-relaxed text-emerald-50/90 md:text-lg">
+                  <p className="max-w-[60ch] text-base leading-relaxed text-emerald-50/100 ">
                     Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
                 </div>
