@@ -462,7 +462,7 @@ function App() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-40 backdrop-blur-lg"
         style={{
-          background: 'linear-gradient(to bottom, rgba(76, 116, 73, 0.83) 0%, rgba(108, 171, 112, 0.56) 42%, rgba(99, 179, 104, 0.4) 72%, rgba(234,242,225,0) 100%)',
+          background: 'linear-gradient(to bottom, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%, rgba(45, 116, 50, 0.56) 42%',
         }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 md:px-8">
@@ -495,7 +495,7 @@ function App() {
                       onClick={(event) => navegarASeccion(event, item.href)}
                       className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
                         ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                        : 'text-white hover:bg-emerald-950/10'
+                        : 'text-emerald-1000 hover:bg-emerald-950/10'
                         }`}
                       aria-haspopup="true"
                     >
@@ -567,7 +567,7 @@ function App() {
                   aria-current={activeSection === item.href ? 'page' : undefined}
                   className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href && currentView === 'home'
                     ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                    : 'text-white hover:bg-emerald-950/10'
+                    : 'text-emerald-1000 hover:bg-emerald-950/10'
                     }`}
                 >
                   <span className="desktop-nav-outline-text">{item.label}</span>
@@ -1050,7 +1050,7 @@ function App() {
       </main>
 
       <a
-        href="https://wa.me/573145640709?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20_______"
+        href="https://wa.me/573185896142?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20_______"
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-fab"
