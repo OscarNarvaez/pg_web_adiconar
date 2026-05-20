@@ -967,61 +967,6 @@ function App() {
               </div>
             </section>
 
-            <section id="pagos" className="border-b border-emerald-950/10 py-16 md:py-24">
-              <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 md:px-8 lg:grid-cols-[0.9fr_1.1fr]">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Pagos</p>
-                  <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
-                    Aportes seguros con confirmacion y seguimiento.
-                  </h2>
-                  <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-slate-700">
-                    Cada contribucion activa una ruta transparente: validacion, confirmacion y reporte para fortalecer la confianza de donantes y aliados.
-                  </p>
-
-                  <div className="mt-6 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-3">
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-2xl font-semibold tracking-tight text-emerald-950">SSL</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-900/70">cifrado activo</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-2xl font-semibold tracking-tight text-emerald-950">24/7</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-900/70">disponibilidad</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-2xl font-semibold tracking-tight text-emerald-950">100%</p>
-                      <p className="mt-1 text-[11px] uppercase tracking-[0.15em] text-emerald-900/70">trazabilidad</p>
-                    </div>
-                  </div>
-
-                  <a
-                    href="#contacto"
-                    onClick={(event) => navegarASeccion(event, '#contacto')}
-                    className="mt-7 inline-flex rounded-full border border-emerald-900/20 bg-emerald-900 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-800 active:translate-y-[1px]"
-                  >
-                    Quiero contribuir
-                  </a>
-                </div>
-
-                <aside className="rounded-[2rem] border border-emerald-900/15 bg-[#ecf2e5] p-6 md:p-8">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Ruta de aportes</p>
-                  <div className="mt-4 space-y-3">
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-900/70">Paso 1</p>
-                      <p className="mt-2 text-sm text-slate-700">Registro del aporte y validacion automatica de datos.</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-900/70">Paso 2</p>
-                      <p className="mt-2 text-sm text-slate-700">Confirmacion segura y notificacion por correo al instante.</p>
-                    </div>
-                    <div className="rounded-2xl border border-emerald-900/15 bg-white p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.13em] text-emerald-900/70">Paso 3</p>
-                      <p className="mt-2 text-sm text-slate-700">Reporte de uso y seguimiento del impacto asociado al programa.</p>
-                    </div>
-                  </div>
-                </aside>
-              </div>
-            </section>
-
             <section id="contacto" className="py-16 md:py-10">
               <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8 ">
                 <article className="rounded-[4rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-10 lg:p-8">
