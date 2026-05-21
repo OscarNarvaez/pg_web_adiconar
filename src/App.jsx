@@ -18,7 +18,7 @@ import AlliesPage from './components/AlliesPage'
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
   { label: 'Sobre nosotros', href: '#sobre-nosotros' },
-  { label: 'Centro de soluciones', href: '#almacen' },
+  { label: 'Centro de soluciones', href: '#servicios' },
 ]
 
 const centroSolucionesItems = [
@@ -468,16 +468,7 @@ function App() {
           <a
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
-            className="group relative inline-flex items-center overflow-hidden rounded-[1.6rem] border border-white/55 bg-[linear-gradient(135deg,rgba(255,255,255,0.82)_0%,rgba(243,250,245,0.76)_45%,rgba(222,242,229,0.7)_100%)] px-4 py-1 shadow-[0_18px_42px_-22px_rgba(6,78,59,0.5)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_26px_55px_-24px_rgba(6,78,59,0.6)]"
           >
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-x-3 top-1/2 h-7 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.95)_0%,rgba(255,255,255,0.45)_40%,rgba(255,255,255,0)_100%)] opacity-70 transition duration-300 group-hover:opacity-100"
-            />
-            <span
-              aria-hidden="true"
-              className="pointer-events-none absolute -right-4 -top-4 h-14 w-14 rounded-full bg-emerald-300/25 blur-2xl transition duration-300 group-hover:bg-emerald-300/35"
-            />
             <img src="/LogoAdiconarInicio.webp" alt="Logo de ADICONAR" className="relative z-10 h-14 w-auto sm:h-16 md:h-20 lg:h-20 object-contain" />
           </a>
 
@@ -802,33 +793,45 @@ function App() {
 
             <section id="sobre-nosotros" className="border-b border-emerald-950/10 py-16 md:py-24">
               <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-                <div className="grid gap-10 lg:grid-cols-[0.92fr_1.08fr]">
-                  <div>
+                <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
+                  <div className="lg:col-span-2">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Sobre nosotros</p>
-                    <h2 className="font-heading mt-4 max-w-[15ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
-                      Asociación de Distribuidores Minoristas de Combustible de Nariño
-                    </h2>
-                    <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-slate-700">
-                      Somos una organización gremial comprometida con el fortalecimiento de las estaciones de servicio y el sector de combustibles, brindando acompañamiento técnico, jurídico, operativo y comercial a sus afiliados y aliados.
-                    </p>
                   </div>
 
-                  <div className="grid gap-5 md:grid-cols-2">
-                    <article className="rounded-[1.5rem] border border-emerald-900/12 bg-white p-6 shadow-[0_18px_38px_-32px_rgba(3,42,32,0.9)]">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Mision</p>
-                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">COMPROMISO CON EL SECTOR DE COMBUSTIBLES.</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                        Trabajamos para fortalecer y respaldar a las estaciones de servicio mediante soluciones integrales, asesoría especializada y servicios confiables que contribuyan al crecimiento, cumplimiento normativo y desarrollo sostenible del sector.
-                      </p>
-                    </article>
-                    <article className="rounded-[1.5rem] border border-emerald-900/12 bg-[#e9efe1] p-6">
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Vision</p>
-                      <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">LIDERAZGO Y RESPALDO PARA LAS EDS.</h3>
-                      <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                        Ser el principal referente gremial y centro integral de soluciones para estaciones de servicio en el suroccidente colombiano, reconocido por su liderazgo, innovación y compromiso con el fortalecimiento del sector de combustibles.
-                      </p>
-                    </article>
+                  <div>
+                    <div className="grid gap-5 md:grid-cols-2">
+                      <article className="rounded-[1.5rem] border border-emerald-900/12 bg-white p-6 shadow-[0_18px_38px_-32px_rgba(3,42,32,0.9)]">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Mision</p>
+                        <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">COMPROMISO CON EL SECTOR DE COMBUSTIBLES.</h3>
+                        <p className="mt-3 text-sm leading-relaxed text-slate-700">
+                          Trabajamos para fortalecer y respaldar a las estaciones de servicio mediante soluciones integrales, asesoría especializada y servicios confiables que contribuyan al crecimiento, cumplimiento normativo y desarrollo sostenible del sector.
+                        </p>
+                      </article>
+                      <article className="rounded-[1.5rem] border border-emerald-900/12 bg-[#e9efe1] p-6">
+                        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Vision</p>
+                        <h3 className="font-heading mt-3 text-2xl tracking-[-0.02em] text-emerald-950">LIDERAZGO Y RESPALDO PARA LAS EDS.</h3>
+                        <p className="mt-3 text-sm leading-relaxed text-slate-700">
+                          Ser el principal referente gremial y centro integral de soluciones para estaciones de servicio en el suroccidente colombiano, reconocido por su liderazgo, innovación y compromiso con el fortalecimiento del sector de combustibles.
+                        </p>
+                      </article>
+                    </div>
                   </div>
+
+                  <article className="relative rounded-[1.5rem] border border-emerald-100/40 bg-emerald-50 p-6 shadow-sm">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Objetivos estratégicos</p>
+                    <ul className="mt-1 space-y-1.5">
+                      {objetivosCarousel.map((objetivo, idx) => (
+                        <li key={objetivo.texto + idx} className="flex items-start gap-4 rounded-lg bg-white/90 p-3 shadow-[0_8px_20px_-12px_rgba(3,42,32,0.6)]">
+                          <div className="flex-shrink-0">
+                            <div className="h-8 w-1.5 rounded-full bg-emerald-700" aria-hidden="true" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-emerald-900 leading-snug">{objetivo.texto}</p>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
                 </div>
 
                 <div className="mt-10 rounded-[2rem] border border-emerald-900/12 bg-emerald-950 p-6 text-emerald-50 md:p-8">
