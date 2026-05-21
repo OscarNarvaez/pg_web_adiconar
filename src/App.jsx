@@ -33,7 +33,6 @@ const centroSolucionesItems = [
 const prensaItems = [
   { label: 'Boletines', href: '#prensa-page' },
   { label: 'Comunicados', href: '#comunicados-page' },
-  { label: 'Noticias', href: '#noticias-page' },
 ]
 
 const accesos = [
@@ -479,7 +478,7 @@ function App() {
               aria-hidden="true"
               className="pointer-events-none absolute -right-4 -top-4 h-14 w-14 rounded-full bg-emerald-300/25 blur-2xl transition duration-300 group-hover:bg-emerald-300/35"
             />
-            <img src="/logoAdiconar.png" alt="Logo de ADICONAR" className="relative z-10 h-14 w-auto sm:h-16 md:h-20 lg:h-20 object-contain" />
+            <img src="/LogoAdiconarInicio.webp" alt="Logo de ADICONAR" className="relative z-10 h-14 w-auto sm:h-16 md:h-20 lg:h-20 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
@@ -774,44 +773,27 @@ function App() {
                   <p className="max-w-[60ch] text-base leading-relaxed text-emerald-50/100 ">
                     Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
-                </div>
-              </div>
-            </section>
 
-            <section id="acceso-rapido" className="border-b border-emerald-950/10 py-16 md:py-24">
-              <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Acceso rapido</p>
-                <div className="mt-7 grid gap-5 md:grid-cols-[1.15fr_0.85fr]">
-                  <a
-                    href={accesos[0].href}
-                    onClick={(event) => navegarASeccion(event, accesos[0].href)}
-                    className="group rounded-[1.9rem] border border-emerald-900/12 bg-white p-7 shadow-[0_28px_40px_-34px_rgba(3,42,32,0.85)] transition duration-300 hover:-translate-y-1"
-                  >
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-900/8">
-                      <img src={accesos[0].icon} alt={`Icono de ${accesos[0].title}`} className="h-9 w-9 object-contain" />
-                    </div>
-                    <h2 className="font-heading mt-5 max-w-[18ch] text-3xl leading-tight tracking-[-0.02em] text-emerald-950">
-                      {accesos[0].title}
-                    </h2>
-                    <p className="mt-3 max-w-[48ch] text-base leading-relaxed text-slate-700">{accesos[0].copy}</p>
-                    <p className="mt-6 text-sm font-semibold text-emerald-900 transition group-hover:translate-x-1">Conocer mas -&gt;</p>
-                  </a>
-
-                  <div className="grid gap-5">
-                    {accesos.slice(1).map((item, index) => (
-                      <a
+                  <div className="flex flex-wrap gap-3 pt-1">
+                    {accesos.map((item, index) => (
+                      <button
                         key={item.title}
-                        href={item.href}
+                        type="button"
                         onClick={(event) => navegarASeccion(event, item.href)}
-                        className="group rounded-[1.5rem] border border-emerald-900/12 bg-[#edf0e3] p-6 transition duration-300 hover:-translate-y-1 hover:border-emerald-900/30"
+                        className={`group inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 ${index === 0
+                          ? 'border-white/30 bg-white/12 text-white backdrop-blur-md hover:border-amber-300/70 hover:bg-amber-300 hover:text-emerald-950'
+                          : 'border-amber-300/70 bg-amber-300 text-emerald-950 hover:bg-amber-200 hover:shadow-[0_24px_45px_-28px_rgba(180,123,0,0.8)]'
+                          }`}
                       >
-                        <div className="flex items-center justify-between">
-                          <h3 className="font-heading text-2xl tracking-[-0.02em] text-emerald-950">{item.title}</h3>
-                          <img src={item.icon} alt={`Icono de ${item.title}`} className="h-10 w-10 object-contain" />
-                        </div>
-                        <p className="mt-3 max-w-[43ch] text-sm leading-relaxed text-slate-700">{item.copy}</p>
-                        <div className="mt-4 h-1 w-20 rounded-full bg-emerald-900/20 transition group-hover:w-28 group-hover:bg-emerald-800" style={{ transitionDelay: `${index * 50}ms` }} />
-                      </a>
+                        <img
+                          src={item.icon}
+                          alt=""
+                          aria-hidden="true"
+                          className="h-3.5 w-3.5 object-contain transition duration-300 group-hover:scale-110"
+                        />
+                        <span>{item.title}</span>
+                        <span aria-hidden="true" className="text-[10px]">↗</span>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -894,23 +876,40 @@ function App() {
               </div>
             </section>
 
-            <section id="servicios" className="border-b border-emerald-950/10 py-16 md:py-24">
+            <section id="servicios" className="border-b border-emerald-950/10 bg-[#0f322b] py-16 md:py-24">
               <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-8 lg:grid-cols-[0.85fr_1.15fr]">
                 <div className="sticky top-24 self-start">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Centro de Soluciones</p>
-                  <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-emerald-950 md:text-5xl">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Centro de Soluciones</p>
+                  <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
                     Gestionamos las soluciones que necesita su EDS.
                   </h2>
-                  <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-slate-700">
+                  <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-emerald-50/85">
                     Integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
                   </p>
+
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <button
+                      type="button"
+                      onClick={(event) => navegarASeccion(event, '#almacen-page')}
+                      className="inline-flex items-center justify-center rounded-full border border-amber-300 bg-amber-300 px-6 py-3 text-sm font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
+                    >
+                      VER PRODUCTOS
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => navegarASeccion(event, '#centro-soluciones-page')}
+                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+                    >
+                      Ir al Centro de Soluciones
+                    </button>
+                  </div>
                 </div>
 
                 <div className="grid gap-4 md:grid-cols-2">
                   {visibleLineasServicio.map((item) => (
                     <article
                       key={item.code}
-                      className="group rounded-[1.4rem] border border-emerald-900/12 bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-900/30"
+                      className="group rounded-[1.4rem] border border-emerald-100/20 bg-white/95 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-100/45"
                     >
                       <div className="flex items-start gap-4 text-center">
                         <div>
@@ -937,46 +936,6 @@ function App() {
               </div>
             </section>
 
-            <section id="almacen" className="border-b border-emerald-950/10 bg-[#0f322b] py-16 md:py-24">
-              <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 md:px-8 lg:grid-cols-[1.05fr_0.95fr]">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">CENTRO DE SOLUCIONES</p>
-                  <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
-                    Soluciones concretas, oportunas y confiables.
-                  </h2>
-                  <p className="mt-4 max-w-[58ch] text-base leading-relaxed text-emerald-50/85">
-                    Más que ofrecer servicios, brindamos apoyo estratégico para fortalecer la operación, optimizar recursos y generar tranquilidad en cada proceso.
-                  </p>
-
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <button
-                      type="button"
-                      onClick={(event) => navegarASeccion(event, '#almacen-page')}
-                      className="inline-flex items-center justify-center rounded-full border border-amber-300 bg-amber-300 px-6 py-3 text-sm font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
-                    >
-                      Ver productos
-                    </button>
-                    <button
-                      type="button"
-                      onClick={(event) => navegarASeccion(event, '#centro-soluciones-page')}
-                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
-                    >
-                      Ir al Centro de Soluciones
-                    </button>
-                  </div>
-                </div>
-
-                <div className="relative overflow-hidden rounded-[2rem] border border-emerald-100/20">
-                  <img
-                    src="https://www.mygestion.com/wp-content/uploads/almacen.jpg"
-                    alt="Centro logistico de almacen especializado"
-                    className="h-80 w-full object-cover sm:h-[26rem]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-950/80 via-emerald-950/35 to-transparent" />
-                </div>
-              </div>
-            </section>
-
             <section id="prensa" className="py-16 md:py-24">
               <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
                 <div className="text-center mb-12">
@@ -989,7 +948,11 @@ function App() {
                   </p>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-3 max-w-3xl mx-auto">
+                <div className="mb-10">
+                  <NoticiasPage embedded />
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 max-w-3xl mx-auto">
                   <a
                     href="#prensa-page"
                     onClick={(event) => navegarASeccion(event, '#prensa-page')}
@@ -1015,21 +978,6 @@ function App() {
                     </div>
                     <h3 className="font-semibold text-emerald-950 text-lg">Comunicados</h3>
                     <p className="text-sm text-slate-600 mt-2">Comunicados oficiales de ADICONAR</p>
-                    <div className="mt-4">
-                      <span className="inline-flex items-center justify-center rounded-full bg-emerald-900 px-3 py-1 text-sm font-semibold text-white">Saber más</span>
-                    </div>
-                  </a>
-
-                  <a
-                    href="#noticias-page"
-                    onClick={(event) => navegarASeccion(event, '#noticias-page')}
-                    className="group rounded-2xl border border-emerald-900/15 bg-white p-6 text-center transition duration-300 hover:border-emerald-900/30 hover:shadow-[0_20px_40px_-20px_rgba(6,78,59,0.2)] hover:-translate-y-1"
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-900/10 group-hover:bg-emerald-900/15 transition mb-3">
-                      <span className="text-lg">📰</span>
-                    </div>
-                    <h3 className="font-semibold text-emerald-950 text-lg">Noticias</h3>
-                    <p className="text-sm text-slate-600 mt-2">Noticias e información de interés</p>
                     <div className="mt-4">
                       <span className="inline-flex items-center justify-center rounded-full bg-emerald-900 px-3 py-1 text-sm font-semibold text-white">Saber más</span>
                     </div>
