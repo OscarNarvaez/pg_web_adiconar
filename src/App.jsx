@@ -27,7 +27,6 @@ const centroSolucionesItems = [
   { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
   { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
   { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
-  { label: 'Aliados corporativos', desc: 'Red de partners estratégicos', href: '#aliados-page' },
 ]
 
 const prensaItems = [
@@ -464,12 +463,12 @@ function App() {
           borderBottom: '1px solid rgba(6, 78, 59, 0.08)',
         }}
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-2 md:px-8">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 md:px-5 lg:px-8">
           <a
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
           >
-            <img src="/LogoAdiconarInicio.webp" alt="Logo de ADICONAR" className="relative z-10 h-14 w-auto sm:h-16 md:h-20 lg:h-20 object-contain" />
+            <img src="/LogoAdiconarInicio.webp" alt="Logo de ADICONAR" class="relative z-18 h-18 w-auto sm:h-12 md:h-18 lg:h-18 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
@@ -568,12 +567,15 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
-                onClick={(event) => navegarASeccion(event, '#prensa')}
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-950/15 bg-emerald-800 px-2.5 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-white"
+                onClick={(event) => { setCurrentView('prensa'); setActiveSection('#prensa'); navegarASeccion(event, '#prensa') }}
+                className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${(activeSection === '#prensa' || currentView === 'prensa' || currentView === 'noticias' || currentView === 'comunicados')
+                  ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
+                  : 'text-emerald-1000 hover:bg-emerald-950/10'
+                  }`}
                 aria-haspopup="true"
               >
-                <span className="desktop-nav-outline-text">Prensa</span>
-                <span className="text-[10px]">▼</span>
+                <span className="desktop-nav-outline-text">Prensa </span>
+                <span className="text-[10px]"> ▼</span>
               </button>
 
               <div className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] w-56 translate-y-1 rounded-2xl border border-emerald-900/15 bg-white/95 p-2 opacity-0 shadow-[0_28px_48px_-28px_rgba(6,78,59,0.7)] transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
@@ -591,10 +593,22 @@ function App() {
             </div>
 
             <a
+              href="#aliados-page"
+              onClick={(event) => { setCurrentView('aliados'); setActiveSection('#aliados-page'); navegarASeccion(event, '#aliados-page') }}
+              aria-current={activeSection === '#aliados-page' ? 'page' : undefined}
+              className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${(activeSection === '#aliados-page' || currentView === 'aliados')
+                ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
+                : 'text-emerald-1000 hover:bg-emerald-950/10'
+                }`}
+            >
+              <span className="desktop-nav-outline-text">Aliados</span>
+            </a>
+
+            <a
               href="#contacto"
-              onClick={(event) => navegarASeccion(event, '#contacto')}
+              onClick={(event) => { setActiveSection('#contacto'); navegarASeccion(event, '#contacto') }}
               aria-current={activeSection === '#contacto' ? 'page' : undefined}
-              className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === '#contacto' && currentView === 'home'
+              className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${(activeSection === '#contacto')
                 ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
                 : 'text-emerald-1000 hover:bg-emerald-950/10'
                 }`}
@@ -736,6 +750,17 @@ function App() {
                 ))}
               </div>
             </div>
+
+            <a
+              href="#aliados-page"
+              onClick={(event) => navegarASeccion(event, '#aliados-page', true)}
+              className={`mt-4 block rounded-2xl border px-3 py-2 text-sm font-semibold transition ${activeSection === '#aliados-page' || currentView === 'aliados'
+                ? 'border-emerald-900 bg-emerald-900 text-white'
+                : 'border-emerald-900/20 bg-white text-emerald-950 hover:border-emerald-900/50'
+                }`}
+            >
+              Aliados corporativos
+            </a>
           </div>
         </div>
       )}
@@ -743,25 +768,26 @@ function App() {
       <main id="contenido-principal" className="relative z-10">
         {currentView === 'home' ? (
           <>
-            <section id="inicio" className="relative isolate min-h-[100dvh] overflow-hidden border-b border-emerald-950/10 bg-[#e9f0e5] pt-16 md:pt-24">
+            <section id="inicio" className="relative isolate min-h-[62dvh] md:min-h-[100dvh] overflow-hidden border-b border-emerald-950/10 bg-[#e9f0e5] pt-8 pb-6 md:pt-24 md:pb-0">
               <img
                 src="/imagenesCentroSoluciones/fondoInicioAdiconar.png"
                 alt="Comunidad en territorio"
-                className="absolute inset-0 h-full w-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/88 via-emerald-950/74 to-emerald-900/58" />
-              <div className="pointer-events-none absolute -left-28 top-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
-              <div className="pointer-events-none absolute -right-20 bottom-16 h-72 w-72 rounded-full bg-emerald-300/18 blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/90 md:from-emerald-950/95 via-emerald-950/75 md:via-emerald-950/80 to-emerald-900/60 md:to-emerald-900/68" />
+              <div className="absolute inset-0 bg-black/30 md:bg-black/20" aria-hidden="true" />
+              <div className="hidden md:block pointer-events-none absolute -left-28 top-24 h-80 w-80 rounded-full bg-amber-300/25 blur-3xl" />
+              <div className="hidden md:block pointer-events-none absolute -right-20 bottom-16 h-72 w-72 rounded-full bg-emerald-300/18 blur-3xl" />
 
-              <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 pb-16 pt-24 md:px-8 md:pb-20 md:pt-32 lg:grid-cols-[1.1fr_0.9fr]">
-                <div className="rise-in space-y-7">
+              <div className="relative mx-auto grid w-full max-w-7xl gap-10 px-4 pb-12 pt-20 md:px-8 md:pb-20 md:pt-32 lg:grid-cols-[1.1fr_0.9fr]">
+                <div className="rise-in space-y-5 md:space-y-7">
                   <p className="inline-flex items-center rounded-full border border-white/35 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.19em] text-emerald-50">
                     ADICONAR
                   </p>
-                  <h1 className="font-heading max-w-[15ch] text-4xl leading-[0.95] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
+                  <h1 className="font-heading max-w-[20ch] text-3xl sm:text-5xl md:text-6xl leading-[0.95] tracking-[-0.03em] text-white">
                     Centro integral de soluciones para estaciones de servicio.
                   </h1>
-                  <p className="max-w-[60ch] text-base leading-relaxed text-emerald-50/100 ">
+                  <p className="max-w-[35ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
                     Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
 
@@ -771,7 +797,7 @@ function App() {
                         key={item.title}
                         type="button"
                         onClick={(event) => navegarASeccion(event, item.href)}
-                        className={`group inline-flex items-center gap-2 rounded-full border px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 ${index === 0
+                        className={`group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 sm:py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 ${index === 0
                           ? 'border-white/30 bg-white/12 text-white backdrop-blur-md hover:border-amber-300/70 hover:bg-amber-300 hover:text-emerald-950'
                           : 'border-amber-300/70 bg-amber-300 text-emerald-950 hover:bg-amber-200 hover:shadow-[0_24px_45px_-28px_rgba(180,123,0,0.8)]'
                           }`}
