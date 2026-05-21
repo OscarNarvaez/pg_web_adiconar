@@ -54,24 +54,33 @@ const accesos = [
 const objetivosCarousel = [
   {
     texto:
-      'Fortalecer la representación y defensa gremial de las estaciones de servicio.',
+      '',
   },
   {
     texto:
-      'Brindar soluciones técnicas y operativas especializadas.',
+      '',
   },
   {
     texto:
-      'Promover el cumplimiento normativo y la seguridad operativa.',
+      '',
   },
   {
     texto:
-      'Generar alianzas estratégicas que aporten valor al sector.',
+      '',
   },
   {
     texto:
-      'Impulsar el crecimiento sostenible y competitivo de las estaciones de servicio.',
+      '',
   },
+]
+
+// Lista estática separada para mostrar en 'Sobre nosotros'
+const objetivosEstaticos = [
+  { texto: 'Fortalecer la representación y defensa gremial de las estaciones de servicio.' },
+  { texto: 'Brindar soluciones técnicas y operativas especializadas.' },
+  { texto: 'Promover el cumplimiento normativo y la seguridad operativa.' },
+  { texto: 'Generar alianzas estratégicas que aporten valor al sector.' },
+  { texto: 'Impulsar el crecimiento sostenible y competitivo de las estaciones de servicio.' },
 ]
 
 const lineasServicio = [
@@ -846,8 +855,8 @@ function App() {
                   <article className="relative rounded-[1.5rem] border border-emerald-100/40 bg-emerald-50 p-6 shadow-sm">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-900/70">Objetivos estratégicos</p>
                     <ul className="mt-1 space-y-1.5">
-                      {objetivosCarousel.map((objetivo, idx) => (
-                        <li key={objetivo.texto + idx} className="flex items-start gap-4 rounded-lg bg-white/90 p-3 shadow-[0_8px_20px_-12px_rgba(3,42,32,0.6)]">
+                      {objetivosEstaticos.map((objetivo, idx) => (
+                        <li key={`est-${idx}`} className="flex items-start gap-4 rounded-lg bg-white/90 p-3 shadow-[0_8px_20px_-12px_rgba(3,42,32,0.6)]">
                           <div className="flex-shrink-0">
                             <div className="h-8 w-1.5 rounded-full bg-emerald-700" aria-hidden="true" />
                           </div>
@@ -862,7 +871,7 @@ function App() {
 
                 <div className="mt-10 rounded-[2rem] border border-emerald-900/12 bg-emerald-950 p-6 text-emerald-50 md:p-8">
                   <div className="flex flex-wrap items-center justify-between gap-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Objetivos estrategicos</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Beneficios EMPRESARIALES</p>
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
