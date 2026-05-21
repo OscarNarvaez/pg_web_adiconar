@@ -459,8 +459,8 @@ function App() {
         ref={headerRef}
         className="fixed inset-x-0 top-0 z-40 backdrop-blur-lg"
         style={{
-          background: 'rgba(255, 255, 255, 0.37)',
-          borderBottom: '1px solid rgba(6, 78, 59, 0.08)',
+          background: 'rgb(255, 255, 255)',
+          borderBottom: '1px solid rgba(33, 155, 123, 0.45)',
         }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 md:px-5 lg:px-8">
@@ -468,7 +468,7 @@ function App() {
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
           >
-            <img src="/LogoAdiconarInicio.webp" alt="Logo de ADICONAR" class="relative z-18 h-18 w-auto sm:h-12 md:h-18 lg:h-18 object-contain" />
+            <img src="/logoAdiconar.webp" alt="Logo de ADICONAR" class="relative z-18 h-18 w-auto sm:h-12 md:h-18 lg:h-18 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
