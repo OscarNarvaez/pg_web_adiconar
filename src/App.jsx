@@ -606,7 +606,7 @@ function App() {
               aria-current={activeSection === '#contacto' ? 'page' : undefined}
               className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === '#contacto' && currentView === 'home'
                 ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                : 'text-emerald-900 hover:bg-emerald-950/10'
+                : 'text-emerald-1000 hover:bg-emerald-950/10'
                 }`}
             >
               <span className="desktop-nav-outline-text">Contacto</span>
