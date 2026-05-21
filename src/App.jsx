@@ -1050,8 +1050,8 @@ function App() {
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
                       <div className="mt-3 space-y-2 text-emerald-50/90">
-                        <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade</p>
                         <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes</p>
+                        <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade</p>
                         <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses</p>
                         <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade</p>
                         <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez</p>
