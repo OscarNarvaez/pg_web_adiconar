@@ -121,19 +121,19 @@ const lineasServicio = [
 const dependenciasContacto = {
   secretaria: {
     label: 'Secretaria',
-    contacto: 'Adriana Andrade',
+    contacto: 'Adriana Andrade Jiménez',
     telefono: '3185896142',
     email: 'contacto@adiconar.co',
   },
   tesoreria: {
     label: 'Tesoreria',
-    contacto: 'Bernarda Meneses',
+    contacto: 'Bernarda Meneses Argoty',
     telefono: '3183123261',
     email: 'tesoreria@adiconar.co',
   },
   tecnico: {
     label: 'Técnico',
-    contacto: 'Juan Carlos Flórez',
+    contacto: 'Juan Carlos Flórez Chaves',
     telefono: '3176919910',
     email: 'serviciotecnico@adiconar.co',
   },
@@ -145,7 +145,7 @@ const dependenciasContacto = {
   },
   directorEjecutivo: {
     label: 'Director Ejecutivo',
-    contacto: 'Rodrigo Yepes',
+    contacto: 'Rodrigo Yepes Sevilla',
     telefono: '3185896142',
     email: 'direccion@adiconar.co',
   },
@@ -1036,11 +1036,11 @@ function App() {
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                       <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
                       <div className="mt-3 space-y-2 text-emerald-50/90">
-                        <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes</p>
-                        <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade</p>
-                        <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses</p>
-                        <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade</p>
-                        <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez</p>
+                        <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes Sevilla - 📧 direccion@adiconar.co</p>
+                        <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade - 📧 juridica@adiconar.co</p>
+                        <p><span className="font-semibold text-white">Tesoreria: </span> Bernarda Meneses Argoty - 📧 tesoreria@adiconar.co </p>
+                        <p><span className="font-semibold text-white">Secretaria: </span> Adriana Andrade Jiménez - 📧 contacto@adiconar.co </p>
+                        <p><span className="font-semibold text-white">Técnico: </span> Juan Carlos Flórez Chaves - 📧 serviciotecnico@adiconar.co</p>
                       </div>
                     </div>
                   </div>
