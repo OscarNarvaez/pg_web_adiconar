@@ -40,7 +40,7 @@ const TramitesPage = ({ onSolicitarAsesoria }) => {
                         <div>
                             <h2 className="font-heading text-3xl md:text-4xl text-emerald-950 mb-3">Gestión integral de trámites</h2>
                             <p className="text-emerald-900/85 leading-relaxed text-lg">
-                                Nos encargamos de los trámites y permisos necesarios para la operación legal y segura de su estación de servicio, con acompañamiento y seguimiento durante todo el proceso.
+                                Gestionamos y acompañamos los trámites y permisos requeridos para la operación de su estación de servicio ante las diferentes entidades gubernamentales, garantizando cumplimiento y agilidad en cada proceso.
                             </p>
                         </div>
 
