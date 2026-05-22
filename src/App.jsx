@@ -926,7 +926,7 @@ function App() {
 
                 <div className="mt-10 rounded-[2rem] border border-emerald-900/12 bg-emerald-950 p-6 text-emerald-50 md:p-8 text-center">
                   <div className="flex flex-wrap items-center gap-4">
-                      <p className="flex-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Beneficios EMPRESARIALES</p>
+                    <p className="flex-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Beneficios EMPRESARIALES</p>
                   </div>
 
                   <div className="mt-6 rounded-[1.4rem] border border-emerald-100/20 bg-black/15 p-6">
@@ -1083,10 +1083,14 @@ function App() {
               </div>
             </section>
 
+            <div className='text-center'>
+              ___________________________________________
+            </div>
+
             <section id="contacto" className="py-16 md:py-10">
               <div className="mx-auto grid w-full max-w-[92rem] place-items-center gap-8 px-4 md:px-8 ">
                 <article className="rounded-[4rem] border border-emerald-900/15 bg-emerald-950 p-6 text-emerald-50 md:p-10 lg:p-8">
-                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-100/80 text-center">CONTACTANOS</p>
+                  <p className="text-xs font-semibold uppercase tracking-[0.20em] text-emerald-100/80 text-center">¡¡ CONTACTANOS !!</p>
                   <h3 className="font-heading mt-2  text-2xl leading-[1.2] tracking-[-0.02em] text-white md:text-3xl text-center">
                     Respaldamos su Estación de Servicio.
                   </h3>
