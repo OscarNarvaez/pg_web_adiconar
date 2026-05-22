@@ -546,10 +546,7 @@ function App() {
                     <button
                       type="button"
                       onClick={(event) => navegarASeccion(event, item.href)}
-                      className={`inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${activeSection === item.href
-                        ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
-                        : 'text-emerald-1000 hover:bg-emerald-950/10'
-                        }`}
+                      className="inline-flex items-center gap-1 rounded-full bg-emerald-900 px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)] transition duration-300 hover:bg-emerald-800"
                       aria-haspopup="true"
                     >
                       <span className="desktop-nav-outline-text">CENTRO DE SOLUCIONES</span>
@@ -729,7 +726,7 @@ function App() {
                       <button
                         type="button"
                         onClick={(event) => navegarASeccion(event, item.href, true)}
-                        className="flex w-full items-center justify-between px-4 py-2 font-semibold uppercase tracking-[0.15em] text-emerald-900 border-b border-emerald-900/10 text-xs"
+                        className="flex w-full items-center justify-between rounded-xl border border-emerald-900/10 bg-emerald-900 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)] transition hover:bg-emerald-800"
                       >
                         CENTRO DE SOLUCIONES
                       </button>
