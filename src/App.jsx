@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import almacenIcon from './logos/almacen.png'
 import serviciosIcon from './logos/servicios.png'
 import { categories } from './data/categories'
@@ -172,6 +172,33 @@ function App() {
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [notificationMessage, setNotificationMessage] = useState('')
 
+  useLayoutEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
+    const resetToInicio = () => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+
+    if (window.location.hash) {
+      window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`)
+    }
+
+    resetToInicio()
+    window.requestAnimationFrame(resetToInicio)
+
+    const handlePageShow = () => {
+      resetToInicio()
+    }
+
+    window.addEventListener('pageshow', handlePageShow)
+
+    return () => {
+      window.removeEventListener('pageshow', handlePageShow)
+    }
+  }, [])
+
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
   const visibleLineasServicio = showAllServiceLines ? lineasServicio : lineasServicio.slice(0, 4)
@@ -264,6 +291,34 @@ function App() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
       setActiveSection(href)
       if (closeMobileMenu) setMobileMenuOpen(false)
+      return
+    }
+
+    if (href === '#prensa') {
+      if (currentView !== 'home') {
+        setCurrentView('home')
+        setTimeout(() => {
+          setActiveSection(href)
+          scrollToSection(href, closeMobileMenu)
+        }, 100)
+      } else {
+        setActiveSection(href)
+        scrollToSection(href, closeMobileMenu)
+      }
+      return
+    }
+
+    if (href === '#contacto') {
+      if (currentView !== 'home') {
+        setCurrentView('home')
+        setTimeout(() => {
+          setActiveSection(href)
+          scrollToSection(href, closeMobileMenu)
+        }, 100)
+      } else {
+        setActiveSection(href)
+        scrollToSection(href, closeMobileMenu)
+      }
       return
     }
 
@@ -415,7 +470,7 @@ function App() {
   }
 
   useEffect(() => {
-    const sectionIds = navItems.map((item) => item.href)
+    const sectionIds = ['#inicio', '#sobre-nosotros', '#servicios', '#prensa', '#contacto']
 
     const updateActiveSection = () => {
       if (currentView !== 'home') return;
