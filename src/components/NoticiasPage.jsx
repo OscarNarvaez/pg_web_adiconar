@@ -27,15 +27,64 @@ const getInstagramMediaUrl = (url) => {
     }
 }
 
+const getFallbackPreviewImage = (url) => getInstagramMediaUrl(url) || getYouTubeThumbnail(url) || null
+
+const getPreviewImageFromResponse = (payload) => {
+    return payload?.data?.image?.url || payload?.data?.screenshot?.url || payload?.data?.logo?.url || null
+}
+
+const resolveLinkPreviewImage = async (url) => {
+    const fallbackPreview = getFallbackPreviewImage(url)
+
+    try {
+        const response = await fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}`)
+
+        if (!response.ok) return fallbackPreview
+
+        const payload = await response.json()
+        return getPreviewImageFromResponse(payload) || fallbackPreview
+    } catch {
+        return fallbackPreview
+    }
+}
+
 const NoticiasPage = ({ embedded = false }) => {
     const [items] = useState(noticias)
+    const [previewImages, setPreviewImages] = useState({})
     const [index, setIndex] = useState(0)
     const trackRef = useRef(null)
     const itemRefs = useRef([])
 
+    useEffect(() => {
+        let cancelled = false
+
+        const loadPreviews = async () => {
+            const results = await Promise.all(
+                items.map(async (item) => {
+                    if (item.imagen) {
+                        return [item.id, item.imagen]
+                    }
+
+                    const previewImage = await resolveLinkPreviewImage(item.enlace)
+                    return [item.id, previewImage]
+                })
+            )
+
+            if (cancelled) return
+
+            setPreviewImages(Object.fromEntries(results))
+        }
+
+        loadPreviews()
+
+        return () => {
+            cancelled = true
+        }
+    }, [items])
+
     const resolvedItems = items.map((item) => ({
         ...item,
-        imagen: item.imagen || getInstagramMediaUrl(item.enlace) || getYouTubeThumbnail(item.enlace) || null,
+        imagen: item.imagen || previewImages[item.id] || getFallbackPreviewImage(item.enlace) || null,
     }))
 
     const hasItems = resolvedItems.length > 0

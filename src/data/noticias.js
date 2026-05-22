@@ -9,16 +9,7 @@ export const noticias = [
         etiqueta: 'Video',
     },
     {
-        id: 2,
-        fecha: '19 mar 2026',
-        titulo: 'Desde Pasto, construimos el futuro del sector de combustibles líquidos.',
-        descripcion: 'Reunión con los distribuidores minoristas de Nariño para escuchar de primera mano los desafíos que enfrentan en el territorio.',
-        enlace: 'https://www.instagram.com/p/DWDCDK2EbaH/',
-        fuente: 'Instagram',
-        etiqueta: 'Prensa',
-    },
-    {
-        id: 2,
+        id: 3,
         fecha: '19 mar 2026',
         titulo: 'Desde Pasto, construimos el futuro del sector de combustibles líquidos.',
         descripcion: 'Reunión con los distribuidores minoristas de Nariño para escuchar de primera mano los desafíos que enfrentan en el territorio.',

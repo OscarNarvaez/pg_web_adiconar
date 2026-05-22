@@ -53,24 +53,24 @@ const accesos = [
 
 const objetivosCarousel = [
   {
+    titulo: 'Representación y defensa gremial',
     texto:
-      '',
+      'Participación activa ante entidades gubernamentales, ministerios y organismos de control, en defensa de los intereses del sector minorista de combustibles y de nuestros agremiados.',
   },
   {
+    titulo: 'Acceso a servicios y soluciones especializadas',
     texto:
-      '',
+      'Experiencia y disponibilidad de servicios técnicos, accesorios, mantenimiento, pruebas, trámites y asesorías especializadas, integrados en un solo lugar, con tarifas diferenciales para asociados.',
   },
   {
+    titulo: 'Red de aliados estratégicos',
     texto:
-      '',
+      'Acceso a convenios corporativos, aliados técnicos y condiciones preferenciales en los distintos servicios orientados a las EDS.',
   },
   {
+    titulo: 'Respaldo integral para su operación',
     texto:
-      '',
-  },
-  {
-    texto:
-      '',
+      'Acompañamiento técnico, jurídico y operativo especializado, orientado a atender las necesidades reales de las estaciones de servicio.',
   },
 ]
 
@@ -477,7 +477,7 @@ function App() {
             href="#inicio"
             onClick={(event) => navegarASeccion(event, '#inicio')}
           >
-            <img src="/logoAdiconar.webp" alt="Logo de ADICONAR" class="relative z-18 h-18 w-auto sm:h-12 md:h-18 lg:h-18 object-contain" />
+            <img src="/logoAdiconar.webp" alt="Logo de ADICONAR" className="relative z-18 h-10 w-auto sm:h-12 md:h-18 lg:h-18 object-contain" />
           </a>
 
           <nav className="hidden items-center gap-5 lg:flex">
@@ -576,7 +576,7 @@ function App() {
             <div className="group relative">
               <button
                 type="button"
-                onClick={(event) => { setCurrentView('prensa'); setActiveSection('#prensa'); navegarASeccion(event, '#prensa') }}
+                onClick={(event) => navegarASeccion(event, '#prensa')}
                 className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${(activeSection === '#prensa' || currentView === 'prensa' || currentView === 'noticias' || currentView === 'comunicados')
                   ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
                   : 'text-emerald-1000 hover:bg-emerald-950/10'
@@ -869,10 +869,33 @@ function App() {
                   </article>
                 </div>
 
-                <div className="mt-10 rounded-[2rem] border border-emerald-900/12 bg-emerald-950 p-6 text-emerald-50 md:p-8">
-                  <div className="flex flex-wrap items-center justify-between gap-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Beneficios EMPRESARIALES</p>
-                    <div className="flex items-center gap-2">
+                <div className="mt-10 rounded-[2rem] border border-emerald-900/12 bg-emerald-950 p-6 text-emerald-50 md:p-8 text-center">
+                  <div className="flex flex-wrap items-center gap-4">
+                      <p className="flex-1 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/85">Beneficios EMPRESARIALES</p>
+                  </div>
+
+                  <div className="mt-6 rounded-[1.4rem] border border-emerald-100/20 bg-black/15 p-6">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/70">{objetivoActual.titulo}</p>
+                    <p className="mt-3 text-base leading-relaxed text-emerald-50 md:text-lg">{objetivoActual.texto}</p>
+                  </div>
+
+                  <div className="mt-4 flex items-center justify-end gap-3">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {objetivosCarousel.map((objetivo, index) => (
+                        <button
+                          key={index}
+                          type="button"
+                          aria-label={`Ver objetivo ${index + 1}`}
+                          onClick={() => setObjetivoActivo(index)}
+                          className={`h-2.5 rounded-full transition-all ${index === objetivoActivo
+                            ? 'w-10 bg-amber-300'
+                            : 'w-6 bg-emerald-100/30 hover:bg-emerald-100/45'
+                            }`}
+                        />
+                      ))}
+                    </div>
+
+                    <div className="flex gap-2">
                       <button
                         type="button"
                         className="grid h-10 w-10 place-items-center rounded-full border border-emerald-100/35 bg-emerald-100/10 text-lg transition hover:bg-emerald-100/20 active:translate-y-[1px]"
@@ -890,25 +913,6 @@ function App() {
                         &gt;
                       </button>
                     </div>
-                  </div>
-
-                  <div className="mt-6 rounded-[1.4rem] border border-emerald-100/20 bg-black/15 p-6">
-                    <p className="mt-3 text-base leading-relaxed text-emerald-50 md:text-lg">{objetivoActual.texto}</p>
-                  </div>
-
-                  <div className="mt-5 flex flex-wrap items-center gap-2">
-                    {objetivosCarousel.map((objetivo, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        aria-label={`Ver objetivo ${index + 1}`}
-                        onClick={() => setObjetivoActivo(index)}
-                        className={`h-2.5 rounded-full transition-all ${index === objetivoActivo
-                          ? 'w-10 bg-amber-300'
-                          : 'w-6 bg-emerald-100/30 hover:bg-emerald-100/45'
-                          }`}
-                      />
-                    ))}
                   </div>
                 </div>
               </div>
