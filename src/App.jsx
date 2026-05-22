@@ -807,7 +807,7 @@ function App() {
                         type="button"
                         onClick={(event) => navegarASeccion(event, item.href)}
                         className={`group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 sm:py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 ${index === 0
-                          ? 'border-white/30 bg-white/12 text-white backdrop-blur-md hover:border-amber-300/70 hover:bg-amber-300 hover:text-emerald-950'
+                          ? 'border-white/30 bg-white/12 text-white backdrop-blur-md hover:border-amber-300/70 hover:bg-amber-300 hover:text-emerald-1000'
                           : 'border-amber-300/70 bg-amber-300 text-emerald-950 hover:bg-amber-200 hover:shadow-[0_24px_45px_-28px_rgba(180,123,0,0.8)]'
                           }`}
                       >
