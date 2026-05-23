@@ -101,6 +101,8 @@ const NoticiasPage = ({ embedded = false }) => {
     }
 
     useEffect(() => {
+        if (embedded) return
+
         const current = itemRefs.current[index]
         if (!current) return
 
@@ -109,7 +111,7 @@ const NoticiasPage = ({ embedded = false }) => {
             inline: 'center',
             block: 'nearest',
         })
-    }, [index])
+    }, [embedded, index])
 
     const getSlideStyle = (slideIndex) => {
         if (!hasItems) return { transform: 'translateY(0px) scale(1)', opacity: 1 }

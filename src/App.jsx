@@ -1019,7 +1019,7 @@ function App() {
                       <button
                         type="button"
                         onClick={() => setShowAllServiceLines((prev) => !prev)}
-                        className="inline-flex items-center gap-2 rounded-full border border-emerald-900/20 bg-emerald-950 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-900"
+                        className="inline-flex items-center gap-2 rounded-full border border-emerald-100/20 bg-emerald-800 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-emerald-900"
                       >
                         {showAllServiceLines ? 'Mostrar menos' : 'Mostrar más'}
                         <span className="text-[10px]">{showAllServiceLines ? '▲' : '▼'}</span>
