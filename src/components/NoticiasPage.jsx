@@ -101,10 +101,20 @@ const NoticiasPage = ({ embedded = false }) => {
     }
 
     useEffect(() => {
-        if (embedded) return
-
         const current = itemRefs.current[index]
         if (!current) return
+
+        if (embedded) {
+            const track = trackRef.current
+            if (!track) return
+
+            const targetLeft = current.offsetLeft - (track.clientWidth - current.clientWidth) / 2
+            track.scrollTo({
+                left: Math.max(0, targetLeft),
+                behavior: 'smooth',
+            })
+            return
+        }
 
         current.scrollIntoView({
             behavior: 'smooth',
@@ -140,7 +150,7 @@ const NoticiasPage = ({ embedded = false }) => {
                     <div className="pointer-events-none absolute inset-y-0 left-0 z-20 hidden w-20 bg-gradient-to-r from-white via-white/80 to-transparent md:block" />
                     <div className="pointer-events-none absolute inset-y-0 right-0 z-20 hidden w-20 bg-gradient-to-l from-white via-white/80 to-transparent md:block" />
 
-                    <div ref={trackRef} className="flex items-end gap-4 overflow-x-auto pb-4 pl-1 pr-1 md:gap-6 md:pb-6 md:pl-0 md:pr-0 snap-x snap-mandatory scrollbar-none">
+                    <div ref={trackRef} className="relative z-0 flex items-end gap-4 overflow-x-auto pb-4 pl-1 pr-1 md:gap-6 md:pb-6 md:pl-0 md:pr-0 snap-x snap-mandatory scrollbar-none">
                         {hasItems ? resolvedItems.map((item, itemIndex) => {
                             const isActive = itemIndex === index
                             const isTall = itemIndex % 2 === 0
@@ -215,7 +225,7 @@ const NoticiasPage = ({ embedded = false }) => {
                     </div>
                 </div>
 
-                <div className="news-controls flex flex-col gap-4 border-t border-emerald-900/8 px-5 py-4 md:flex-row md:items-center md:justify-between md:px-6">
+                <div className="news-controls relative z-30 flex flex-col gap-4 border-t border-emerald-900/8 bg-[linear-gradient(180deg,#f7faf6_0%,#f7faf6_100%)] px-5 py-4 md:flex-row md:items-center md:justify-between md:px-6">
                     <div className="flex items-center justify-center gap-2">
                         {items.map((_, i) => (
                             <button

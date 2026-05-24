@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import almacenIcon from './logos/almacen.png'
 import serviciosIcon from './logos/servicios.png'
 import { categories } from './data/categories'
@@ -14,6 +14,65 @@ import ComunicadosPage from './components/ComunicadosPage'
 import NoticiasPage from './components/NoticiasPage'
 import Footer from './components/Footer'
 import AlliesPage from './components/AlliesPage'
+import { SITE_URL, getInitialRouteState, getSeoConfig, routePaths, seoBase, viewToPath } from './seo'
+
+const syncHeadMeta = (config) => {
+  const image = config.image ?? seoBase.imageUrl
+  document.title = config.title
+
+  const setMeta = (selector, attribute, value, content) => {
+    let tag = document.head.querySelector(selector)
+    if (!tag) {
+      tag = document.createElement('meta')
+      tag.setAttribute(attribute, value)
+      document.head.appendChild(tag)
+    }
+
+    tag.setAttribute('content', content)
+  }
+
+  const setLink = (rel, href) => {
+    let tag = document.head.querySelector(`link[rel="${rel}"]`)
+    if (!tag) {
+      tag = document.createElement('link')
+      tag.setAttribute('rel', rel)
+      document.head.appendChild(tag)
+    }
+
+    tag.setAttribute('href', href)
+  }
+
+  setMeta('meta[name="description"]', 'name', 'description', config.description)
+  setMeta('meta[name="robots"]', 'name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1')
+  setMeta('meta[name="theme-color"]', 'name', 'theme-color', '#0f322b')
+  setMeta('meta[property="og:title"]', 'property', 'og:title', config.title)
+  setMeta('meta[property="og:description"]', 'property', 'og:description', config.description)
+  setMeta('meta[property="og:type"]', 'property', 'og:type', config.type)
+  setMeta('meta[property="og:url"]', 'property', 'og:url', config.canonical)
+  setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', seoBase.siteName)
+  setMeta('meta[property="og:image"]', 'property', 'og:image', image)
+  setMeta('meta[property="og:image:alt"]', 'property', 'og:image:alt', seoBase.siteName)
+  setMeta('meta[property="og:locale"]', 'property', 'og:locale', seoBase.locale)
+  setMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
+  setMeta('meta[name="twitter:site"]', 'name', 'twitter:site', seoBase.siteName)
+  setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', config.title)
+  setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', config.description)
+  setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', image)
+  setMeta('meta[name="twitter:image:alt"]', 'name', 'twitter:image:alt', seoBase.siteName)
+  setMeta('meta[name="application-name"]', 'name', 'application-name', seoBase.siteName)
+  setMeta('meta[name="author"]', 'name', 'author', seoBase.siteName)
+  setLink('canonical', config.canonical)
+
+  let schemaTag = document.head.querySelector('script[data-seo-schema="adiconar"]')
+  if (!schemaTag) {
+    schemaTag = document.createElement('script')
+    schemaTag.type = 'application/ld+json'
+    schemaTag.dataset.seoSchema = 'adiconar'
+    document.head.appendChild(schemaTag)
+  }
+
+  schemaTag.textContent = JSON.stringify(config.schema ?? [])
+}
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
@@ -22,29 +81,29 @@ const navItems = [
 ]
 
 const centroSolucionesItems = [
-  { label: 'Almacén', desc: 'Control de inventario y suministros', href: '#almacen-page' },
-  { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: '#servicios-tecnicos-page' },
-  { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: '#polizas-page' },
-  { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: '#asesoria-page' },
-  { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: '#tramites-page' },
+  { label: 'Almacén', desc: 'Control de inventario y suministros', href: routePaths.almacen },
+  { label: 'Servicios técnicos', desc: 'Mantenimiento y soporte especializado', href: routePaths.serviciosTecnicos },
+  { label: 'Gestión de Pólizas y aseguramiento', desc: 'Asesoría y trámite de seguros', href: routePaths.polizas },
+  { label: 'Asesoría jurídica', desc: 'Consultoría legal para tu organización', href: routePaths.asesoria },
+  { label: 'Trámites ante entidades', desc: 'Gestiones administrativas y operativas', href: routePaths.tramites },
 ]
 
 const prensaItems = [
-  { label: 'Boletines', href: '#prensa-page' },
-  { label: 'Comunicados', href: '#comunicados-page' },
+  { label: 'Boletines', href: routePaths.prensa },
+  { label: 'Comunicados', href: routePaths.comunicados },
 ]
 
 const accesos = [
   {
     title: 'Centro de Soluciones',
-    href: '#centro-soluciones-page',
+    href: routePaths.centroSoluciones,
     copy: 'Integramos soporte tecnico, polizas, asesoria juridica y tramites normativos en un solo lugar para su estacion.',
     icon: serviciosIcon,
     size: 'large',
   },
   {
     title: 'Almacen Especializado',
-    href: '#almacen-page',
+    href: routePaths.almacen,
     copy: 'Catalogo completo de repuestos, equipos y consumibles con disponibilidad 24/7.',
     icon: almacenIcon,
     size: 'small',
@@ -154,14 +213,15 @@ const dependenciasContacto = {
 function App() {
   const currentYear = new Date().getFullYear()
   const headerRef = useRef(null)
+  const initialRouteState = getInitialRouteState()
 
-  const [currentView, setCurrentView] = useState('home')
-  const [currentCategory, setCurrentCategory] = useState(null)
+  const [currentView, setCurrentView] = useState(initialRouteState.currentView)
+  const [currentCategory, setCurrentCategory] = useState(initialRouteState.currentCategory)
   const [objetivoActivo, setObjetivoActivo] = useState(0)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [showAllServiceLines, setShowAllServiceLines] = useState(false)
 
-  const [activeSection, setActiveSection] = useState('#inicio')
+  const [activeSection, setActiveSection] = useState(initialRouteState.activeSection)
   const [formData, setFormData] = useState({
     nombre: '',
     correo: '',
@@ -172,7 +232,7 @@ function App() {
   const [showNotificationPopup, setShowNotificationPopup] = useState(false)
   const [notificationMessage, setNotificationMessage] = useState('')
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
     }
@@ -199,6 +259,48 @@ function App() {
     }
   }, [])
 
+  useEffect(() => {
+    syncHeadMeta(getSeoConfig(currentView, currentCategory))
+  }, [currentView, currentCategory])
+
+  useEffect(() => {
+    const syncFromLocation = () => {
+      const nextState = getInitialRouteState()
+      setCurrentView(nextState.currentView)
+      setCurrentCategory(nextState.currentCategory)
+      setActiveSection(nextState.activeSection)
+
+      if (nextState.currentView !== 'home') {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+      }
+    }
+
+    const handlePopState = () => {
+      syncFromLocation()
+    }
+
+    syncFromLocation()
+    window.addEventListener('popstate', handlePopState)
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+    }
+  }, [])
+
+  const navigateToView = (view, { category = null, activeSection: nextActiveSection = null, closeMobileMenu = false } = {}) => {
+    const nextPath = category
+      ? `/categoria/${category.id}`
+      : viewToPath[view] ?? routePaths.home
+
+    window.history.pushState({}, '', nextPath)
+    setCurrentView(view)
+    setCurrentCategory(category)
+    setActiveSection(nextActiveSection ?? (view === 'home' ? '#inicio' : `#${view}`))
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    if (closeMobileMenu) setMobileMenuOpen(false)
+  }
+
   const totalObjetivos = objetivosCarousel.length
   const objetivoActual = objetivosCarousel[objetivoActivo]
   const visibleLineasServicio = showAllServiceLines ? lineasServicio : lineasServicio.slice(0, 4)
@@ -214,89 +316,126 @@ function App() {
   const navegarASeccion = (event, href, closeMobileMenu = false) => {
     event.preventDefault()
 
+    const routeMatch = Object.entries(routePaths).find(([, path]) => path === href)
+    if (routeMatch) {
+      const [, path] = routeMatch
+
+      if (path === routePaths.home) {
+        window.history.pushState({}, '', routePaths.home)
+        setCurrentView('home')
+        setCurrentCategory(null)
+        setActiveSection('#inicio')
+        if (closeMobileMenu) setMobileMenuOpen(false)
+        return
+      }
+
+      const view = Object.keys(routePaths).find((key) => routePaths[key] === path)
+      if (view === 'centroSoluciones') {
+        navigateToView('centro-soluciones', { activeSection: '#centro-soluciones', closeMobileMenu })
+        return
+      }
+      if (view === 'almacen') {
+        navigateToView('almacen', { activeSection: '#almacen-page', closeMobileMenu })
+        return
+      }
+      if (view === 'serviciosTecnicos') {
+        navigateToView('servicios-tecnicos', { activeSection: '#servicios-tecnicos-page', closeMobileMenu })
+        return
+      }
+      if (view === 'polizas') {
+        navigateToView('polizas', { activeSection: '#polizas-page', closeMobileMenu })
+        return
+      }
+      if (view === 'asesoria') {
+        navigateToView('asesoria', { activeSection: '#asesoria-page', closeMobileMenu })
+        return
+      }
+      if (view === 'tramites') {
+        navigateToView('tramites', { activeSection: '#tramites-page', closeMobileMenu })
+        return
+      }
+      if (view === 'prensa') {
+        navigateToView('prensa', { activeSection: '#prensa-page', closeMobileMenu })
+        return
+      }
+      if (view === 'noticias') {
+        navigateToView('noticias', { activeSection: '#noticias-page', closeMobileMenu })
+        return
+      }
+      if (view === 'comunicados') {
+        navigateToView('comunicados', { activeSection: '#comunicados-page', closeMobileMenu })
+        return
+      }
+      if (view === 'aliados') {
+        navigateToView('aliados', { activeSection: '#aliados-page', closeMobileMenu })
+        return
+      }
+    }
+
+    if (href.startsWith('/categoria/')) {
+      const categoryId = href.split('/').pop()
+      const category = categories.find((item) => item.id === categoryId)
+      if (category) {
+        navigateToView('category', { category, activeSection: `#categoria/${category.id}`, closeMobileMenu })
+      }
+      return
+    }
+
     if (href === '#almacen-page') {
-      setCurrentView('almacen')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('almacen', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#servicios-tecnicos-page') {
-      setCurrentView('servicios-tecnicos')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('servicios-tecnicos', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#centro-soluciones-page') {
-      setCurrentView('centro-soluciones')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('centro-soluciones', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#aliados-page') {
-      setCurrentView('aliados')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('aliados', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#tramites-page') {
-      setCurrentView('tramites')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('tramites', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#polizas-page') {
-      setCurrentView('polizas')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('polizas', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#asesoria-page') {
-      setCurrentView('asesoria')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('asesoria', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#prensa-page') {
-      setCurrentView('prensa')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('prensa', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#noticias-page') {
-      setCurrentView('noticias')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('noticias', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#comunicados-page') {
-      setCurrentView('comunicados')
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-      setActiveSection(href)
-      if (closeMobileMenu) setMobileMenuOpen(false)
+      navigateToView('comunicados', { activeSection: href, closeMobileMenu })
       return
     }
 
     if (href === '#prensa') {
       if (currentView !== 'home') {
+        window.history.pushState({}, '', routePaths.home)
         setCurrentView('home')
+        setCurrentCategory(null)
         setTimeout(() => {
           setActiveSection(href)
           scrollToSection(href, closeMobileMenu)
@@ -310,7 +449,9 @@ function App() {
 
     if (href === '#contacto') {
       if (currentView !== 'home') {
+        window.history.pushState({}, '', routePaths.home)
         setCurrentView('home')
+        setCurrentCategory(null)
         setTimeout(() => {
           setActiveSection(href)
           scrollToSection(href, closeMobileMenu)
@@ -326,18 +467,15 @@ function App() {
       const catId = href.split('/')[1]
       const category = categories.find(c => c.id === catId)
       if (category) {
-        setCurrentView('category')
-        setCurrentCategory(category)
-        setActiveSection(href)
-        if (closeMobileMenu) setMobileMenuOpen(false)
-
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        navigateToView('category', { category, activeSection: href, closeMobileMenu })
       }
       return
     }
 
     if (currentView !== 'home') {
+      window.history.pushState({}, '', routePaths.home)
       setCurrentView('home')
+      setCurrentCategory(null)
       setTimeout(() => {
         scrollToSection(href, closeMobileMenu)
       }, 100)
@@ -448,7 +586,9 @@ function App() {
 
     // Navegar a contacto después de un pequeño delay
     setTimeout(() => {
+      window.history.pushState({}, '', routePaths.home)
       setCurrentView('home')
+      setCurrentCategory(null)
       setTimeout(() => {
         const contactoSection = document.getElementById('contacto')
         if (contactoSection) {
@@ -578,8 +718,8 @@ function App() {
                                     {categories.map((cat) => (
                                       <a
                                         key={cat.id}
-                                        href={`#categoria/${cat.id}`}
-                                        onClick={(event) => navegarASeccion(event, `#categoria/${cat.id}`)}
+                                        href={`/categoria/${cat.id}`}
+                                        onClick={(event) => navegarASeccion(event, `/categoria/${cat.id}`)}
                                         className="flex flex-col rounded-xl px-4 py-2.5 text-left transition hover:bg-emerald-50"
                                       >
                                         <span className="font-heading text-sm text-emerald-950 tracking-tight">{cat.title}</span>
@@ -655,7 +795,7 @@ function App() {
 
             <a
               href="#aliados-page"
-              onClick={(event) => { setCurrentView('aliados'); setActiveSection('#aliados-page'); navegarASeccion(event, '#aliados-page') }}
+              onClick={(event) => navegarASeccion(event, routePaths.aliados)}
               aria-current={activeSection === '#aliados-page' ? 'page' : undefined}
               className={`rounded-full px-2.5 py-1.5 text-sm font-semibold tracking-[0.01em] transition duration-300 ${(activeSection === '#aliados-page' || currentView === 'aliados')
                 ? 'bg-emerald-900 text-white shadow-[0_12px_20px_-14px_rgba(6,78,59,0.95)]'
@@ -1002,7 +1142,7 @@ function App() {
                 <div className="grid gap-4 md:grid-cols-2">
                   {visibleLineasServicio.map((item) => (
                     <article
-                      key={item.code}
+                      key={item.title}
                       className="group rounded-[1.4rem] border border-emerald-100/20 bg-white/95 p-5 transition duration-300 hover:-translate-y-0.5 hover:border-emerald-100/45"
                     >
                       <div className="flex items-start gap-4 text-center">
@@ -1091,7 +1231,6 @@ function App() {
 
                   <div className="mt-8 space-y-4 text-sm md:text-base text-center">
                     <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100/70">Dependencias disponibles</p>
                       <div className="mt-3 space-y-2 text-emerald-50/90">
                         <p><span className="font-semibold text-white">Director Ejecutivo: </span> Rodrigo Yepes Sevilla - 📧 direccion@adiconar.co</p>
                         <p><span className="font-semibold text-white">Asesora Jurídica: </span> Karen Rivera Andrade - 📧 juridica@adiconar.co</p>
