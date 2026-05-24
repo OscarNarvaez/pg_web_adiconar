@@ -992,6 +992,10 @@ function App() {
                     Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
                   </p>
 
+                  <p className="max-w-[42ch] text-xs sm:text-sm leading-relaxed text-emerald-100/85">
+                    ADICONAR en Pasto, Nariño, acompaña a estaciones de servicio del suroccidente colombiano con soluciones integrales, asesoría especializada y soporte operativo.
+                  </p>
+
                   <div className="flex flex-wrap gap-3 pt-1">
                     {accesos.map((item, index) => (
                       <button

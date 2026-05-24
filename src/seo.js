@@ -133,6 +133,34 @@ const buildOrganizationSchema = () => ({
   ],
 })
 
+const buildLocalBusinessSchema = () => ({
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: seoBase.siteName,
+  url: SITE_URL,
+  image: seoBase.imageUrl,
+  logo: seoBase.imageUrl,
+  description: seoBase.description,
+  telephone: '+57 318 589 6142',
+  email: 'contacto@adiconar.co',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Calle 21 #16 - 44 Navarrete',
+    addressLocality: 'Pasto',
+    addressRegion: 'Nariño',
+    addressCountry: 'CO',
+  },
+  areaServed: [
+    'Pasto',
+    'Nariño',
+    'Colombia',
+  ],
+  sameAs: [
+    'https://www.facebook.com/share/17mGRkHmjR/?mibextid=wwXIfr',
+    'https://www.instagram.com/adiconarnarino?igsh=a3Z6anF0bDFjbTJz&utm_source=qr',
+  ],
+})
+
 const buildWebSiteSchema = () => ({
   '@context': 'https://schema.org',
   '@type': 'WebSite',
@@ -296,6 +324,10 @@ export const getSeoConfig = (view, currentCategory) => {
   const canonical = absoluteUrl(canonicalPath)
   const breadcrumbTrail = buildBreadcrumbTrail(view, currentCategory)
   const schema = [buildWebPageSchema({ ...meta, canonical })]
+
+  if (view === 'home') {
+    schema.unshift(buildLocalBusinessSchema(), buildOrganizationSchema(), buildWebSiteSchema())
+  }
 
   if (breadcrumbTrail.length > 0) {
     schema.push(buildBreadcrumbSchema(breadcrumbTrail))
