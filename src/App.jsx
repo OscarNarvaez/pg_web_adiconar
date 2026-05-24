@@ -1037,9 +1037,6 @@ function App() {
                   <h2 className="font-heading text-4xl md:text-5xl leading-[1.2] tracking-[-0.02em] text-emerald-950 mb-4">
                     PRENSA
                   </h2>
-                  <p className="text-lg text-slate-700 max-w-2xl mx-auto">
-                    Aquí encontrarás lo más relevante del sector de estaciones de servicio, noticias de interés y comunicados oficiales de ADICONAR.
-                  </p>
                 </div>
 
                 <div className="mb-10">
