@@ -1078,7 +1078,7 @@ function App() {
             </section>
 
             <div className='text-center'>
-              ___________________________________________
+              ________________________________________
             </div>
 
             <section id="contacto" className="py-16 md:py-10">
