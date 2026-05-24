@@ -24,7 +24,7 @@ const AlliesPage = () => {
                     <span className="block text-emerald-600 mt-2"> Aliados Estrategicos</span>
                 </h1>
                 <br />
-                <h1 className="font-heading text-3xl text-emerald-950 mb-4 text-center">{aliadosInfo.title}</h1>
+                <h2 className="font-heading text-3xl text-emerald-950 mb-4 text-center">{aliadosInfo.title}</h2>
 
                 <p className="text-slate-700 mb-6 whitespace-pre-line text-center">{aliadosInfo.description}</p>
                 <div className="grid gap-6 md:grid-cols-2">
@@ -45,11 +45,11 @@ const AlliesPage = () => {
                                 <div className="carousel-group" key={groupIdx} aria-hidden={groupIdx === 1}>
                                     {group.map((name, idx) => (
                                         <div className="flex-shrink-0 flex items-center" key={`${groupIdx}-${idx}`}>
-                                            <img
-                                                src={`/logosAliados/${name}`}
-                                                alt={name}
-                                                className="h-24 md:h-28 object-contain transition-transform duration-300 hover:scale-105"
-                                            />
+                                                    <img
+                                                        src={`/logosAliados/${name}`}
+                                                        alt={`Aliado: ${name.replace(/\.[^/.]+$/, '')}`}
+                                                        className="h-24 md:h-28 object-contain transition-transform duration-300 hover:scale-105"
+                                                    />
                                         </div>
                                     ))}
                                 </div>

@@ -1247,8 +1247,10 @@ function App() {
                         Cada una de nuestras dependencias esta disponible para atender sus necesidades.
                       </div>
                       <div className="space-y-2 text-center">
+                        <label htmlFor="dependencia" className="sr-only">Dependencia a contactar</label>
                         <select
                           id="dependencia"
+                          aria-label="Dependencia a contactar"
                           value={formData.participacion}
                           onChange={handleFormChange}
                           className="w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-slate-800 text-center focus:border-emerald-900 focus:ring-emerald-900/10 transition"

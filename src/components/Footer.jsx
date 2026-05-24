@@ -63,7 +63,7 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/1280px-Facebook_f_logo_%282021%29.svg.png"
-                  alt="Facebook"
+                  alt=""
                   className="h-5 w-5 rounded"
                   loading="lazy"
                 />
@@ -79,7 +79,7 @@ function Footer({ navItems, currentYear, navegarASeccion }) {
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=thumbnail"
-                  alt="Instagram"
+                  alt=""
                   className="h-5 w-5 rounded"
                   loading="lazy"
                 />
