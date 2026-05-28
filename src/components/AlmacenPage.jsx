@@ -10,6 +10,19 @@ const categorySummaries = {
 }
 
 function AlmacenPage({ onNavigate }) {
+  const almacenFaqs = [
+    {
+      question: '¿Qué productos maneja el almacén de ADICONAR?',
+      answer:
+        'El almacén ADICONAR reúne repuestos, equipos, accesorios y consumibles para operación de EDS, organizados en líneas técnicas especializadas para facilitar la búsqueda y compra.',
+    },
+    {
+      question: '¿Los productos ADICONAR están disponibles para EDS en Nariño?',
+      answer:
+        'Sí. ADICONAR atiende requerimientos del sector en Pasto y Nariño, y según el tipo de producto puede gestionar solicitudes para otras zonas de Colombia.',
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-[#f4f5ef] pt-32 pb-16">
       <section className="mx-auto max-w-7xl px-4 md:px-8">
@@ -89,7 +102,7 @@ function AlmacenPage({ onNavigate }) {
                   ))}
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-slate-700">
-
+                  ADICONAR fortalece la operación de EDS con marcas reconocidas en el sector combustible, criterios de calidad técnica y orientación para seleccionar productos según el tipo de estación de servicio.
                 </p>
               </div>
 
@@ -107,6 +120,28 @@ function AlmacenPage({ onNavigate }) {
                     <span className="mt-4 inline-flex text-sm font-semibold text-emerald-900">Explorar productos →</span>
                   </button>
                 ))}
+              </div>
+
+              <div className="rounded-[1.8rem] border border-emerald-900/10 bg-white p-6 shadow-[0_24px_40px_-30px_rgba(3,42,32,0.12)]">
+                <h2 className="font-heading text-2xl tracking-[-0.02em] text-emerald-950">Productos ADICONAR para EDS en Pasto, Nariño y Colombia</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-700 md:text-base">
+                  El almacén ADICONAR está diseñado para responder a necesidades reales de estaciones de servicio y empresas del sector combustibles. Cada categoría concentra soluciones orientadas a seguridad operativa, continuidad del despacho y cumplimiento técnico.
+                </p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-700 md:text-base">
+                  Desde componentes de descarga hasta infraestructura y control, la organización por líneas facilita que cada EDS encuentre productos compatibles con su operación y soporte especializado para decidir con mayor precisión.
+                </p>
+              </div>
+
+              <div className="rounded-[1.8rem] border border-emerald-900/10 bg-[#edf0e3] p-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Preguntas frecuentes del almacén</p>
+                <div className="mt-4 grid gap-3">
+                  {almacenFaqs.map((item) => (
+                    <article key={item.question} className="rounded-2xl border border-emerald-900/10 bg-white p-4">
+                      <h3 className="font-heading text-lg tracking-[-0.01em] text-emerald-950">{item.question}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-700">{item.answer}</p>
+                    </article>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

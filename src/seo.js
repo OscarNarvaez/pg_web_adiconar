@@ -37,59 +37,59 @@ export const pathToView = Object.fromEntries(Object.entries(viewToPath).map(([vi
 
 const routeMeta = {
   home: {
-    title: 'ADICONAR | Servicios para estaciones de servicio en Pasto, Nariño',
+    title: 'ADICONAR Pasto Nariño | Empresa de servicios para EDS en Colombia',
     description:
-      'ADICONAR impulsa estaciones de servicio en Pasto y Nariño con representación gremial, servicios técnicos, asesoría jurídica, pólizas, trámites y almacén especializado.',
+      'ADICONAR es la empresa y gremio de referencia para EDS en Pasto, Nariño y Colombia. Integramos productos, servicios técnicos, asesoría jurídica, pólizas, trámites y actualidad sectorial.',
   },
   'centro-soluciones': {
-    title: 'Centro de soluciones para estaciones de servicio en Nariño | ADICONAR',
+    title: 'Centro de soluciones ADICONAR para EDS en Pasto, Nariño y Colombia',
     description:
-      'Centro de soluciones ADICONAR para estaciones de servicio: soporte técnico, pólizas, asesoría jurídica, trámites y acompañamiento operativo en Pasto y Nariño.',
+      'Centro de soluciones ADICONAR para estaciones de servicio y EDS en Pasto, Nariño y Colombia: soporte técnico, pólizas, asesoría jurídica, trámites y acompañamiento operativo.',
   },
   almacen: {
-    title: 'Almacén especializado para estaciones de servicio | ADICONAR',
+    title: 'Productos ADICONAR para EDS | Almacén especializado en Pasto, Nariño',
     description:
-      'Almacén especializado ADICONAR con repuestos, equipos y consumibles para estaciones de servicio en Pasto, Nariño y su área de influencia.',
+      'Almacén ADICONAR con productos, repuestos, equipos y consumibles para EDS en Pasto, Nariño y Colombia. Soluciones para operación segura y continuidad del servicio.',
   },
   'servicios-tecnicos': {
-    title: 'Servicios técnicos para estaciones de servicio | ADICONAR',
+    title: 'Servicios técnicos ADICONAR para EDS en Pasto, Nariño y Colombia',
     description:
-      'Servicios técnicos para estaciones de servicio en Nariño: mantenimiento, soporte especializado, pruebas y acompañamiento operativo con ADICONAR.',
+      'Servicios técnicos ADICONAR para estaciones de servicio y EDS: mantenimiento, pruebas, aforos, hermeticidad y acompañamiento operativo en Pasto, Nariño y Colombia.',
   },
   polizas: {
-    title: 'Pólizas y aseguramiento para estaciones de servicio | ADICONAR',
+    title: 'Pólizas y seguros ADICONAR para EDS | Pasto, Nariño, Colombia',
     description:
-      'Asesoría en pólizas y aseguramiento para estaciones de servicio en Pasto y Nariño, con acompañamiento profesional de ADICONAR.',
+      'Gestión de pólizas y aseguramiento para estaciones de servicio y EDS con ADICONAR. Acompañamiento profesional en Pasto, Nariño y cobertura nacional en Colombia.',
   },
   asesoria: {
-    title: 'Asesoría jurídica para estaciones de servicio | ADICONAR',
+    title: 'Asesoría jurídica ADICONAR para EDS y empresas del sector combustible',
     description:
-      'Asesoría jurídica para estaciones de servicio en Nariño: cumplimiento, gestión documental y respaldo legal con el equipo de ADICONAR.',
+      'Asesoría jurídica ADICONAR para estaciones de servicio, EDS y empresas del sector combustible: cumplimiento, gestión documental y respaldo legal en Pasto, Nariño y Colombia.',
   },
   tramites: {
-    title: 'Trámites para estaciones de servicio en Nariño | ADICONAR',
+    title: 'Trámites ADICONAR para EDS ante entidades en Pasto, Nariño y Colombia',
     description:
-      'Gestión de trámites ante entidades para estaciones de servicio en Pasto y Nariño, con soporte administrativo y operativo de ADICONAR.',
+      'Gestión de trámites ADICONAR para estaciones de servicio y EDS ante entidades públicas y privadas. Soporte administrativo y operativo en Pasto, Nariño y Colombia.',
   },
   prensa: {
-    title: 'Boletines y prensa ADICONAR | Noticias del sector en Nariño',
+    title: 'Prensa ADICONAR | Boletines del sector EDS en Pasto, Nariño y Colombia',
     description:
-      'Boletines, novedades y contenidos de prensa de ADICONAR sobre estaciones de servicio, gremio y gestión sectorial en Nariño.',
+      'Boletines y contenidos de prensa ADICONAR sobre EDS, empresa, gremio y temas sectoriales en Pasto, Nariño y Colombia, incluyendo actualidad de Fendipetroleo.',
   },
   noticias: {
-    title: 'Noticias ADICONAR | Novedades del sector en Nariño',
+    title: 'Noticias ADICONAR | Actualidad EDS en Pasto, Nariño y Colombia',
     description:
-      'Noticias y publicaciones de ADICONAR con información relevante para estaciones de servicio, aliados y actualidad del sector en Nariño.',
+      'Noticias ADICONAR con información para EDS, aliados y empresas del sector combustible en Pasto, Nariño y Colombia, con seguimiento a agenda gremial y Fendipetroleo.',
   },
   comunicados: {
-    title: 'Comunicados ADICONAR | Información oficial del gremio',
+    title: 'Comunicados oficiales ADICONAR | Gremio EDS en Pasto, Nariño y Colombia',
     description:
-      'Comunicados oficiales de ADICONAR para estaciones de servicio, aliados y miembros del gremio en Pasto, Nariño y Colombia.',
+      'Comunicados oficiales ADICONAR para estaciones de servicio, aliados y gremio EDS en Pasto, Nariño y Colombia. Información institucional y sectorial actualizada.',
   },
   aliados: {
-    title: 'Aliados estratégicos ADICONAR | Red de apoyo para EDS',
+    title: 'Aliados estratégicos ADICONAR | Red para EDS en Pasto, Nariño y Colombia',
     description:
-      'Red de aliados estratégicos ADICONAR para estaciones de servicio, con convenios, soporte y oportunidades en Pasto y Nariño.',
+      'Red de aliados estratégicos ADICONAR para estaciones de servicio y EDS, con convenios, soporte técnico y oportunidades empresariales en Pasto, Nariño y Colombia.',
   },
 }
 
@@ -99,7 +99,51 @@ export const seoBase = {
   siteName: 'ADICONAR',
   locale: 'es_CO',
   description:
-    'ADICONAR impulsa estaciones de servicio en Pasto y Nariño con representación gremial, servicios técnicos, asesoría jurídica, pólizas, trámites y almacén especializado.',
+    'ADICONAR es empresa y gremio de apoyo para EDS en Pasto, Nariño y Colombia, con productos, servicios técnicos, asesoría jurídica, pólizas, trámites y acompañamiento sectorial.',
+}
+
+const faqByView = {
+  home: [
+    {
+      question: '¿Qué es ADICONAR y a quién acompaña?',
+      answer:
+        'ADICONAR es una organización empresarial y gremial que acompaña estaciones de servicio (EDS) con soluciones técnicas, jurídicas, operativas y de abastecimiento en Pasto, Nariño y Colombia.',
+    },
+    {
+      question: '¿ADICONAR atiende únicamente en Pasto?',
+      answer:
+        'ADICONAR tiene base en Pasto y cobertura en Nariño, con acompañamiento a empresas y EDS del suroccidente y soporte para necesidades a nivel Colombia según el servicio.',
+    },
+    {
+      question: '¿Qué servicios ofrece ADICONAR para EDS?',
+      answer:
+        'ADICONAR ofrece centro de soluciones con servicios técnicos, asesoría jurídica, gestión de pólizas, trámites ante entidades y almacén de productos especializados para estaciones de servicio.',
+    },
+  ],
+  almacen: [
+    {
+      question: '¿Qué productos maneja el almacén de ADICONAR?',
+      answer:
+        'El almacén ADICONAR reúne repuestos, equipos, accesorios y consumibles para operación de EDS, organizados en líneas técnicas especializadas para facilitar la búsqueda y compra.',
+    },
+    {
+      question: '¿Los productos ADICONAR están disponibles para EDS en Nariño?',
+      answer:
+        'Sí. ADICONAR atiende requerimientos del sector en Pasto y Nariño, y según el tipo de producto puede gestionar solicitudes para otras zonas de Colombia.',
+    },
+  ],
+  'servicios-tecnicos': [
+    {
+      question: '¿Qué incluyen los servicios técnicos de ADICONAR?',
+      answer:
+        'Incluyen mantenimiento, aforos, pruebas de hermeticidad y estanqueidad, soporte especializado en infraestructura y acompañamiento para continuidad operativa de EDS.',
+    },
+    {
+      question: '¿ADICONAR presta servicios técnicos para cumplimiento normativo?',
+      answer:
+        'Sí. El enfoque técnico de ADICONAR ayuda a las estaciones de servicio a mantener operación segura y alineada con exigencias normativas del sector combustibles.',
+    },
+  ],
 }
 
 const buildOrganizationSchema = () => ({
@@ -230,6 +274,26 @@ const buildNewsCollectionSchema = (config) => ({
   },
 })
 
+const buildFaqSchema = (view) => {
+  const items = faqByView[view] ?? []
+  if (items.length === 0) {
+    return null
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  }
+}
+
 const buildBreadcrumbTrail = (view, currentCategory) => {
   if (view === 'home') {
     return []
@@ -302,8 +366,8 @@ const buildBreadcrumbTrail = (view, currentCategory) => {
 
 export const getSeoConfig = (view, currentCategory) => {
   if (view === 'category' && currentCategory) {
-    const title = `${currentCategory.title} | Catálogo para estaciones de servicio | ADICONAR`
-    const description = `Catálogo de ${currentCategory.title} para estaciones de servicio en Nariño. Soluciones, repuestos y soporte especializado con ADICONAR.`
+    const title = `${currentCategory.title} ADICONAR | Productos para EDS en Pasto, Nariño y Colombia`
+    const description = `Catálogo ADICONAR de ${currentCategory.title} para estaciones de servicio y EDS en Pasto, Nariño y Colombia. Productos, repuestos y soporte especializado.`
     const canonical = absoluteUrl(`/categoria/${currentCategory.id}`)
 
     return {
@@ -335,6 +399,11 @@ export const getSeoConfig = (view, currentCategory) => {
 
   if (view === 'noticias' || view === 'prensa') {
     schema.push(buildNewsCollectionSchema({ ...meta, canonical }))
+  }
+
+  const faqSchema = buildFaqSchema(view)
+  if (faqSchema) {
+    schema.push(faqSchema)
   }
 
   return {

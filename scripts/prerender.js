@@ -54,6 +54,16 @@ const injectSeo = (template, config) => {
   let html = template
   html = replaceOrInsert(html, /<title>.*?<\/title>/is, `<title>${escapeHtml(config.title)}</title>`)
   html = replaceOrInsert(html, /<link\s+rel="canonical"[^>]*>/i, `<link rel="canonical" href="${escapeHtml(config.canonical)}" />`)
+  html = replaceOrInsert(
+    html,
+    /<link\s+rel="alternate"\s+hreflang="es-CO"[^>]*>/i,
+    `<link rel="alternate" hreflang="es-CO" href="${escapeHtml(config.canonical)}" />`
+  )
+  html = replaceOrInsert(
+    html,
+    /<link\s+rel="alternate"\s+hreflang="x-default"[^>]*>/i,
+    `<link rel="alternate" hreflang="x-default" href="${escapeHtml(config.canonical)}" />`
+  )
   html = replaceOrInsert(html, /<meta\s+name="description"[^>]*>/i, `<meta name="description" content="${escapeHtml(config.description)}" />`)
   html = replaceOrInsert(html, /<meta\s+property="og:title"[^>]*>/i, `<meta property="og:title" content="${escapeHtml(config.title)}" />`)
   html = replaceOrInsert(html, /<meta\s+property="og:description"[^>]*>/i, `<meta property="og:description" content="${escapeHtml(config.description)}" />`)

@@ -42,6 +42,18 @@ const syncHeadMeta = (config) => {
     tag.setAttribute('href', href)
   }
 
+  const setAlternateLink = (hreflang, href) => {
+    let tag = document.head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`)
+    if (!tag) {
+      tag = document.createElement('link')
+      tag.setAttribute('rel', 'alternate')
+      tag.setAttribute('hreflang', hreflang)
+      document.head.appendChild(tag)
+    }
+
+    tag.setAttribute('href', href)
+  }
+
   setMeta('meta[name="description"]', 'name', 'description', config.description)
   setMeta('meta[name="robots"]', 'name', 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1')
   setMeta('meta[name="theme-color"]', 'name', 'theme-color', '#0f322b')
@@ -62,6 +74,8 @@ const syncHeadMeta = (config) => {
   setMeta('meta[name="application-name"]', 'name', 'application-name', seoBase.siteName)
   setMeta('meta[name="author"]', 'name', 'author', seoBase.siteName)
   setLink('canonical', config.canonical)
+  setAlternateLink('es-CO', config.canonical)
+  setAlternateLink('x-default', config.canonical)
 
   let schemaTag = document.head.querySelector('script[data-seo-schema="adiconar"]')
   if (!schemaTag) {
@@ -174,6 +188,24 @@ const lineasServicio = [
   {
     title: 'Aliados corporativos y convenios estratégicos',
     copy: 'Conexión con partners estratégicos para sumar valor, eficiencia y oportunidades comerciales a su estación.',
+  },
+]
+
+const homeFaqs = [
+  {
+    question: '¿Qué es ADICONAR y a quién acompaña?',
+    answer:
+      'ADICONAR es una organización empresarial y gremial que acompaña estaciones de servicio (EDS) con soluciones técnicas, jurídicas, operativas y de abastecimiento en Pasto, Nariño y Colombia.',
+  },
+  {
+    question: '¿ADICONAR atiende únicamente en Pasto?',
+    answer:
+      'ADICONAR tiene base en Pasto y cobertura en Nariño, con acompañamiento a empresas y EDS del suroccidente y soporte para necesidades a nivel Colombia según el servicio.',
+  },
+  {
+    question: '¿Qué servicios ofrece ADICONAR para EDS?',
+    answer:
+      'ADICONAR ofrece centro de soluciones con servicios técnicos, asesoría jurídica, gestión de pólizas, trámites ante entidades y almacén de productos especializados para estaciones de servicio.',
   },
 ]
 
@@ -1170,6 +1202,29 @@ function App() {
                       </button>
                     </div>
                   )}
+                </div>
+              </div>
+            </section>
+
+            <section id="faq" className="border-b border-emerald-950/10 bg-[#eef3e8] py-16 md:py-20">
+              <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+                <div className="mx-auto max-w-4xl text-center">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Preguntas frecuentes</p>
+                  <h2 className="font-heading mt-3 text-3xl tracking-[-0.02em] text-emerald-950 md:text-4xl">
+                    ADICONAR Pasto Nariño: respuestas para EDS y empresas del sector
+                  </h2>
+                </div>
+
+                <div className="mx-auto mt-8 grid max-w-4xl gap-4">
+                  {homeFaqs.map((item) => (
+                    <article
+                      key={item.question}
+                      className="rounded-2xl border border-emerald-900/12 bg-white p-5 shadow-[0_18px_38px_-32px_rgba(3,42,32,0.6)]"
+                    >
+                      <h3 className="font-heading text-xl tracking-[-0.01em] text-emerald-950">{item.question}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-slate-700 md:text-base">{item.answer}</p>
+                    </article>
+                  ))}
                 </div>
               </div>
             </section>

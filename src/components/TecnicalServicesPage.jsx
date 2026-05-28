@@ -3,6 +3,19 @@ import { useInfiniteCarousel } from './useInfiniteCarousel'
 const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
   const { containerRef, trackRef, handlers } = useInfiniteCarousel({ speed: 24 })
 
+  const technicalFaqs = [
+    {
+      question: '¿Qué incluyen los servicios técnicos de ADICONAR?',
+      answer:
+        'Incluyen mantenimiento, aforos, pruebas de hermeticidad y estanqueidad, soporte especializado en infraestructura y acompañamiento para continuidad operativa de EDS.',
+    },
+    {
+      question: '¿ADICONAR presta servicios técnicos para cumplimiento normativo?',
+      answer:
+        'Sí. El enfoque técnico de ADICONAR ayuda a las estaciones de servicio a mantener operación segura y alineada con exigencias normativas del sector combustibles.',
+    },
+  ]
+
   const services = [
     { image: 'https://www.banoh.co/images/arreglos-locativos-estaciones-de-servicio/remodelacion-estaciones-gasolina-2.jpg', title: 'Construcción y remodelación para EDS' },
     { image: 'https://www.apc-industries.com/images/gestion-de-tanques/limpieza-lavado-tanques3.jpg', title: 'Lavado de tanques' },
@@ -44,6 +57,10 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
 
           <p className="text-xl text-emerald-900 font-semibold mb-4">
             Operación segura, eficiente y especializada.
+          </p>
+
+          <p className="mx-auto max-w-4xl text-base leading-relaxed text-slate-700 md:text-lg">
+            ADICONAR acompaña estaciones de servicio y EDS en Pasto, Nariño y Colombia con soluciones técnicas enfocadas en seguridad, continuidad operativa y desempeño de infraestructura para el sector combustibles.
           </p>
         </div>
 
@@ -210,6 +227,22 @@ const TecnicalServicesPage = ({ onSolicitarAsesoria }) => {
                   {benefit.title}
                 </p>
               </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-16 rounded-3xl border border-emerald-900/12 bg-white p-8 md:p-10">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Preguntas frecuentes</p>
+          <h2 className="font-heading mt-3 text-3xl tracking-[-0.02em] text-emerald-950 md:text-4xl">
+            Servicios técnicos ADICONAR para EDS
+          </h2>
+
+          <div className="mt-6 grid gap-4">
+            {technicalFaqs.map((item) => (
+              <article key={item.question} className="rounded-2xl border border-emerald-900/10 bg-[#f8faf7] p-5">
+                <h3 className="font-heading text-xl tracking-[-0.01em] text-emerald-950">{item.question}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-700 md:text-base">{item.answer}</p>
+              </article>
             ))}
           </div>
         </div>
