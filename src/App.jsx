@@ -191,24 +191,6 @@ const lineasServicio = [
   },
 ]
 
-const homeFaqs = [
-  {
-    question: '¿Qué es ADICONAR y a quién acompaña?',
-    answer:
-      'ADICONAR es una organización empresarial y gremial que acompaña estaciones de servicio (EDS) con soluciones técnicas, jurídicas, operativas y de abastecimiento en Pasto, Nariño y Colombia.',
-  },
-  {
-    question: '¿ADICONAR atiende únicamente en Pasto?',
-    answer:
-      'ADICONAR tiene base en Pasto y cobertura en Nariño, con acompañamiento a empresas y EDS del suroccidente y soporte para necesidades a nivel Colombia según el servicio.',
-  },
-  {
-    question: '¿Qué servicios ofrece ADICONAR para EDS?',
-    answer:
-      'ADICONAR ofrece centro de soluciones con servicios técnicos, asesoría jurídica, gestión de pólizas, trámites ante entidades y almacén de productos especializados para estaciones de servicio.',
-  },
-]
-
 const dependenciasContacto = {
   secretaria: {
     label: 'Secretaria',
@@ -1017,27 +999,19 @@ function App() {
                   <p className="inline-flex items-center rounded-full border border-white/35 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.19em] text-emerald-50">
                     ADICONAR
                   </p>
-                  <h1 className="font-heading max-w-[20ch] text-3xl sm:text-5xl md:text-6xl leading-[0.95] tracking-[-0.03em] text-white">
-                    Centro integral de soluciones para estaciones de servicio.
+                  <h1 className="font-heading max-w-[17ch] text-3xl sm:text-5xl md:text-6xl leading-[0.95] tracking-[-0.03em] text-white">
+                    Respaldo especializado y soluciones integrales para una operación segura.
                   </h1>
-                  <p className="max-w-[45ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
-                    Brindamos respaldo técnico, jurídico, operativo y comercial especializado para estaciones de servicio, integrando soluciones que fortalecen la operación, el cumplimiento normativo y el crecimiento del sector de combustibles.
+                  <p className="max-w-[50ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
+                    En ADICONAR impulsamos la gestión empresarial con criterio, experiencia y visión estratégica. Ofrecemos respaldo sólido para que cada decisión se traduzca en resultados de alto impacto.
                   </p>
-
-                  <p className="max-w-[42ch] text-xs sm:text-sm leading-relaxed text-emerald-100/85">
-                    ADICONAR en Pasto, Nariño, acompaña a estaciones de servicio del suroccidente colombiano con soluciones integrales, asesoría especializada y soporte operativo.
-                  </p>
-
                   <div className="flex flex-wrap gap-3 pt-1">
-                    {accesos.map((item, index) => (
+                    {accesos.map((item) => (
                       <button
                         key={item.title}
                         type="button"
                         onClick={(event) => navegarASeccion(event, item.href)}
-                        className={`group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 sm:py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 ${index === 0
-                          ? 'border-white/30 bg-white/12 text-white backdrop-blur-md hover:border-amber-300/70 hover:bg-amber-300 hover:text-emerald-1000'
-                          : 'border-amber-300/70 bg-amber-300 text-emerald-950 hover:bg-amber-200 hover:shadow-[0_24px_45px_-28px_rgba(180,123,0,0.8)]'
-                          }`}
+                        className={`group inline-flex items-center gap-2 rounded-full border px-3 py-1.5 sm:px-3.5 sm:py-2 text-[10px] font-semibold uppercase tracking-[0.18em] shadow-[0_18px_40px_-26px_rgba(0,0,0,0.72)] transition duration-300 hover:-translate-y-0.5 border-amber-300/70 bg-amber-300 text-emerald-950 hover:bg-amber-200 hover:shadow-[0_24px_45px_-28px_rgba(180,123,0,0.8)]`}
                       >
                         <img
                           src={item.icon}
@@ -1150,11 +1124,11 @@ function App() {
               <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 md:px-8 lg:grid-cols-[0.85fr_1.15fr]">
                 <div className="sticky top-24 self-start">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100/80">Centro de Soluciones</p>
-                  <h2 className="font-heading mt-4 max-w-[14ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl">
-                    Gestionamos las soluciones que necesita su EDS.
+                  <h2 className="font-heading mt-4 max-w-[45ch] text-4xl leading-[1] tracking-[-0.03em] text-white md:text-5xl ">
+                    Gestionamos las soluciones que su EDS necesita.
                   </h2>
-                  <p className="mt-4 max-w-[56ch] text-base leading-relaxed text-emerald-50/85">
-                    Integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
+                  <p className="mt-4 max-w-[45ch] text-base leading-relaxed text-emerald-50/85">
+                    Desde 1996 integramos servicios técnicos, jurídicos, normativos, comerciales y de infraestructura para facilitar la operación, optimizar recursos y brindarle tranquilidad en cada frente de su negocio.
                   </p>
 
                   <div className="mt-8 flex flex-wrap gap-3">
@@ -1168,7 +1142,7 @@ function App() {
                     <button
                       type="button"
                       onClick={(event) => navegarASeccion(event, '#centro-soluciones-page')}
-                      className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/15"
+                      className="inline-flex items-center justify-center rounded-full border border-amber-300 bg-amber-300 px-6 py-3 text-sm font-semibold text-emerald-950 transition hover:-translate-y-0.5 hover:bg-amber-200"
                     >
                       Mas Información...
                     </button>
@@ -1202,29 +1176,6 @@ function App() {
                       </button>
                     </div>
                   )}
-                </div>
-              </div>
-            </section>
-
-            <section id="faq" className="border-b border-emerald-950/10 bg-[#eef3e8] py-16 md:py-20">
-              <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
-                <div className="mx-auto max-w-4xl text-center">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Preguntas frecuentes</p>
-                  <h2 className="font-heading mt-3 text-3xl tracking-[-0.02em] text-emerald-950 md:text-4xl">
-                    ADICONAR Pasto Nariño: respuestas para EDS y empresas del sector
-                  </h2>
-                </div>
-
-                <div className="mx-auto mt-8 grid max-w-4xl gap-4">
-                  {homeFaqs.map((item) => (
-                    <article
-                      key={item.question}
-                      className="rounded-2xl border border-emerald-900/12 bg-white p-5 shadow-[0_18px_38px_-32px_rgba(3,42,32,0.6)]"
-                    >
-                      <h3 className="font-heading text-xl tracking-[-0.01em] text-emerald-950">{item.question}</h3>
-                      <p className="mt-2 text-sm leading-relaxed text-slate-700 md:text-base">{item.answer}</p>
-                    </article>
-                  ))}
                 </div>
               </div>
             </section>
