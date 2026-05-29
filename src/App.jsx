@@ -1002,7 +1002,7 @@ function App() {
                   <h1 className="font-heading max-w-[17ch] text-3xl sm:text-5xl md:text-6xl leading-[0.95] tracking-[-0.03em] text-white">
                     Respaldo especializado y soluciones integrales para una operación segura.
                   </h1>
-                  <p className="max-w-[50ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
+                  <p className="max-w-[45ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
                     En ADICONAR impulsamos la gestión empresarial con criterio, experiencia y visión estratégica. Ofrecemos respaldo sólido para que cada decisión se traduzca en resultados de alto impacto.
                   </p>
                   <div className="flex flex-wrap gap-3 pt-1">
