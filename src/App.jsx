@@ -90,7 +90,6 @@ const syncHeadMeta = (config) => {
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
-  { label: 'Sobre nosotros', href: '#sobre-nosotros' },
   { label: 'Centro de soluciones', href: '#servicios' },
 ]
 
@@ -830,6 +829,15 @@ function App() {
             >
               <span className="desktop-nav-outline-text">Contacto</span>
             </a>
+
+            <a
+              href="https://checkout.wompi.co/l/VPOS_xuXSys"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-2 rounded-full border border-amber-200/70 bg-gradient-to-r from-amber-300 via-yellow-300 to-emerald-300 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.16em] text-emerald-950 shadow-[0_18px_40px_-26px_rgba(180,123,0,0.72)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_26px_55px_-28px_rgba(180,123,0,0.9)]"
+            >
+              <span className="relative">¡PAGAR AHORA!</span>
+            </a>
           </nav>
 
           <button
@@ -1005,7 +1013,7 @@ function App() {
                   <p className="max-w-[45ch] text-sm sm:text-base leading-tight sm:leading-relaxed text-emerald-50/100 ">
                     En ADICONAR impulsamos la gestión empresarial con criterio, experiencia y visión estratégica. Ofrecemos respaldo sólido para que cada decisión se traduzca en resultados de alto impacto.
                   </p>
-                  <div className="flex flex-wrap gap-3 pt-1">
+                  <div className="flex flex-wrap justify-center gap-3 pt-1">
                     {accesos.map((item) => (
                       <button
                         key={item.title}
@@ -1024,6 +1032,17 @@ function App() {
                       </button>
                     ))}
                   </div>
+                  <div className="pt-3 flex justify-center">
+                    <a
+                      href="https://checkout.wompi.co/l/VPOS_xuXSys"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group relative inline-flex items-center justify-center gap-2.5 overflow-hidden rounded-full border border-amber-200/70 bg-gradient-to-r from-amber-300 via-yellow-300 to-emerald-300 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.20em] text-emerald-950 shadow-[0_22px_45px_-26px_rgba(180,123,0,0.82)] transition duration-300 animate-pulse hover:-translate-y-0.5 hover:scale-[1.02] hover:shadow-[0_30px_60px_-28px_rgba(180,123,0,0.92)] sm:px-5 sm:py-2.5 sm:text-xs"
+                    >
+                      <span className="absolute inset-0 bg-[linear-gradient(120deg,transparent,rgba(255,255,255,0.65),transparent)] -translate-x-[140%] animate-[shine_2.4s_infinite]" aria-hidden="true" />
+                      <span className="relative">¡PAGAR AHORA!</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>
@@ -1032,7 +1051,6 @@ function App() {
               <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
                 <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
                   <div className="lg:col-span-2">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-900/70">Sobre nosotros</p>
                   </div>
 
                   <div>
@@ -1316,6 +1334,15 @@ function App() {
           <ComunicadosPage />
         ) : null}
       </main>
+
+      <a
+        href="https://checkout.wompi.co/l/VPOS_xuXSys"
+        target="_blank"
+        rel="noreferrer"
+        className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 lg:hidden group inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-gradient-to-r from-amber-300 via-yellow-300 to-emerald-300 px-5 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-emerald-950 shadow-[0_20px_40px_-24px_rgba(180,123,0,0.88)] transition duration-300 animate-pulse hover:-translate-y-0.5 hover:scale-[1.02]"
+      >
+        <span className="relative">¡PAGAR AHORA!</span>
+      </a>
 
       <a
         href="https://wa.me/573185896142?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20_______"
