@@ -792,17 +792,19 @@ function App() {
                 <span className="text-[10px]"> ▼</span>
               </button>
 
-              <div className="pointer-events-none absolute right-0 top-[calc(100%+0.55rem)] w-56 translate-y-1 rounded-2xl border border-emerald-900/15 bg-white/95 p-2 opacity-0 shadow-[0_28px_48px_-28px_rgba(6,78,59,0.7)] transition duration-200 group-hover:pointer-events-auto group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:translate-y-0 group-focus-within:opacity-100">
-                {prensaItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={(event) => navegarASeccion(event, item.href)}
-                    className="mb-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-emerald-950 hover:bg-emerald-50 transition last:mb-0"
-                  >
-                    <span>{item.label}</span>
-                  </a>
-                ))}
+              <div className="absolute right-0 top-full w-56 pt-[0.55rem] pointer-events-none opacity-0 group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100 transition-opacity duration-200">
+                <div className="translate-y-1 rounded-2xl border border-emerald-900/15 bg-white/95 p-2 shadow-[0_28px_48px_-28px_rgba(6,78,59,0.7)] transition duration-200 group-hover:translate-y-0 group-focus-within:translate-y-0">
+                  {prensaItems.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={(event) => navegarASeccion(event, item.href)}
+                      className="mb-1 flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-emerald-950 hover:bg-emerald-50 transition last:mb-0"
+                    >
+                      <span>{item.label}</span>
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
 
