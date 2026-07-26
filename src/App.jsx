@@ -986,6 +986,15 @@ function App() {
             >
               Aliados corporativos
             </a>
+
+            <a
+              href="https://checkout.wompi.co/l/VPOS_xuXSys"
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full border border-amber-200/80 bg-gradient-to-r from-amber-300 via-yellow-300 to-emerald-300 px-5 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-emerald-950 shadow-[0_20px_40px_-24px_rgba(180,123,0,0.88)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.02]"
+            >
+              <span className="relative">¡PAGAR AHORA!</span>
+            </a>
           </div>
         </div>
       )}
@@ -1336,15 +1345,6 @@ function App() {
           <ComunicadosPage />
         ) : null}
       </main>
-
-      <a
-        href="https://checkout.wompi.co/l/VPOS_xuXSys"
-        target="_blank"
-        rel="noreferrer"
-        className="fixed bottom-5 left-1/2 z-40 -translate-x-1/2 lg:hidden group inline-flex items-center gap-2 rounded-full border border-amber-200/80 bg-gradient-to-r from-amber-300 via-yellow-300 to-emerald-300 px-5 py-3 text-[11px] font-extrabold uppercase tracking-[0.18em] text-emerald-950 shadow-[0_20px_40px_-24px_rgba(180,123,0,0.88)] transition duration-300 animate-pulse hover:-translate-y-0.5 hover:scale-[1.02]"
-      >
-        <span className="relative">¡PAGAR AHORA!</span>
-      </a>
 
       <a
         href="https://wa.me/573185896142?text=Hola%2C%20quiero%20mas%20informacion%20sobre%20_______"
