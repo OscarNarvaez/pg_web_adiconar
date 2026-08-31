@@ -60,6 +60,8 @@ const productosPorCategoria = {
   ],
   control: [
     'POMADA KOLOR KUT',
+    'PASTA REVELADORA DE AGUA KOLOR KUT X 85G',
+    'CREMA DE MEDICION KOLOR KUT',
     'SERAFIN',
     'VARA MILIMETRICA',
   ],

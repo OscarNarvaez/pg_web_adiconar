@@ -243,5 +243,15 @@ export const catalogo = [
     "name": "VARA MILIMÉTRICA",
     "desc": "Permite medir niveles de combustible en tanques.",
     "image": "https://gomezvelasquez.com/web/G2152-VARA-MILIMETRICA-PARA-MEDIR-COMBUSTIBLE-DE-4-MTS.webp"
+  },
+  {
+    "name": "PASTA REVELADORA DE AGUA KOLOR KUT X 85G",
+    "desc": "Reactivo utilizado en la detección de agua en tanques de almacenamiento de hidrocarburos y sus derivados.",
+    "image": "https://www.electromanferonline.com/2651-large_default/pasta-reveladora-de-agua-kolor-kut-x-85g.jpg"
+  },
+  {
+    "name": "CREMA DE MEDICIÓN KOLOR KUT",
+    "desc": "Producto utilizado en la detección del nivel de hidrocarburos y sus derivados en tanques de almacenamiento.",
+    "image": "https://www.electromanferonline.com/2652-large_default/pasta-reveladora-de-combustible-kolor-kut-x-62g.jpg"
   }
 ];
