@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { noticias } from '../data/noticias'
+import { supabase } from '../lib/supabaseClient'
+import { formatFechaEs } from '../lib/formatFecha'
 
 const getYouTubeThumbnail = (url) => {
     try {
@@ -49,11 +50,34 @@ const resolveLinkPreviewImage = async (url) => {
 }
 
 const NoticiasPage = ({ embedded = false }) => {
-    const [items] = useState(noticias)
+    const [items, setItems] = useState([])
+    const [loading, setLoading] = useState(true)
     const [previewImages, setPreviewImages] = useState({})
     const [index, setIndex] = useState(0)
     const trackRef = useRef(null)
     const itemRefs = useRef([])
+
+    useEffect(() => {
+        let cancelled = false
+
+        const query = supabase
+            ? supabase
+                  .from('noticias')
+                  .select('*')
+                  .order('fecha', { ascending: false })
+                  .order('created_at', { ascending: false })
+            : Promise.resolve({ data: [], error: null })
+
+        query.then(({ data, error }) => {
+            if (cancelled) return
+            setItems(error ? [] : (data ?? []).map((row) => ({ ...row, fecha: formatFechaEs(row.fecha) })))
+            setLoading(false)
+        })
+
+        return () => {
+            cancelled = true
+        }
+    }, [])
 
     useEffect(() => {
         let cancelled = false
@@ -217,8 +241,14 @@ const NoticiasPage = ({ embedded = false }) => {
                         }) : (
                             <div className="flex min-h-[26rem] items-center justify-center px-6 text-center text-slate-600 md:min-h-[30rem]">
                                 <div className="rounded-[1.75rem] border border-dashed border-emerald-900/15 bg-white p-8">
-                                    <p className="font-semibold text-emerald-950">Cargando noticias...</p>
-                                    <p className="mt-1 text-sm text-slate-600">En breve aparecerán las publicaciones recientes.</p>
+                                    <p className="font-semibold text-emerald-950">
+                                        {loading ? 'Cargando noticias...' : 'Aún no hay publicaciones.'}
+                                    </p>
+                                    <p className="mt-1 text-sm text-slate-600">
+                                        {loading
+                                            ? 'En breve aparecerán las publicaciones recientes.'
+                                            : 'Cuando se agreguen desde el panel de administración, aparecerán aquí automáticamente.'}
+                                    </p>
                                 </div>
                             </div>
                         )}

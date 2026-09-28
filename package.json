@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && npm run prerender",
+    "build": "vite build && pnpm run prerender",
     "prerender": "node scripts/prerender.js",
-    "build:ssg": "vite build && npm run prerender",
+    "build:ssg": "vite build && pnpm run prerender",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },

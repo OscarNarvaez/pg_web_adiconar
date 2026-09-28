@@ -27,3 +27,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Archivos locales de herramientas de IA (Aider Desk, agent skills, etc.)
+.agents/
+.aider-desk/
+skills-lock.json

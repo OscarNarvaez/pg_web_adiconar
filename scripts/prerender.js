@@ -96,6 +96,16 @@ const injectSeo = (template, config) => {
 const injectAppHtml = (template, appHtml) =>
   template.replace(/<div id="root">\s*<\/div>/i, `<div id="root">${appHtml}</div>`)
 
+// /admin no pasa por App.jsx ni por el SEO normal: es una copia sin
+// modificar del template (root vacío) con solo el título y un noindex,
+// para que src/main.jsx la reconozca en el cliente y monte el panel ahí.
+const buildAdminHtml = (template) => {
+  let html = template
+  html = replaceOrInsert(html, /<title>.*?<\/title>/is, `<title>Admin · ADICONAR</title>`)
+  html = replaceOrInsert(html, /<meta\s+name="robots"[^>]*>/i, `<meta name="robots" content="noindex,nofollow" />`)
+  return html
+}
+
 const routeToOutputPath = (routePath) => {
   if (routePath === '/') {
     return path.join(distDir, 'index.html')
@@ -144,6 +154,10 @@ const main = async () => {
       await fs.mkdir(path.dirname(outputPath), { recursive: true })
       await fs.writeFile(outputPath, finalHtml, 'utf8')
     }
+
+    const adminOutputPath = path.join(distDir, 'admin', 'index.html')
+    await fs.mkdir(path.dirname(adminOutputPath), { recursive: true })
+    await fs.writeFile(adminOutputPath, buildAdminHtml(template), 'utf8')
 
     await fs.writeFile(path.join(distDir, 'sitemap.xml'), buildSitemap(), 'utf8')
   } finally {

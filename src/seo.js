@@ -1,5 +1,4 @@
 import { categories } from './data/categories.js'
-import { noticias } from './data/noticias.js'
 
 export const SITE_URL = 'https://adiconar.co'
 
@@ -247,6 +246,10 @@ const buildBreadcrumbSchema = (items) => ({
   })),
 })
 
+// Nota: ya no enumera los items (antes venían de src/data/noticias.js,
+// que se congelaba en build time). El contenido real ahora se carga en
+// vivo desde Supabase en el cliente, después del render inicial, así que
+// no hay una lista estable para describir en tiempo de build.
 const buildNewsCollectionSchema = (config) => ({
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -258,19 +261,6 @@ const buildNewsCollectionSchema = (config) => ({
     '@type': 'WebSite',
     name: seoBase.siteName,
     url: SITE_URL,
-  },
-  mainEntity: {
-    '@type': 'ItemList',
-    name: config.title,
-    numberOfItems: noticias.length,
-    itemListElement: noticias.map((item, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      url: item.enlace,
-      name: item.titulo,
-      description: item.descripcion,
-      datePublished: item.fechaISO,
-    })),
   },
 })
 
