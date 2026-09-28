@@ -12,15 +12,15 @@ La estructura inicial replica el estilo general de la web de AWALA (home con nav
 
 ## Requisitos
 
-- Node.js 20.x
-- npm 10+
+- Node.js 22.x (Supabase requiere WebSocket nativo, disponible desde Node 22)
+- pnpm 9+
 
 ## Scripts
 
-- `npm run dev`: inicia servidor de desarrollo.
-- `npm run build`: genera build de produccion.
-- `npm run preview`: previsualiza el build.
-- `npm run lint`: ejecuta ESLint.
+- `pnpm dev`: inicia servidor de desarrollo.
+- `pnpm build`: genera build de produccion (incluye el prerender/SSG).
+- `pnpm preview`: previsualiza el build.
+- `pnpm lint`: ejecuta ESLint.
 
 ## Estado actual
 
