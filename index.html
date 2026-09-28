@@ -3,6 +3,17 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!--
+    CSP vía meta tag (GitHub Pages no permite headers HTTP custom, así que
+    esta es la única forma disponible sin poner un CDN delante). No cubre
+    frame-ancestors/X-Frame-Options (el spec de CSP ignora esas directivas
+    cuando vienen de un <meta>, solo funcionan como header real) — es
+    defensa en profundidad contra inyección de <script>, no protección
+    contra clickjacking. img-src queda permisivo a propósito: el catálogo
+    y las noticias enlazan imágenes de muchos dominios de proveedores/prensa
+    fuera de nuestro control.
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src * data: blob:; connect-src 'self' https://*.supabase.co https://api.microlink.io; base-uri 'self'; form-action 'self'; object-src 'none';" />
   <link rel="icon" type="image/webp" href="/logoPaginaTodo.webp" />
   <link rel="alternate" hreflang="es-CO" href="https://adiconar.co/" />
   <link rel="alternate" hreflang="x-default" href="https://adiconar.co/" />

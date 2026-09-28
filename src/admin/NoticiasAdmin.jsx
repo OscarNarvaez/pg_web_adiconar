@@ -5,6 +5,18 @@ import { MAX_IMAGE_BYTES, removePublicFile, uploadPublicFile, validateImageFile 
 
 const fuentes = ['Instagram', 'YouTube', 'Facebook', 'Otro']
 
+// Evita esquemas peligrosos (javascript:, data:, etc.) en un campo que se
+// renderiza como href público — solo se permite http(s). Defensa en
+// profundidad además del check en la base de datos (ver supabase/schema.sql).
+const isSafeHttpUrl = (value) => {
+  try {
+    const parsed = new URL(value)
+    return parsed.protocol === 'http:' || parsed.protocol === 'https:'
+  } catch {
+    return false
+  }
+}
+
 const emptyForm = {
   enlace: '',
   fuente: 'Instagram',
@@ -48,6 +60,11 @@ const NoticiasAdmin = () => {
 
     if (!form.enlace.trim() || !form.titulo.trim() || !form.descripcion.trim()) {
       setError('Completa al menos el enlace, el título y la descripción.')
+      return
+    }
+
+    if (!isSafeHttpUrl(form.enlace.trim())) {
+      setError('El enlace debe ser una URL http:// o https:// válida.')
       return
     }
 
