@@ -7,8 +7,13 @@
 create extension if not exists "pgcrypto"; -- gen_random_uuid()
 
 -- ── Helper: actualizar updated_at automáticamente ───────────────────────
+-- search_path fijo en '' (en vez de dejarlo mutable) para que las
+-- referencias sin calificar no puedan resolver a un objeto inesperado
+-- creado en otro esquema.
 create or replace function public.set_updated_at()
-returns trigger as $$
+returns trigger
+set search_path = ''
+as $$
 begin
   new.updated_at = now();
   return new;
@@ -28,7 +33,8 @@ create table if not exists public.noticias (
   etiqueta     text not null default '',
   fecha        date not null default current_date,
   imagen       text,        -- URL pública de la miniatura subida (NULL = usar fallback automático)
-  imagen_path  text         -- ruta del archivo en Storage, para poder borrarlo
+  imagen_path  text,        -- ruta del archivo en Storage, para poder borrarlo
+  constraint noticias_enlace_http_check check (enlace like 'http://%' or enlace like 'https://%')
 );
 
 drop trigger if exists trg_noticias_updated_at on public.noticias;
@@ -98,18 +104,32 @@ create policy "auth_delete_publicaciones" on public.publicaciones
   for delete to authenticated using (true);
 
 -- ── Buckets de Storage ───────────────────────────────────────────────────
-insert into storage.buckets (id, name, public)
-values ('admin-images', 'admin-images', true)
-on conflict (id) do nothing;
+-- allowed_mime_types/file_size_limit del lado del servidor: el formulario
+-- del panel ya valida esto, pero eso es evitable llamando la API directo,
+-- así que también se fuerza aquí. Se excluye SVG a propósito (puede llevar
+-- <script> incrustado).
+insert into storage.buckets (id, name, public, allowed_mime_types, file_size_limit)
+values ('admin-images', 'admin-images', true, array['image/png', 'image/jpeg', 'image/webp', 'image/gif'], 5242880)
+on conflict (id) do update set
+  allowed_mime_types = excluded.allowed_mime_types,
+  file_size_limit = excluded.file_size_limit;
 
-insert into storage.buckets (id, name, public)
-values ('admin-pdfs', 'admin-pdfs', true)
-on conflict (id) do nothing;
+insert into storage.buckets (id, name, public, allowed_mime_types, file_size_limit)
+values ('admin-pdfs', 'admin-pdfs', true, array['application/pdf'], 15728640)
+on conflict (id) do update set
+  allowed_mime_types = excluded.allowed_mime_types,
+  file_size_limit = excluded.file_size_limit;
 
 -- ── Políticas de Storage (storage.objects) ──────────────────────────────
+-- Los buckets ya son públicos (public = true arriba), así que la descarga
+-- por URL directa no depende de estas políticas. SELECT queda limitado a
+-- "authenticated" para no permitir que cualquiera *liste* todos los
+-- archivos del bucket vía la API (la app nunca usa list(), solo upload/
+-- getPublicUrl/remove).
 drop policy if exists "public_read_admin_images" on storage.objects;
-create policy "public_read_admin_images" on storage.objects
-  for select using (bucket_id = 'admin-images');
+drop policy if exists "authenticated_read_admin_images" on storage.objects;
+create policy "authenticated_read_admin_images" on storage.objects
+  for select to authenticated using (bucket_id = 'admin-images');
 
 drop policy if exists "auth_insert_admin_images" on storage.objects;
 create policy "auth_insert_admin_images" on storage.objects
@@ -124,8 +144,9 @@ create policy "auth_delete_admin_images" on storage.objects
   for delete to authenticated using (bucket_id = 'admin-images');
 
 drop policy if exists "public_read_admin_pdfs" on storage.objects;
-create policy "public_read_admin_pdfs" on storage.objects
-  for select using (bucket_id = 'admin-pdfs');
+drop policy if exists "authenticated_read_admin_pdfs" on storage.objects;
+create policy "authenticated_read_admin_pdfs" on storage.objects
+  for select to authenticated using (bucket_id = 'admin-pdfs');
 
 drop policy if exists "auth_insert_admin_pdfs" on storage.objects;
 create policy "auth_insert_admin_pdfs" on storage.objects
@@ -147,3 +168,15 @@ create policy "auth_delete_admin_pdfs" on storage.objects
 --    (marca "Auto Confirm User").
 -- 3. Ve a Authentication → Providers → Email y desactiva "Allow new users
 --    to sign up" (no hay pantalla de registro, pero cierra igual esa vía).
+-- 4. Ve a Authentication → Policies (o Auth → Settings, según la versión
+--    del dashboard) y activa "Leaked password protection" — no se puede
+--    activar por SQL, solo desde el dashboard.
+--
+-- Nota sobre el Security Advisor de Supabase: vas a ver 6 warnings
+-- "rls_policy_always_true" (INSERT/UPDATE/DELETE con USING/WITH CHECK
+-- true para el rol authenticated). Es intencional: hay un solo usuario
+-- admin compartido y sin registro público (ver punto 3), así que
+-- "authenticated" equivale en la práctica a "el admin". Si en el futuro
+-- se crean varias cuentas y se quiere que cada quien solo pueda
+-- editar/borrar lo suyo, ahí sí habría que agregar una columna de
+-- "creado_por" y acotar las políticas a auth.uid() = creado_por.
